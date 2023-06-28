@@ -32,7 +32,8 @@ public class SnapToGrid : MonoBehaviour
 
     void Update()
     {
-        player = FindObjectOfType<Player>();    
+        player = FindObjectOfType<Player>();
+        Debug.Log(player.equippedItem);
     }
 
     private void OnMouseDown()

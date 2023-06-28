@@ -11,6 +11,9 @@ public class ShopManager : MonoBehaviour
     public float shopEarnings;
     public List<Collectable> itemsForSale = new();
     public List<NPCShopper> shopperList = new();
+    public List<NPCShopper> checkoutQueue = new();
+    public float checkoutIncX = 0.5f;
+    public float checkoutIncY = 0.25f;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +25,15 @@ public class ShopManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.E) && checkoutQueue.Count > 0)
+        {
+            checkoutQueue[0].PayPrice();
+            checkoutQueue.RemoveAt(0);
+            for(int i = 0; i < checkoutQueue.Count; i++)
+            {
+                checkoutQueue[i].UpdateQueue();
+            }
+        }
     }
 
     void SelectBuyer()

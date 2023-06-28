@@ -37,7 +37,7 @@ public class Inventory
         {
             this.type = item.type;
             this.icon = item.icon;
-            count++;
+            count += 5;
         }
     }
 

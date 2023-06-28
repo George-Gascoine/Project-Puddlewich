@@ -32,30 +32,22 @@ public class NPCShopper : MonoBehaviour
     }
     private void Update()
     {
+
         if (transform.position.x == target.transform.position.x + 0.5f && transform.position.y == target.transform.position.y)
         {
-            if(leaving==true)
+
+            if (leaving == true)
             {
                 Destroy(this.gameObject);
-            }
-            if (paying == true)
-            {
-                StopCoroutine("FollowPath");
-                paying = false;
-                shopManager.shopEarnings += payPrice;
-                start = target;
-                target = grid.tiles[new Vector2(0, 0)];
-                FindPath(start, target);
-                StartCoroutine("FollowPath", 2);
-                leaving = true; 
             }
             if (buyer == true)
             {
                 StopCoroutine("FollowPath");
                 payPrice = buyItem.itemCost;
                 Destroy(buyItem.gameObject);
+                shopManager.checkoutQueue.Add(this);
                 start = grid.GetTileAtPosition(grid.TilePosition(new Vector2(transform.localPosition.x - 0.5f, transform.localPosition.y))); ;
-                target = shopManager.checkoutTile;
+                target = grid.tiles[new Vector2(shopManager.checkoutTile.gridX, shopManager.checkoutTile.gridY - shopManager.checkoutQueue.IndexOf(this))];
                 buyer = false;
                 paying = true;
                 FindPath(start, target);
@@ -188,5 +180,24 @@ public class NPCShopper : MonoBehaviour
         FindPath(start, target);
         StartCoroutine("FollowPath", 0);
     }
+    public void UpdateQueue()
+    {
+        StopCoroutine("FollowPath");
+        start = target;
+        target = grid.tiles[new Vector2(shopManager.checkoutTile.gridX, shopManager.checkoutTile.gridY)];
+        FindPath(start, target);
+        StartCoroutine("FollowPath", 0);
+    }
 
+    public void PayPrice()
+    {
+        StopCoroutine("FollowPath");
+        start = target;
+        target = grid.tiles[new Vector2(0, 0)];
+        FindPath(start, target);
+        StartCoroutine("FollowPath", 0);
+        paying = false;
+        leaving = true;
+        shopManager.shopEarnings += payPrice;
+    }
 }

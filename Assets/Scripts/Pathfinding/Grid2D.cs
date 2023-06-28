@@ -14,6 +14,7 @@ public class Grid2D : MonoBehaviour
     public Dictionary<Vector2, Tile> tiles;
     private void Start()
     {
+        Random.InitState((int)System.DateTime.Now.Ticks);
         GenerateGrid();
     }
 

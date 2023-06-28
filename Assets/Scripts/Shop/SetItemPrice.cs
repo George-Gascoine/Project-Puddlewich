@@ -23,19 +23,19 @@ public class SetItemPrice : MonoBehaviour
     void Update()
     {
         grid = FindAnyObjectByType<Grid2D>();
-        uiPrice.text = itemPrice.ToString();    
+        uiPrice.text = itemPrice.ToString();
     }
 
-    public void IncreasePrice()   
+    public void IncreasePrice()
     {
-        itemPrice ++; 
+        itemPrice++;
     }
 
     public void DecreasePrice()
     {
         if (itemPrice > 0)
         {
-            itemPrice --;
+            itemPrice--;
         }
     }
 
@@ -55,7 +55,8 @@ public class SetItemPrice : MonoBehaviour
             var itemZ = 1f;
             var item = Instantiate(sale, new Vector3(itemX, itemY, itemZ), Quaternion.identity);
             item.itemCost = itemPrice;
-            item.buyingTile = grid.GetTileAtPosition(grid.TilePosition(new Vector2(itemX-1.5f,itemY)));
+            var choices = new float[] { -1.5f, .5f };
+            item.buyingTile = grid.GetTileAtPosition(grid.TilePosition(new Vector2(itemX + choices[Random.Range(1,1)], itemY)));
             tableID.itemOnTable = item;
             shopManager.itemsForSale.Add(item);
         }
