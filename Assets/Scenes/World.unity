@@ -5703,9 +5703,13 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 820892137}
-    - target: {fileID: 4366073515745229688, guid: 62f037e3d816609408ba4924c67a4e2e, type: 3}
+    - target: {fileID: 4366073515723737831, guid: 62f037e3d816609408ba4924c67a4e2e, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4366073515745229688, guid: 62f037e3d816609408ba4924c67a4e2e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7549574390158776026, guid: 62f037e3d816609408ba4924c67a4e2e, type: 3}
       propertyPath: m_AnchorMax.y

@@ -28,6 +28,7 @@ public class ShopperSpawner : MonoBehaviour
         var shopperStart = FindObjectOfType<Grid2D>().tiles[new Vector2(0, 0)];
         var shopperTarget = browsePoints[Random.Range(0, browsePoints.Count)];
         browsePoints.Remove(shopperTarget);
+        newShopper.browsing = true;
         newShopper.start = shopperStart;
         newShopper.target = shopperTarget;
         number--;

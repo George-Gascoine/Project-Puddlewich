@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering.Universal;
 using static UnityEditor.Progress;
 
 public class NPCShopper : MonoBehaviour
 {
     ShopManager shopManager;
+    ShopperSpawner shopperSpawner;
     public Tile start;
     public Tile target;
     Grid2D grid;
@@ -16,6 +18,7 @@ public class NPCShopper : MonoBehaviour
     int targetIndex;
     public Vector2 gridSize = new Vector2(1f, 0.5f);
     public bool buyer = false;
+    public bool browsing = false;
     public bool paying = false;
     public bool leaving = false;
     public Collectable buyItem;
@@ -27,6 +30,9 @@ public class NPCShopper : MonoBehaviour
         //Find the starting Tile
         grid = FindObjectOfType<Grid2D>();
         shopManager = FindObjectOfType<ShopManager>();
+        shopperSpawner = FindAnyObjectByType<ShopperSpawner>();
+        browsing = true;
+        InvokeRepeating("Browse", 10, 5);
         FindPath(start, target);
         StartCoroutine("FollowPath", 0);
     }
@@ -36,18 +42,17 @@ public class NPCShopper : MonoBehaviour
         if (transform.position.x == target.transform.position.x + 0.5f && transform.position.y == target.transform.position.y)
         {
 
-            if (leaving == true)
+            if (leaving)
             {
                 Destroy(this.gameObject);
             }
-            if (buyer == true)
+            if (buyer)
             {
                 StopCoroutine("FollowPath");
                 payPrice = buyItem.itemCost;
                 Destroy(buyItem.gameObject);
-                shopManager.checkoutQueue.Add(this);
-                start = grid.GetTileAtPosition(grid.TilePosition(new Vector2(transform.localPosition.x - 0.5f, transform.localPosition.y))); ;
-                target = grid.tiles[new Vector2(shopManager.checkoutTile.gridX, shopManager.checkoutTile.gridY - shopManager.checkoutQueue.IndexOf(this))];
+                start = grid.GetTileAtPosition(grid.TilePosition(new Vector2(transform.localPosition.x - 0.5f, transform.localPosition.y)));
+                target = grid.tiles[new Vector2(shopManager.checkoutTile.gridX, shopManager.checkoutTile.gridY - shopManager.checkoutQueue.Count)];
                 buyer = false;
                 paying = true;
                 FindPath(start, target);
@@ -150,8 +155,15 @@ public class NPCShopper : MonoBehaviour
             if (transform.position == currentPoint)
             {
                 targetIndex++;
-                if (targetIndex >= finalPath.Length)
+                if (paying == true && targetIndex + 1 == finalPath.Length)
                 {
+                    shopManager.checkoutQueue.Add(this);
+                    paying = false;
+                    UpdateQueue();
+                    yield break;
+                }
+                if (targetIndex >= finalPath.Length)
+                {   
                     yield break;
                 }
                 currentPoint = finalPath[targetIndex];
@@ -180,11 +192,24 @@ public class NPCShopper : MonoBehaviour
         FindPath(start, target);
         StartCoroutine("FollowPath", 0);
     }
+    public void Browse()
+    {
+        if (browsing)
+        {
+            StopCoroutine("FollowPath");
+            start = grid.GetTileAtPosition(grid.TilePosition(new Vector2(transform.localPosition.x - 0.5f, transform.localPosition.y)));
+            target = shopperSpawner.browsePoints[Random.Range(0, shopperSpawner.browsePoints.Count)];
+            shopperSpawner.browsePoints.Remove(target);
+            shopperSpawner.browsePoints.Add(start);
+            FindPath(start, target);
+            StartCoroutine("FollowPath", 0);
+        }
+    }
     public void UpdateQueue()
     {
         StopCoroutine("FollowPath");
-        start = target;
-        target = grid.tiles[new Vector2(shopManager.checkoutTile.gridX, shopManager.checkoutTile.gridY)];
+        start = grid.GetTileAtPosition(grid.TilePosition(new Vector2(transform.localPosition.x - 0.5f, transform.localPosition.y)));
+        target = grid.tiles[new Vector2(shopManager.checkoutTile.gridX, shopManager.checkoutTile.gridY - shopManager.checkoutQueue.IndexOf(this))];
         FindPath(start, target);
         StartCoroutine("FollowPath", 0);
     }
@@ -192,7 +217,7 @@ public class NPCShopper : MonoBehaviour
     public void PayPrice()
     {
         StopCoroutine("FollowPath");
-        start = target;
+        start = grid.GetTileAtPosition(grid.TilePosition(new Vector2(transform.localPosition.x - 0.5f, transform.localPosition.y)));
         target = grid.tiles[new Vector2(0, 0)];
         FindPath(start, target);
         StartCoroutine("FollowPath", 0);

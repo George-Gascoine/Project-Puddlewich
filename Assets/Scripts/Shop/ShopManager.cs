@@ -44,6 +44,8 @@ public class ShopManager : MonoBehaviour
             int itemNo = Random.Range(0, itemsForSale.Count);
             NPCShopper selectedShopper = shopperList[shopperNo];
             Collectable item = itemsForSale[itemNo];
+            selectedShopper.browsing = false;
+            selectedShopper.CancelInvoke("Browse");
             selectedShopper.buyer = true;
             selectedShopper.buyItem = item;
             shopperList.Remove(selectedShopper);
