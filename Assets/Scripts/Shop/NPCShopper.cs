@@ -5,7 +5,6 @@ using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering.Universal;
-using static UnityEditor.Progress;
 
 public class NPCShopper : MonoBehaviour
 {

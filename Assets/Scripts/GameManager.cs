@@ -7,6 +7,10 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public ItemManager itemManager;
 
+    public void Start()
+    {
+        Screen.SetResolution(1920, 1080, true);
+    }
     public void Awake()
     {
         if (instance != null && instance != this)

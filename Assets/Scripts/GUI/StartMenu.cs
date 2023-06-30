@@ -7,7 +7,6 @@ public class StartMenu : MonoBehaviour
     // Called when we click the "Play" button.
     public void OnPlayButton()
     {
-        Debug.Log("click");
         SceneManager.LoadScene(1);
     }
     // Called when we click the "Quit" button.
