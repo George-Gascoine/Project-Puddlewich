@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Linq;
 
 public class Player : MonoBehaviour
 {
     public float speed = 3.0f;
+    public float pennies = 10f;
     public Rigidbody2D rb;
     public Inventory inventory;
     public Collectable equippedItem;
     public GameManager manager;
+    public List<GameObject> myListObjects = new();
 
     public void Awake()
     {
@@ -19,7 +22,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        inventory.Add(GameManager.instance.itemManager.GetItemByType(Collectable.ItemType.ITEM));
     }
 
     // Update is called once per frame

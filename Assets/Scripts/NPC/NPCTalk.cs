@@ -83,6 +83,7 @@ public class NPCTalk : MonoBehaviour
     public void EndText()
     {
         NPCText.text = "";
+        index = 0;
         textPanel.SetActive(false);
     }
 }

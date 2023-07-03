@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 [System.Serializable]
 public class Inventory
 {
-
     [System.Serializable]
     public class Slot
     {
@@ -36,7 +36,7 @@ public class Inventory
         {
             this.type = item.type;
             this.icon = item.icon;
-            count += 5;
+            count += 1;
         }
     }
 
