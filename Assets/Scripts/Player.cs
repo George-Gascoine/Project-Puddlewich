@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     public Inventory inventory;
     public Collectable equippedItem;
     public GameManager manager;
-    public List<GameObject> myListObjects = new();
+    //public List<GameObject> myListObjects = new();
 
     public void Awake()
     {
@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        inventory.Add(GameManager.instance.itemManager.GetItemByType(Collectable.ItemType.ITEM));
+        //inventory.Add(GameManager.instance.itemManager.GetItemByType(Collectable.ItemType.ITEM));
     }
 
     // Update is called once per frame

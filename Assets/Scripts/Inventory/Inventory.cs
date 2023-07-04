@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
+using static UnityEditor.Progress;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
 [System.Serializable]
@@ -80,5 +81,17 @@ public class Inventory
                 slots[slotID].type = Collectable.ItemType.NONE;
             }
         }
+    }
+
+    public bool CheckItem(Collectable.ItemType checkType, int checkAmount)
+    {
+        foreach (Slot slot in slots)
+        {
+            if (slot.type == checkType && slot.count == checkAmount)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
