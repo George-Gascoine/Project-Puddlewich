@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Inventory_UI : MonoBehaviour
 {
     public GameObject inventoryPanel;
+    public GameObject removePanel;
     public Player player;
     public List<Slot> slots = new();
     [SerializeField] private Canvas canvas;
@@ -49,11 +50,13 @@ public class Inventory_UI : MonoBehaviour
     {
         if (!inventoryPanel.activeSelf)
         {
+            removePanel.SetActive(true);
             inventoryPanel.SetActive(true);
             Refresh();
         }
         else if (inventoryPanel.activeSelf)
         {
+            removePanel.SetActive(false);
             inventoryPanel.SetActive(false);
         }
     }

@@ -7,8 +7,10 @@ public class QuestManager : MonoBehaviour
 {
     public TextAsset textAssetData;
     public List<Quest> quests = new();
+    Player player;
     private void Start()
     {
+        player = FindObjectOfType<Player>();
         ReadCSV();
     }
 
@@ -17,10 +19,10 @@ public class QuestManager : MonoBehaviour
         string[] data = textAssetData.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
 
         int tableSize = data.Length / 4 - 1;
-        Debug.Log(tableSize);
         for (int i = 0; i < tableSize; i++)
         {
             Quest newQuest = new Quest();
+            newQuest.player = player;
             newQuest.title = data[4 * (i + 1)];
             newQuest.description = data[4 * (i + 1) + 1];
             newQuest.pennieReward = int.Parse(data[4 * (i + 1) + 2]);
