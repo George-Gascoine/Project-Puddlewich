@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class ItemManager : MonoBehaviour
 {
@@ -13,18 +14,25 @@ public class ItemManager : MonoBehaviour
 
     private void Awake()
     {
+        int i = -1;
         foreach(Collectable item in collectableItems)
         {
+            i++;
             AddItem(item);
-            foreach (Sprite sprite in collectableSprites)
-            {
-                AddSprite(item, sprite);
-            }
-            foreach (float price in collectablePrices)
-            {
-                AddPrice(item, price);
-            }
-        } 
+        }
+        i = -1;
+        foreach (Sprite sprite in collectableSprites)
+        {
+            i++;
+            AddSprite(collectableItems[i], sprite);
+            Debug.Log(sprite);
+        }
+        i = -1;
+        foreach (float price in collectablePrices)
+        {
+            i++;
+            AddPrice(collectableItems[i], price);
+        }
     }
     private void AddItem(Collectable item)
     {
@@ -38,6 +46,7 @@ public class ItemManager : MonoBehaviour
         if (!collectableSpriteDict.ContainsKey(item.type))
         {
             collectableSpriteDict.Add(item.type, sprite);
+            
         }
     }
     private void AddPrice(Collectable item, float price)

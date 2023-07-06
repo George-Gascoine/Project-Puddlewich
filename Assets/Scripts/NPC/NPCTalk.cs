@@ -8,9 +8,17 @@ public class NPCTalk : MonoBehaviour
 {
     [SerializeField] public GameObject textPanel;
     public GameObject NPC;
+    public Player player;
     public TextMeshProUGUI NPCText;
+    public float friendshipLevel;
+    public string[] selectedDiaArray;
     public string[] dialogue;
+    public string[] friendshipDialogue;
+    public List<Collectable> likedItems;
+    public List<Collectable> dislikedItems;
     private int index;
+    public bool greeted = false; 
+    public bool typing = false;
 
     public float wordSpeed;
     public bool playerClose;
@@ -18,12 +26,19 @@ public class NPCTalk : MonoBehaviour
     {
         index = 0;
     }
-    void OnMouseDown()
+    void OnMouseUp()
     {
-        if (playerClose)
+        if(player.equippedItem != null && playerClose && !textPanel.activeInHierarchy)
         {
+            UpgradeFriendship(player.equippedItem);
+            Debug.Log("Close");
+        }
+        else if (playerClose && !textPanel.activeInHierarchy)
+        {
+            selectedDiaArray = dialogue;
+            greeted = true;
             textPanel.SetActive(true);
-            StartCoroutine(Typing());
+            StartCoroutine("Typing");
         }
     }
 
@@ -31,11 +46,26 @@ public class NPCTalk : MonoBehaviour
     {
         if (textPanel.activeInHierarchy && playerClose)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetMouseButtonDown(0))
             {
-                if(NPCText.text == dialogue[index])
+                if (NPCText.text == selectedDiaArray[index])
                 {
-                    NextLine();
+                    Debug.Log("Line");
+                    if(selectedDiaArray == friendshipDialogue)
+                    {
+                        EndText();
+                    }
+                    else
+                    { 
+                        NextLine();
+                    }
+                }
+                else if (typing == true)
+                {
+                    Debug.Log(index);
+                    StopCoroutine("Typing");
+                    typing = false;
+                    NPCText.text = selectedDiaArray[index];
                 }
             }
         }
@@ -43,7 +73,8 @@ public class NPCTalk : MonoBehaviour
 
     IEnumerator Typing()
     {
-        foreach (char letter in dialogue[index].ToCharArray())
+        typing = true;
+        foreach (char letter in selectedDiaArray[index].ToCharArray())
         {
             NPCText.text += letter;
             yield return new WaitForSeconds(wordSpeed);
@@ -52,11 +83,11 @@ public class NPCTalk : MonoBehaviour
     
     public void NextLine()
     {
-        if (index < dialogue.Length - 1)
+        if (index < selectedDiaArray.Length - 1)
         {
             index++;
             NPCText.text = "";
-            StartCoroutine(Typing());
+            StartCoroutine("Typing");
         }
         else
         {
@@ -85,5 +116,36 @@ public class NPCTalk : MonoBehaviour
         NPCText.text = "";
         index = 0;
         textPanel.SetActive(false);
+    }
+
+    public void UpgradeFriendship(Collectable gift)
+    {
+        selectedDiaArray = friendshipDialogue;
+        if (likedItems.IndexOf(gift) != -1)
+        {
+            player.inventory.Remove(player.selectedSlot);
+            player.slotChanged = true;
+            friendshipLevel += 0.5f;
+            index = 0;
+            textPanel.SetActive(true);
+            StartCoroutine("Typing");
+        }
+        else if (dislikedItems.IndexOf(gift) != -1)
+        {
+            player.inventory.Remove(player.selectedSlot);
+            player.slotChanged = true;
+            friendshipLevel -= 0.5f;
+            index = 1;
+            textPanel.SetActive(true);
+            StartCoroutine("Typing");
+        }
+        else
+        {
+            player.inventory.Remove(player.selectedSlot);
+            player.slotChanged = true;
+            index = 2;
+            textPanel.SetActive(true);
+            StartCoroutine("Typing");
+        }
     }
 }

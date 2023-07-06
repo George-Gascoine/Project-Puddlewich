@@ -29,13 +29,16 @@ public class Collectable : MonoBehaviour
     void OnMouseDown()
     {
         player.inventory.Add(this);
+        player.slotChanged = true;
         Destroy(this.gameObject);
     }
 
     public enum ItemType
     {
         NONE, 
-        ITEM
+        ITEM,
+        FOOD,
+        DRINK
     }
 }
 

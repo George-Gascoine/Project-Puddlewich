@@ -36,6 +36,7 @@ public class ToolbarUI : MonoBehaviour
         {
             selectedSlot.SetHighlight(false);
         }
+        player.selectedSlot = index;
         selectedSlot = toolbarSlots[index];
         selectedSlot.SetHighlight(true);
     }

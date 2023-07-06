@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     public Inventory inventory;
     public Collectable equippedItem;
     public GameManager manager;
+    public int selectedSlot;
+    public bool slotChanged = false;
     //public List<GameObject> myListObjects = new();
 
     public void Awake()
@@ -23,6 +25,10 @@ public class Player : MonoBehaviour
     void Start()
     {
         //inventory.Add(GameManager.instance.itemManager.GetItemByType(Collectable.ItemType.ITEM));
+        if (inventory.slots[0].type != Collectable.ItemType.NONE)
+        {
+            equippedItem = GameManager.instance.itemManager.GetItemByType(inventory.slots[0].type);
+        }
     }
 
     // Update is called once per frame
@@ -34,9 +40,10 @@ public class Player : MonoBehaviour
         Vector3 tempVect = new Vector3(h, v, -1.0f);
         tempVect = tempVect.normalized * speed * Time.deltaTime;
         rb.MovePosition(rb.transform.position + tempVect);
-        if (inventory.slots[0].type != Collectable.ItemType.NONE)
+        if(slotChanged)
         {
-            equippedItem = GameManager.instance.itemManager.GetItemByType(inventory.slots[0].type);
+            equippedItem = GameManager.instance.itemManager.GetItemByType(inventory.slots[selectedSlot].type);
+            slotChanged = false;
         }
     }
 
