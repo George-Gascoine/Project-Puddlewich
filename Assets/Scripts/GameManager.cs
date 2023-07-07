@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public ItemManager itemManager;
+    public FarmManager farmManager;
 
     public void Start()
     {
@@ -24,5 +25,6 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(this.gameObject);
         itemManager = GetComponent<ItemManager>();
+        farmManager = GetComponent<FarmManager>();
     }
 }

@@ -38,7 +38,10 @@ public class Collectable : MonoBehaviour
         NONE, 
         ITEM,
         FOOD,
-        DRINK
+        DRINK,
+        HOE,
+        WATERINGCAN,
+        SEED
     }
 }
 
