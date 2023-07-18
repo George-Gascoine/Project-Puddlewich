@@ -124,8 +124,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3efd7177080d28e47a40d70f91ac537a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 9135116743120077766, guid: da2d7de1f48d5b449a7e6803cadccc62, type: 3}
   type: 6
   icon: {fileID: 21300000, guid: 3e4bd683fc4c60340a2f4b471c735b70, type: 3}
   itemCost: 0
   buyingTile: {fileID: 0}
+  crop: {fileID: 8045794637423635894, guid: 41c91eb0c877ad841a72dd18e94c55fd, type: 3}

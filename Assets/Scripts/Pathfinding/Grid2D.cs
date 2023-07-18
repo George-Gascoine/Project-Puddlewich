@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Grid2D : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Grid2D : MonoBehaviour
     [SerializeField] int gridWidth = 40;
     [SerializeField] int gridHeight = 40;
     [SerializeField] float tileSize = 1f;
+    public Tilemap map;
     Vector2 gridSize = new Vector2(1f, 0.5f);
 
 

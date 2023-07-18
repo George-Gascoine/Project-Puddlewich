@@ -24,6 +24,7 @@ public class SnapToGrid : MonoBehaviour
     {
         grid = FindObjectOfType<Grid2D>();
         Tile tableTile = grid.GetTileAtPosition(new Vector2(transform.localPosition.x - 0.5f, transform.localPosition.y - 0.25f)); // Returns the current tile
+        Debug.Log(transform.localPosition.x - 0.5f);
         tableTile.isWalkable = false;
         shopManager = FindObjectOfType<ShopManager>();
         shopperSpawner = FindObjectOfType<ShopperSpawner>();
@@ -53,7 +54,7 @@ public class SnapToGrid : MonoBehaviour
         browseTile2.highlight.SetActive(true);
         browseTile3.highlight.SetActive(true);
         browseTile4.highlight.SetActive(true);
-        
+
         shopperSpawner.browsePoints.Add(browseTile1);
         shopperSpawner.browsePoints.Add(browseTile2);
         shopperSpawner.browsePoints.Add(browseTile3);

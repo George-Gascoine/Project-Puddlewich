@@ -10,11 +10,14 @@ public class Collectable : MonoBehaviour
     public int itemCost;
     public Tile buyingTile;
     ShopManager shopManager;
+    FarmManager farmManager;
+    public Crop crop;
     public void Awake()
     {
         player = FindAnyObjectByType<Player>();
         icon = GetComponent<SpriteRenderer>().sprite;
         shopManager = FindObjectOfType<ShopManager>();
+        farmManager = FindObjectOfType<FarmManager>();
     }
 
     private void Update()
@@ -41,7 +44,11 @@ public class Collectable : MonoBehaviour
         DRINK,
         HOE,
         WATERINGCAN,
-        SEED
+        SEED,
+        CHILLISEED,
+        TOMATOSEED,
+        CUCUMBERSEED,
+        ONIONSEED
     }
 }
 

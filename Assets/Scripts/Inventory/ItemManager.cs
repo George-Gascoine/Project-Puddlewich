@@ -25,7 +25,7 @@ public class ItemManager : MonoBehaviour
         {
             i++;
             AddSprite(collectableItems[i], sprite);
-            Debug.Log(sprite);
+            //Debug.Log(sprite);
         }
         i = -1;
         foreach (float price in collectablePrices)

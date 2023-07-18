@@ -31,7 +31,7 @@ public class NPCShopper : MonoBehaviour
         shopManager = FindObjectOfType<ShopManager>();
         shopperSpawner = FindAnyObjectByType<ShopperSpawner>();
         browsing = true;
-        InvokeRepeating("Browse", 10, 5);
+        InvokeRepeating("Browse", 10, 10);
         FindPath(start, target);
         StartCoroutine("FollowPath", 0);
     }
@@ -197,9 +197,10 @@ public class NPCShopper : MonoBehaviour
         {
             StopCoroutine("FollowPath");
             start = grid.GetTileAtPosition(grid.TilePosition(new Vector2(transform.localPosition.x - 0.5f, transform.localPosition.y)));
+            Tile oldTarget = target;
             target = shopperSpawner.browsePoints[Random.Range(0, shopperSpawner.browsePoints.Count)];
+            shopperSpawner.browsePoints.Add(oldTarget);
             shopperSpawner.browsePoints.Remove(target);
-            shopperSpawner.browsePoints.Add(start);
             FindPath(start, target);
             StartCoroutine("FollowPath", 0);
         }

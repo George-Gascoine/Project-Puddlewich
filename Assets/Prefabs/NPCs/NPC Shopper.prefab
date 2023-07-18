@@ -48,7 +48,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 0}
   target: {fileID: 0}
-  grid: {fileID: 3744180097249312684, guid: 60e5cc0dd00c8584e94ad44c5360c5bf, type: 3}
+  gridSize: {x: 1, y: 0.5}
+  buyer: 0
+  browsing: 0
+  paying: 0
+  leaving: 0
+  buyItem: {fileID: 0}
+  payPrice: 0
 --- !u!212 &1236010368703230913
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -89,7 +95,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: d335fddf1df5a4640af02365c00cf962, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -118,7 +124,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.23, y: 0.46}
+    oldSize: {x: 0.359375, y: 0.71875}
     newSize: {x: 0.23, y: 0.46}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

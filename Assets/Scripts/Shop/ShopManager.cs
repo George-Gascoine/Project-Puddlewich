@@ -28,7 +28,7 @@ public class ShopManager : MonoBehaviour
         {
             checkoutQueue[0].PayPrice();
             checkoutQueue.RemoveAt(0);
-            for(int i = 0; i < checkoutQueue.Count; i++)
+            for (int i = 0; i < checkoutQueue.Count; i++)
             {
                 checkoutQueue[i].UpdateQueue();
             }

@@ -56,7 +56,7 @@ public class SetItemPrice : MonoBehaviour
             var item = Instantiate(sale, new Vector3(itemX, itemY, itemZ), Quaternion.identity);
             item.itemCost = itemPrice;
             var choices = new float[] { -1.5f, .5f };
-            item.buyingTile = grid.GetTileAtPosition(grid.TilePosition(new Vector2(itemX + choices[Random.Range(1,1)], itemY)));
+            item.buyingTile = grid.GetTileAtPosition(grid.TilePosition(new Vector2(itemX + choices[Random.Range(1, 1)], itemY)));
             tableID.itemOnTable = item;
             shopManager.itemsForSale.Add(item);
         }
