@@ -13,6 +13,7 @@ public class NPCInventoryUI : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+        player = FindObjectOfType<Player>();
         canvas = FindObjectOfType<Canvas>();
     }
     void Start()

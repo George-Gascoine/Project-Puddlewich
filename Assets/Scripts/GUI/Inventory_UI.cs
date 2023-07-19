@@ -19,10 +19,11 @@ public class Inventory_UI : MonoBehaviour
     private void Awake()
     {
         canvas = FindObjectOfType<Canvas>();
+        player = FindObjectOfType<Player>();   
     }
     void Start()
     {
-      
+        player = FindObjectOfType<Player>();
     }
     void Update()
     {

@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     public void Awake()
     {
         inventory = new Inventory(18);
+        rb = GetComponent<Rigidbody2D>();
+        manager = FindObjectOfType<GameManager>();
     }
     // Start is called before the first frame update
     void Start()

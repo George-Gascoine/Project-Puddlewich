@@ -9,8 +9,13 @@ public class ToolbarUI : MonoBehaviour
     public Player player;
     public Slot selectedSlot;
 
+    public void Awake()
+    {
+        player = FindObjectOfType<Player>();
+    }
     void Start()
     {
+        player = FindObjectOfType<Player>();
         SelectSlot(0);    
     }
     // Update is called once per frame

@@ -22,6 +22,7 @@ public class SnapToGrid : MonoBehaviour
     public SetItemPrice setItemPrice;
     void Start()
     {
+        player = FindObjectOfType<Player>();
         grid = FindObjectOfType<Grid2D>();
         Tile tableTile = grid.GetTileAtPosition(new Vector2(transform.localPosition.x - 0.5f, transform.localPosition.y - 0.25f)); // Returns the current tile
         Debug.Log(transform.localPosition.x - 0.5f);

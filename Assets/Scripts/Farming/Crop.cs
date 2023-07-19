@@ -7,6 +7,7 @@ using UnityEngine.Tilemaps;
 public class Crop : MonoBehaviour
 {
     public CropType cropType;
+    public Sprite[] growthStages;
     public int cropCurrentGrowthStage;
     public int cropMaxGrowthStage;
     public int cropQuality;
@@ -25,6 +26,10 @@ public class Crop : MonoBehaviour
         TOMATO,
         CUCUMBER,
         ONION
+    }
+    public void ChangeSprite(Sprite newSprite)
+    {
+        gameObject.GetComponent<SpriteRenderer>().sprite = newSprite;
     }
 }
 

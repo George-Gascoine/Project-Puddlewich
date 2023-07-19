@@ -51,7 +51,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.25, y: 0.25}
+    oldSize: {x: 0.16, y: 0.16}
     newSize: {x: 0.25, y: 0.25}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -101,7 +101,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 3fbfcdf91ce2cd743a1bb26d735a6522, type: 3}
+  m_Sprite: {fileID: -553738582, guid: e4de932ff69fc9341aa9c7499cda3195, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -125,8 +125,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cropType: 1
+  growthStages:
+  - {fileID: -553738582, guid: e4de932ff69fc9341aa9c7499cda3195, type: 3}
+  - {fileID: 1901501753, guid: e4de932ff69fc9341aa9c7499cda3195, type: 3}
+  - {fileID: 1448688266, guid: e4de932ff69fc9341aa9c7499cda3195, type: 3}
+  - {fileID: -1726906682, guid: e4de932ff69fc9341aa9c7499cda3195, type: 3}
+  - {fileID: 1325770489, guid: e4de932ff69fc9341aa9c7499cda3195, type: 3}
+  - {fileID: -2079211989, guid: e4de932ff69fc9341aa9c7499cda3195, type: 3}
   cropCurrentGrowthStage: 0
-  cropMaxGrowthStage: 0
+  cropMaxGrowthStage: 5
   cropQuality: 0
   cropIsWatered: 0
   cropFarmPos: {fileID: 0}

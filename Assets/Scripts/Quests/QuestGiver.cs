@@ -15,6 +15,10 @@ public class QuestGiver : MonoBehaviour
     public TextMeshProUGUI expText;
     public TextMeshProUGUI penniesText;
 
+    public void Awake()
+    {
+        player = FindObjectOfType<Player>();
+    }
     public void OpenQuestWindow()
     {
         questWindow.SetActive(true);

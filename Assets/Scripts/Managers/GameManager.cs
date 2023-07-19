@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 
 public class GameManager : MonoBehaviour
 {
+    public Player player;
     public static GameManager instance;
     public ItemManager itemManager;
     public FarmManager farmManager;
@@ -13,7 +16,10 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        Instantiate(player, new Vector3(0, 0, 0), Quaternion.identity);
         Screen.SetResolution(1920, 1080, true);
+        DontDestroyOnLoad(FindObjectOfType<Player>());
     }
     public void Awake()
     {
@@ -30,4 +36,16 @@ public class GameManager : MonoBehaviour
         itemManager = GetComponent<ItemManager>();
         farmManager = GetComponent<FarmManager>();
     }
+
+    private void Update()
+    {
+        
+    }
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("OnSceneLoaded: " + scene.name);
+        Debug.Log(mode);
+
+    }
+
 }

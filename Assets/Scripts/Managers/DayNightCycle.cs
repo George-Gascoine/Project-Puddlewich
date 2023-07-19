@@ -4,6 +4,7 @@ using System.Linq;
 using System.Xml;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.Tilemaps;
 using static UnityEngine.PlayerLoop.PreLateUpdate;
 
 public class DayNightCycle : MonoBehaviour
@@ -58,14 +59,41 @@ public class DayNightCycle : MonoBehaviour
             minute = 10f;
             var currentDay = (Day)hour;
             day = currentDay.ToString();
-            foreach (KeyValuePair<Vector3Int, Crop> crop in farm.plantedCropDict)
+            UpdateCrops();
+        }
+    }
+
+    void UpdateCrops()
+    {
+        DrySoil();
+        foreach (KeyValuePair<Vector3Int, Crop> crop in farm.plantedCropDict)
+        {
+            if (crop.Value.cropIsWatered == true && crop.Value.cropCurrentGrowthStage < crop.Value.cropMaxGrowthStage)
             {
-                if(crop.Value.cropIsWatered == true)
+                crop.Value.cropIsWatered = false;
+                crop.Value.cropCurrentGrowthStage += 1;
+                crop.Value.ChangeSprite(crop.Value.growthStages[crop.Value.cropCurrentGrowthStage]);
+            }
+        }
+    }
+
+
+    void DrySoil()
+    {
+        for (int x = farm.farmMap.cellBounds.xMin; x < farm.farmMap.cellBounds.xMax; x++)
+        {
+            for (int y = farm.farmMap.cellBounds.yMin; y < farm.farmMap.cellBounds.yMax; y++)
+            {
+                for (int z = farm.farmMap.cellBounds.zMin; z < farm.farmMap.cellBounds.zMax; z++)
                 {
-                    crop.Value.cropIsWatered = false;
-                    farm.farmMap.SetTile(crop.Key, farm.soilTile);
+                    Vector3Int tilePosition = new Vector3Int(x, y, z);
+                    if (farm.farmMap.GetTile(tilePosition) == farm.wateredTile)
+                    {
+                        farm.farmMap.SetTile(tilePosition, farm.soilTile);
+                    }
                 }
             }
         }
+
     }
 }

@@ -14,7 +14,6 @@ public class Collectable : MonoBehaviour
     public Crop crop;
     public void Awake()
     {
-        player = FindAnyObjectByType<Player>();
         icon = GetComponent<SpriteRenderer>().sprite;
         shopManager = FindObjectOfType<ShopManager>();
         farmManager = FindObjectOfType<FarmManager>();
@@ -27,7 +26,7 @@ public class Collectable : MonoBehaviour
 
     void Start()
     {
-
+        player = FindObjectOfType<Player>();
     }
     void OnMouseDown()
     {

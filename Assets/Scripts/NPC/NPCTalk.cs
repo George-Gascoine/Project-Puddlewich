@@ -25,6 +25,7 @@ public class NPCTalk : MonoBehaviour
     private void Start()
     {
         index = 0;
+        player = FindObjectOfType<Player>();
     }
     void OnMouseUp()
     {
