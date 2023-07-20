@@ -7,6 +7,7 @@ using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
 using System;
 using Unity.Burst.Intrinsics;
+using UnityEngine.Rendering.Universal;
 
 public class Farming : MonoBehaviour
 {
@@ -15,9 +16,10 @@ public class Farming : MonoBehaviour
     public TileBase soilTile;
     public TileBase wateredTile;
     public Tilemap farmMap;
-    public List<Crop> crops = new();
+    public List<Vector3Int> wateredTiles = new();
     public List<Vector3Int> soilTiles = new();
-    public Dictionary<Vector3Int, Crop> plantedCropDict = new();
+    public List<Crop> plantedCrops = new();
+    public List<CropData> cropData = new();
     public Grid grid;
 
     public void Awake()
@@ -60,12 +62,13 @@ public class Farming : MonoBehaviour
             {
                 if (farmMap.GetTile(currentCell) == soilTile)
                 {
+                    wateredTiles.Add(currentCell);
                     farmMap.SetTile(currentCell, wateredTile);
-                    for (int i = 0; i < plantedCropDict.Count; i++)
+                    for (int i = 0; i < cropData.Count; i++)
                     {
-                        if (currentCell == plantedCropDict.ElementAt(i).Key)
+                        if (currentCell == cropData[i].cropFarmPos)
                         {
-                            plantedCropDict[currentCell].cropIsWatered = true;
+                            cropData[i].cropIsWatered = true;
                         }
                     }
                 }
@@ -74,12 +77,28 @@ public class Farming : MonoBehaviour
             {
                 if (farmMap.GetTile(currentCell) == soilTile)
                 {
-                    var plantThis = Instantiate(player.equippedItem.crop, currentCellCentre, Quaternion.identity);
-                    plantedCropDict.Add(currentCell, plantThis);
-                    plantThis.GetComponent<SpriteRenderer>().sortingOrder = 3;
+                    bool cellOccupied = cropData.Any(CropData => CropData.cropFarmPos == currentCell);
+                    if(!cellOccupied)
+                    {
+                        PlantCrop(player.equippedItem.crop, currentCell, currentCellCentre);
+                    }
                 }
             }
         }
+    }
+    void PlantCrop(Crop crop, Vector3Int cell, Vector3 cellCentre)
+    {
+        Crop planted = Instantiate(crop, cellCentre, Quaternion.identity);
+        plantedCrops.Add(planted);
+        CropData savePlantData = new()
+        {
+            cropType = crop,
+            cropFarmPos = cell,
+            cropCellCentre = cellCentre,
+            cropIsWatered = false,
+            cropCurrentGrowthStage = 0
+        };
+        cropData.Add(savePlantData);
     }
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -87,20 +106,28 @@ public class Farming : MonoBehaviour
         Debug.Log(mode);
         grid = FindObjectOfType<Grid>();
         farmMap = grid.transform.Find("Tilemap").GetComponent<Tilemap>();
+        plantedCrops.Clear();
         ResetFarm();
     }
 
     void ResetFarm()
     {
+
         foreach (Vector3Int soil in soilTiles)
         {
-            Debug.Log(soil);
             farmMap.SetTile(soil, soilTile);
         }
-        foreach (KeyValuePair<Vector3Int, Crop> crop in plantedCropDict)
+        foreach (Vector3Int water in wateredTiles)
         {
-            //Create crops again here
-            //Watered tile destroy when last tile is watered
+            farmMap.SetTile(water, wateredTile);
+        }
+        foreach(CropData crop in cropData)
+        {
+            Crop plantThis = Instantiate(crop.cropType, crop.cropCellCentre, Quaternion.identity);
+            plantThis.cropCurrentGrowthStage = crop.cropCurrentGrowthStage;
+            plantThis.cropIsWatered = crop.cropIsWatered;
+            plantThis.CheckSprite();
+            plantedCrops.Add(plantThis);
         }
     }
 }

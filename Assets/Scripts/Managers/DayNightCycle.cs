@@ -66,13 +66,26 @@ public class DayNightCycle : MonoBehaviour
     void UpdateCrops()
     {
         DrySoil();
-        foreach (KeyValuePair<Vector3Int, Crop> crop in farm.plantedCropDict)
+        foreach(Crop crop in farm.plantedCrops)
         {
-            if (crop.Value.cropIsWatered == true && crop.Value.cropCurrentGrowthStage < crop.Value.cropMaxGrowthStage)
+            Destroy(crop.gameObject);
+        }
+        farm.plantedCrops.Clear();
+        foreach (CropData crop in farm.cropData)
+        { 
+            Crop plantThis = Instantiate(crop.cropType, crop.cropCellCentre, Quaternion.identity);
+            farm.plantedCrops.Add(plantThis);
+            if (crop.cropIsWatered && crop.cropCurrentGrowthStage < crop.cropType.cropMaxGrowthStage)
             {
-                crop.Value.cropIsWatered = false;
-                crop.Value.cropCurrentGrowthStage += 1;
-                crop.Value.ChangeSprite(crop.Value.growthStages[crop.Value.cropCurrentGrowthStage]);
+                crop.cropIsWatered = false;
+                crop.cropCurrentGrowthStage++;
+                plantThis.cropCurrentGrowthStage = crop.cropCurrentGrowthStage;
+                plantThis.CheckSprite();
+            }
+            else
+            {
+                plantThis.cropCurrentGrowthStage = crop.cropCurrentGrowthStage;
+                plantThis.CheckSprite();
             }
         }
     }
@@ -80,20 +93,10 @@ public class DayNightCycle : MonoBehaviour
 
     void DrySoil()
     {
-        for (int x = farm.farmMap.cellBounds.xMin; x < farm.farmMap.cellBounds.xMax; x++)
+        foreach (Vector3Int soil in farm.wateredTiles)
         {
-            for (int y = farm.farmMap.cellBounds.yMin; y < farm.farmMap.cellBounds.yMax; y++)
-            {
-                for (int z = farm.farmMap.cellBounds.zMin; z < farm.farmMap.cellBounds.zMax; z++)
-                {
-                    Vector3Int tilePosition = new Vector3Int(x, y, z);
-                    if (farm.farmMap.GetTile(tilePosition) == farm.wateredTile)
-                    {
-                        farm.farmMap.SetTile(tilePosition, farm.soilTile);
-                    }
-                }
-            }
+            farm.farmMap.SetTile(soil, farm.soilTile);
         }
-
+        farm.wateredTiles.Clear();
     }
 }

@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cropType: 1
+  crop: {fileID: 3573617101115825027, guid: 19318dc0b91f86a4b919342007929bda, type: 3}
   growthStages:
   - {fileID: -553738582, guid: e4de932ff69fc9341aa9c7499cda3195, type: 3}
   - {fileID: 1901501753, guid: e4de932ff69fc9341aa9c7499cda3195, type: 3}
@@ -136,4 +137,5 @@ MonoBehaviour:
   cropMaxGrowthStage: 5
   cropQuality: 0
   cropIsWatered: 0
-  cropFarmPos: {fileID: 0}
+  cropFarmPos: {x: 1, y: 3, z: 0}
+  cropRenderer: {fileID: 0}
