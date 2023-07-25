@@ -44,6 +44,7 @@ public class Crop : MonoBehaviour
             {
                 if(crop.cropFarmPos == cropFarmPos)
                 {
+                    manager.GetComponent<Farming>().plantedCrops.Remove(this);
                     data.Remove(crop); break;
                 }
             }

@@ -9,8 +9,7 @@ public class Grid2D : MonoBehaviour
     [SerializeField] int gridWidth = 40;
     [SerializeField] int gridHeight = 40;
     [SerializeField] float tileSize = 1f;
-    public Tilemap map;
-    Vector2 gridSize = new Vector2(1f, 0.5f);
+    Vector2 gridSize = new(1f, 0.5f);
 
 
     public Dictionary<Vector2, Tile> tiles;

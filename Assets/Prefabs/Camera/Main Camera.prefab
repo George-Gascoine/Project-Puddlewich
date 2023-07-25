@@ -64,7 +64,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 2.8125
+  orthographic size: 1.8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -283,6 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4043610611868257738}
   - component: {fileID: 4043610611868257739}
+  - component: {fileID: 6865922474828138551}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -344,3 +345,15 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 4043610610512494728}
+--- !u!114 &6865922474828138551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4043610611868257737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf145f87f7d72e74c89ca92708b97009, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

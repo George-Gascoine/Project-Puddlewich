@@ -24,6 +24,7 @@ public class Farming : MonoBehaviour
 
     public void Awake()
     {
+        cropData.Clear();
         SceneManager.sceneLoaded += OnSceneLoaded;
         player = FindObjectOfType<Player>();
     }
@@ -75,7 +76,7 @@ public class Farming : MonoBehaviour
             }
             if (Input.GetMouseButtonDown(0) && player.equippedItem.crop != null)
             {
-                if (farmMap.GetTile(currentCell) == soilTile)
+                if (farmMap.GetTile(currentCell) == soilTile || farmMap.GetTile(currentCell) == wateredTile)
                 {
                     bool cellOccupied = cropData.Any(CropData => CropData.cropFarmPos == currentCell);
                     if(!cellOccupied)
@@ -88,6 +89,7 @@ public class Farming : MonoBehaviour
     }
     void PlantCrop(Crop crop, Vector3Int cell, Vector3 cellCentre)
     {
+        Debug.Log(farmMap.GetTile(cell) == wateredTile);
         Crop planted = Instantiate(crop, cellCentre, Quaternion.identity);
         plantedCrops.Add(planted);
         CropData savePlantData = new()
@@ -95,19 +97,20 @@ public class Farming : MonoBehaviour
             cropType = crop,
             cropFarmPos = cell,
             cropCellCentre = cellCentre,
-            cropIsWatered = false,
+            cropIsWatered = farmMap.GetTile(cell) == wateredTile,
             cropCurrentGrowthStage = 0
         };
         cropData.Add(savePlantData);
     }
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("OnSceneLoaded: " + scene.name);
-        Debug.Log(mode);
-        grid = FindObjectOfType<Grid>();
-        farmMap = grid.transform.Find("Tilemap").GetComponent<Tilemap>();
-        plantedCrops.Clear();
-        ResetFarm();
+        if (scene.name == "World")
+        {
+            grid = FindObjectOfType<Grid>();
+            farmMap = grid.transform.Find("Tilemap").GetComponent<Tilemap>();
+            plantedCrops.Clear();
+            ResetFarm();
+        }
     }
 
     void ResetFarm()

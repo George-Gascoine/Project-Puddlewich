@@ -14,7 +14,7 @@ public class ShopperSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        shopperNo = 5.0f;
+        shopperNo = 1f;
         StartCoroutine(SpawnShopper(shopperNo));
     }
 

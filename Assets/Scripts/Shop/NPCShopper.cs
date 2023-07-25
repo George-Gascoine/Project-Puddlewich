@@ -8,12 +8,17 @@ using UnityEngine.Rendering.Universal;
 
 public class NPCShopper : MonoBehaviour
 {
+    //Calculate a number of Vector3 coordinates between each tile in a path
+    //
+    //
+
+
     ShopManager shopManager;
     ShopperSpawner shopperSpawner;
     public Tile start;
     public Tile target;
     Grid2D grid;
-    Vector3[] finalPath;
+    public Vector3[] finalPath;
     int targetIndex;
     public Vector2 gridSize = new Vector2(1f, 0.5f);
     public bool buyer = false;

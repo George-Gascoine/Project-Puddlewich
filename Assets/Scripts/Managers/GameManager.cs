@@ -16,8 +16,10 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+        DayNightCycle.gameTimer = 0;
         SceneManager.sceneLoaded += OnSceneLoaded;
-        Instantiate(player, new Vector3(0, 0, 0), Quaternion.identity);
+        player = Instantiate(player, new Vector3(4, 0, 0), Quaternion.identity);
+        player.speed = 60;
         Screen.SetResolution(1920, 1080, true);
         DontDestroyOnLoad(FindObjectOfType<Player>());
     }

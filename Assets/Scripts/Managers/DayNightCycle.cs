@@ -4,6 +4,7 @@ using System.Linq;
 using System.Xml;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 using static UnityEngine.PlayerLoop.PreLateUpdate;
 
@@ -14,6 +15,7 @@ public class DayNightCycle : MonoBehaviour
     public Light2D _light;
 
 
+    public static float gameTimer;
     public float hour;
     public float minute = 10f; 
     public string day;
@@ -37,21 +39,27 @@ public class DayNightCycle : MonoBehaviour
     }
     public void Awake()
     {
-        
+        //gameTimer = 0f;
     }
     // Start is called before the first frame update
     void Start()
     {
+        gameTimer = 0f;
         day = Day.Sunday.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
+        gameTimer += Time.deltaTime;
+        Debug.Log(gameTimer);
         if (minute > 0)
         {
             minute = minute - Time.deltaTime;
-            _light.color = _gradient.Evaluate(minute/10);
+            if (SceneManager.GetActiveScene().name == "World")
+            {
+                _light.color = _gradient.Evaluate(minute / 10);
+            }
         }
         else
         {
