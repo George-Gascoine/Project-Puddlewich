@@ -386,7 +386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9350180ee3778e14facfa24bbd5984a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npc: {fileID: 7138174743643556922, guid: a3d276635ecc26e41a239081074a03da, type: 3}
+  npc: {fileID: 1563632170673992725, guid: a3d276635ecc26e41a239081074a03da, type: 3}
   spawned: 0
 --- !u!4 &2097671033
 Transform:
