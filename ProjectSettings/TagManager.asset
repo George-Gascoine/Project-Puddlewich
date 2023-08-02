@@ -7,6 +7,7 @@ TagManager:
   - Tile
   - Item
   - NPC
+  - Manager
   layers:
   - Default
   - TransparentFX

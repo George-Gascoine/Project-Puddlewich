@@ -6,6 +6,7 @@ using UnityEngine;
 public class CauldronShopManager : MonoBehaviour
 {
     public NPCTrade npc;
+    public NPCTrade instance;
     public bool enterShop = false;
     public bool leaveShop = false;
     Grid2D grid;
@@ -19,21 +20,30 @@ public class CauldronShopManager : MonoBehaviour
     }
     private void Update()
     {
+        Debug.Log(DayNightCycle.gameTimer);
         if (DayNightCycle.gameTimer >= 17 && DayNightCycle.gameTimer < 30)
         {
             if (enterShop == false)
             {
-                npc = Instantiate(npc, new Vector3(0, 3, 0), Quaternion.identity);
+                instance = Instantiate(npc, new Vector3(0, 3, 0), Quaternion.identity);
                 enterShop = true;
             }
         }
         else if (DayNightCycle.gameTimer >= 30) 
         {
-            Debug.Log(npc);
-            if (npc != null && leaveShop == false)
+            
+            if (instance != null && leaveShop == false)
             {
-                leaveShop = true;   
-                npc.GetComponent<NPCRoutine>().LeaveShop();
+                leaveShop = true;
+                instance.GetComponent<NPCRoutine>().LeaveShop();
+            }
+            else if (instance == null && leaveShop == false)
+            {
+                Debug.Log(instance);
+                leaveShop = true;
+                instance = Instantiate(npc, new Vector3(0, 3, 0), Quaternion.identity);
+                Debug.Log(instance);
+                //instance.GetComponent<NPCRoutine>().LeaveShop();
             }
         }
     }

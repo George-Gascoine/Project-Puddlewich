@@ -52,7 +52,7 @@ public class DayNightCycle : MonoBehaviour
     void Update()
     {
         gameTimer += Time.deltaTime;
-        Debug.Log(gameTimer);
+        //Debug.Log(gameTimer);
         if (minute > 0)
         {
             minute = minute - Time.deltaTime;
