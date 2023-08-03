@@ -13,6 +13,4 @@ public class Ingredient : ScriptableObject
     public Sprite crushedIngredientSprite;
     public float cost;
     public float quality;
-
-
 }

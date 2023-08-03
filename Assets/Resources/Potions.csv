@@ -1,0 +1,4 @@
+Potion Name,Potion Effect,Potion Decription,Ingredient 1,Ingedient 2,Ingredient 3,Sprite,Cost,Quality
+Healing Potion,10 HP,Cures all ailments ,Ingredient,Ingredient,Null,Potion,10,1
+Sleeping Potion,Sleep,Induces sleep ,Spirit,Mandrake,Null,Potion,10,1
+Love Potion,Love,The drinker will fall in love instantly,Cordial,Sea Holly,Null,Potion,10,1

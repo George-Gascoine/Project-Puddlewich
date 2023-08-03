@@ -6,7 +6,7 @@ public class Pestle : MonoBehaviour
 {
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Ingredient")
+        if (collision.gameObject.tag == "Ingredient")
         {
             if(collision.gameObject.GetComponent<IngredientDisplay>().inMortar == true)
             {

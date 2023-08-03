@@ -97,7 +97,6 @@ public class IngredientDisplay : MonoBehaviour
         }
         else if (overCauldron == true)
         {
-            manager.currentIngredientList.Add(this.ingredient);
             Destroy(this.gameObject);
         }
         else

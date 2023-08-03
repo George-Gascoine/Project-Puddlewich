@@ -20,7 +20,7 @@ public class NPCRoutine : MonoBehaviour
     public float pathTime;
     public float speed;
     public float maxWaitTime;
-    int targetIndex;
+    public int targetIndex;
     Grid2D grid;
     public Tile start;
     public Tile target;
