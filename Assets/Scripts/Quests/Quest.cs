@@ -7,7 +7,7 @@ using UnityEngine.Rendering;
 [System.Serializable]
 public class Quest
 {
-    public string type;
+    //public string type;
     public string title;
     public string description;
     public MethodInfo solution;

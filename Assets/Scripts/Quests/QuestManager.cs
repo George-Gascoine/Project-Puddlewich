@@ -1,8 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
-using static PotionCraftManager;
+using Newtonsoft.Json.Linq;
+
+using System.IO;
 
 public class QuestManager : MonoBehaviour
 {
@@ -19,9 +19,29 @@ public class QuestManager : MonoBehaviour
         public List<Quest> quest;
     }
 
-    public QuestList questList;
+    public QuestList basicQuestList;
+    public QuestList gatherQuestList;
     public void ReadJSON()
     {
-        questList = JsonUtility.FromJson<QuestList>(questData.text);
+        JObject jObject = JObject.Parse(questData.text);
+        JArray jArray = (JArray)jObject["quest"];
+        int count = jArray.Count;
+        for(int i = 0; i < count; i++)
+        {
+            JToken jToken = jObject["quest"][i]["type"];
+            if(jToken.ToString() == "Basic")
+            {
+
+                Quest quest = JsonUtility.FromJson<Quest>(jObject["quest"][i].ToString());
+                basicQuestList.quest.Add(quest);
+            }
+            else if (jToken.ToString() == "Gathering")
+            {
+                Quest quest = JsonUtility.FromJson<Quest>(jObject["quest"][i].ToString());
+                gatherQuestList.quest.Add(quest);
+            }
+        }
+
+        //questList = JsonUtility.FromJson<QuestList>(questData.text);
     }
 }

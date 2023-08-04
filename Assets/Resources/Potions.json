@@ -1,5 +1,6 @@
 {
     "potion": [{
+			"id": 300,
             "name": "Healing Potion",
             "effect": "+ 10 HP",
             "description": "Cures all ailments",
@@ -7,6 +8,7 @@
             "cost": 10,
             "quality": 1
         }, {
+			"id": 301,
             "name": "Sleep Potion",
             "effect": "Sleep",
             "description": "Induces a deep sleep",
@@ -14,6 +16,7 @@
             "cost": 10,
             "quality": 1
         }, {
+			"id": 302,
             "name": "Love Potion",
             "effect": "Love",
             "description": "The drinker will instantly fall in love",

@@ -8,7 +8,7 @@
             "reward": 100,
             "nextquest": null
         }, {
-			"type": "Basic",
+			"type": "Gathering",
             "title": "Item Gatherer",
             "description": "Gather an Item",
 			"solution": "Gatherer()",

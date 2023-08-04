@@ -1,5 +1,6 @@
 {
     "ingredient": [{
+			"id": 200,
             "name": "Selfheal",
             "type": "Herb",
             "description": "A Healing Herb",
@@ -8,6 +9,7 @@
             "cost": 10,
             "quality": 3
         }, {
+			"id": 201,
             "name": "Wolfsbane",
             "type": "Poisonous",
             "description": "A Poisonous Plant",
@@ -16,6 +18,7 @@
             "cost": 10,
             "quality": 3
         }, {
+			"id": 202,
             "name": "Nightshade",
             "type": "Weed",
             "description": "A Protective Weed",

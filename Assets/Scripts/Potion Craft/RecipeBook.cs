@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class RecipeBook : MonoBehaviour
 {
     public PotionCraftManager manager;
-    public List<Recipe> recipes = new();
+    public List<Item.Recipe> recipes = new();
     public int pageNo = 0;
     public TextMeshProUGUI recipeText;
     public TextMeshProUGUI potionText;
@@ -16,7 +16,7 @@ public class RecipeBook : MonoBehaviour
     private void Start()
     {
         FillRecipeBook();
-        Potion potion = manager.potionList.potion.Find(x => x.name == recipes[pageNo].name);
+        Item.Potion potion = manager.potionList.potion.Find(x => x.name == recipes[pageNo].name);
         potionText.text = potion.name;
         potionImage.sprite = Resources.Load<Sprite>("Sprites/Potion Craft/" + potion.sprite);
         for (int i = 0; i < recipes[pageNo].steps.Count; i++)

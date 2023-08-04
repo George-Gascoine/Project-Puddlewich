@@ -8,15 +8,15 @@ public class Pestle : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ingredient")
         {
-            if(collision.gameObject.GetComponent<IngredientDisplay>().inMortar == true)
+            if(collision.gameObject.GetComponent<Ingredient>().inMortar == true)
             {
-                if (collision.gameObject.GetComponent<IngredientDisplay>().crushCount < 2)
+                if (collision.gameObject.GetComponent<Ingredient>().crushCount < 2)
                 {
-                    collision.gameObject.GetComponent<IngredientDisplay>().crushCount++;
+                    collision.gameObject.GetComponent<Ingredient>().crushCount++;
                 }
                 else
                 {
-                    collision.gameObject.GetComponent<SpriteRenderer>().sprite = collision.gameObject.GetComponent<IngredientDisplay>().crushedISprite;
+                    collision.gameObject.GetComponent<SpriteRenderer>().sprite = collision.gameObject.GetComponent<Ingredient>().crushedISprite;
                 }
             }
         }

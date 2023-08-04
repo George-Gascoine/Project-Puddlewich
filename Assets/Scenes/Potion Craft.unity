@@ -1172,8 +1172,8 @@ MonoBehaviour:
   ingredientData: {fileID: 4900000, guid: 9a09447a188aa264bad51a47acda596d, type: 3}
   potionData: {fileID: 4900000, guid: 202b0b73f996d3c4f8a1cba81ce28e5c, type: 3}
   recipeData: {fileID: 4900000, guid: c8fdf25c9b2d67840a0a75bd87a4a20b, type: 3}
-  baseIngredient: {fileID: 5070529919413834142, guid: dfd5718b12fb1234e9bd73a3ce4e1b2a, type: 3}
-  basePotion: {fileID: 2396705055575675433, guid: dccecc4d2fff0ec4688bbc80d9dfe335, type: 3}
+  baseIngredient: {fileID: 1997847726955645028, guid: dfd5718b12fb1234e9bd73a3ce4e1b2a, type: 3}
+  basePotion: {fileID: -3452815120385166697, guid: dccecc4d2fff0ec4688bbc80d9dfe335, type: 3}
   stick: {fileID: 1750665909}
   stirNo: 0
   heatTimer: 0
