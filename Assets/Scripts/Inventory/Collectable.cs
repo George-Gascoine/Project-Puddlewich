@@ -9,12 +9,11 @@ public class Collectable : MonoBehaviour
     public Sprite icon;
     public int itemCost;
     public Tile buyingTile;
-    ShopManager shopManager;
-    FarmManager farmManager;
+    public ShopManager shopManager;
+    public FarmManager farmManager;
     public Crop crop;
     public void Awake()
     {
-        icon = GetComponent<SpriteRenderer>().sprite;
         shopManager = FindObjectOfType<ShopManager>();
         farmManager = FindObjectOfType<FarmManager>();
     }
@@ -27,6 +26,7 @@ public class Collectable : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>();
+        icon = GetComponent<SpriteRenderer>().sprite;
     }
     void OnMouseDown()
     {

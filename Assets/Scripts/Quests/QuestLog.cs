@@ -52,21 +52,6 @@ public class QuestLog : MonoBehaviour
     }
     void QuestProgress()
     {
-        for( int i = 0; i < questLog.Count; i++)
-        {
-            if (questLog[i].title == "Pick Up Your First Item" && questLog[i].isActive)
-            {
-                bool check = player.inventory.CheckItem(Collectable.ItemType.ITEM, 1);
-                if(check)
-                {
-                    questLog[i].Complete();
-                    int nextQuestIndex = questManager.quests.FindIndex(j => j.title == "Buy an Item");
-                    Debug.Log(nextQuestIndex);
-                    Quest nextQuest = questManager.quests[nextQuestIndex];
-                    nextQuest.isActive = true;
-                    questLog.Add(nextQuest);
-                }
-            }
-        }
+        
     }
 }

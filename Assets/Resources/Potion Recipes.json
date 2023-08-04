@@ -1,0 +1,25 @@
+{
+    "recipe": [{
+            "name": "Healing Potion",
+            "steps": [
+                "Crush 2 Ingredients",
+                "Add to boiling cauldron",
+                "Stir the cauldron 3 times"
+            ]
+        }, {
+            "name": "Sleep Potion",
+            "steps": [
+                "Crush 2 Ingredients",
+                "Add to boiling cauldron",
+                "Stir the cauldron 3 times"
+            ]
+        }, {
+            "name": "Love Potion",
+            "steps": [
+                "Crush 2 Ingredients",
+                "Add to boiling cauldron",
+                "Stir the cauldron 3 times"
+            ]
+        }
+    ]
+}

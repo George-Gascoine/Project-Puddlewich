@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class IngredientDisplay : MonoBehaviour
-{
+{ 
     public Ingredient ingredient;
 
     public PotionCraftManager manager;
@@ -24,16 +24,17 @@ public class IngredientDisplay : MonoBehaviour
     {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<PotionCraftManager>();
         origPos = transform.position;
-        iName = ingredient.ingredientName;
-        iType = ingredient.ingredientType;
-        iDescription = ingredient.ingredientDescription;
-        iSprite = ingredient.ingredientSprite;
-        crushedISprite = ingredient.crushedIngredientSprite;
+        iName = ingredient.name;
+        iType = ingredient.type;
+        iDescription = ingredient.description;
+        iSprite = Resources.Load<Sprite>("Sprites/Potion Craft/" + ingredient.sprite);
+        crushedISprite = Resources.Load<Sprite>("Sprites/Potion Craft/" + ingredient.crushedsprite);
         iCost = ingredient.cost;
         iQuality = ingredient.quality;
         crushCount = 0;
 
         GetComponent<SpriteRenderer>().sprite = iSprite;
+        //icon = GetComponent<SpriteRenderer>().sprite;
         gameObject.AddComponent<PolygonCollider2D>();
     }
 

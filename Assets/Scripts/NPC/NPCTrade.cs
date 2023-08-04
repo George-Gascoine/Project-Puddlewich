@@ -33,7 +33,7 @@ public class NPCTrade : MonoBehaviour
             {
                 Global.TRADE_QUEST = true;
                 int index = questLog.questLog.FindIndex(j => j.title == "Buy an Item");
-                questLog.questLog[index].Complete();
+                //questLog.questLog[index].Complete();
             }
             InventoryUI.inventoryPanel.SetActive(true);
             NPCInventoryUI.inventoryPanel.SetActive(true);

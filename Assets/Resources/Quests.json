@@ -1,0 +1,28 @@
+{
+    "quest": [{
+			"type": "Basic",
+            "title": "Introduction",
+            "description": "Introduce yourself to another person",
+			"solution": "Introduction()",
+			"complete": false,
+            "reward": 100,
+            "nextquest": null
+        }, {
+			"type": "Basic",
+            "title": "Item Gatherer",
+            "description": "Gather an Item",
+			"solution": "Gatherer()",
+			"complete": false,
+            "reward": 100,
+            "nextquest": "Purveyor of Goods"
+        }, {
+			"type": "Basic",
+            "title": "Purveyor of Goods",
+            "description": "Purchase an Item",
+			"solution": "Purveyor()",
+			"complete": false,
+            "reward": 100,
+            "nextquest": null
+        }
+    ]
+}

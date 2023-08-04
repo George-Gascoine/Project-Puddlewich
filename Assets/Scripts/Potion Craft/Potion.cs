@@ -2,16 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Potion", fileName = "Potion")]
-public class Potion : ScriptableObject
+[System.Serializable]
+public class Potion
 {
-    public string potionName;
-    public string potionEffect;
-    public string potionDescription;
-    public Ingredient ingredientOne;
-    public Ingredient ingredientTwo;
-    public Ingredient ingredientThree;
-    public Sprite potionSprite;
+    public string name;
+    public string effect;
+    public string description;
+    public string sprite;
     public float cost;
     public float quality;
 }

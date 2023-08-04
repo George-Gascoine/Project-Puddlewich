@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
-[CreateAssetMenu(menuName = "Ingredient", fileName = "Ingredient")]
-public class Ingredient : ScriptableObject
+[System.Serializable]
+public class Ingredient
 {
-    public string ingredientName;
-    public string ingredientType;
-    public string ingredientDescription;
-    public Sprite ingredientSprite;
-    public Sprite crushedIngredientSprite;
+    public string name;
+    public string type;
+    public string description;
+    public string sprite;
+    public string crushedsprite;
     public float cost;
     public float quality;
+
 }

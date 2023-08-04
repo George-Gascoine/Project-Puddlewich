@@ -1,0 +1,28 @@
+{
+    "ingredient": [{
+            "name": "Selfheal",
+            "type": "Herb",
+            "description": "A Healing Herb",
+            "sprite": "Ingredient",
+            "crushedsprite": "CrushedIngredient",
+            "cost": 10,
+            "quality": 3
+        }, {
+            "name": "Wolfsbane",
+            "type": "Poisonous",
+            "description": "A Poisonous Plant",
+            "sprite": "Ingredient",
+            "crushedsprite": "CrushedIngredient",
+            "cost": 10,
+            "quality": 3
+        }, {
+            "name": "Nightshade",
+            "type": "Weed",
+            "description": "A Protective Weed",
+            "sprite": "Ingredient",
+            "crushedsprite": "CrushedIngredient",
+            "cost": 10,
+            "quality": 3
+        }
+    ]
+}

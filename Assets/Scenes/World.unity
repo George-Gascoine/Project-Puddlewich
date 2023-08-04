@@ -3686,6 +3686,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1975209634 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 969899784046288620, guid: 75e00911e5a2e3a41a1c749105000097, type: 3}
+  m_PrefabInstance: {fileID: 969899782127286547}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1975209639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975209634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f18ac7c47a44ec49a38f9d07b6c342c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  type: 1
+  icon: {fileID: 21300000, guid: 26363dc82e154d74480c46443efca6d3, type: 3}
+  itemCost: 0
+  buyingTile: {fileID: 0}
+  shopManager: {fileID: 0}
+  farmManager: {fileID: 0}
+  crop: {fileID: 0}
+  ingredient: {fileID: 0}
+  manager: {fileID: 0}
+  iName: 
+  iType: 
+  iDescription: 
+  iSprite: {fileID: 0}
+  crushedISprite: {fileID: 0}
+  iCost: 0
+  iQuality: 0
+  origPos: {x: 0, y: 0}
+  overMortar: 0
+  inMortar: 0
+  overCauldron: 0
+  inCauldron: 0
+  crushCount: 0
 --- !u!1001 &912524678047090338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3836,6 +3876,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
+    - {fileID: 969899784046285075, guid: 75e00911e5a2e3a41a1c749105000097, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 75e00911e5a2e3a41a1c749105000097, type: 3}
 --- !u!1001 &1008529742096227282
 PrefabInstance:

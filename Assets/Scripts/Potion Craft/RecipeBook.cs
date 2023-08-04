@@ -16,8 +16,9 @@ public class RecipeBook : MonoBehaviour
     private void Start()
     {
         FillRecipeBook();
-        potionText.text = manager.PotionList.Find(x => x.potionName == recipes[pageNo].recipeName).potionName;
-        potionImage.sprite = manager.PotionList.Find(x => x.potionName == recipes[pageNo].recipeName).potionSprite;
+        Potion potion = manager.potionList.potion.Find(x => x.name == recipes[pageNo].name);
+        potionText.text = potion.name;
+        potionImage.sprite = Resources.Load<Sprite>("Sprites/Potion Craft/" + potion.sprite);
         for (int i = 0; i < recipes[pageNo].steps.Count; i++)
         {
             recipeText.text += "Step " + (i + 1).ToString() + ": " + recipes[pageNo].steps[i] + "\n";
@@ -26,6 +27,6 @@ public class RecipeBook : MonoBehaviour
 
     void FillRecipeBook()
     {
-        recipes = manager.RecipeList;
+        recipes = manager.recipeList.recipe;
     }
 }

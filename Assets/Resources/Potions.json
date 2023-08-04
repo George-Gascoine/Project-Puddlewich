@@ -1,0 +1,25 @@
+{
+    "potion": [{
+            "name": "Healing Potion",
+            "effect": "+ 10 HP",
+            "description": "Cures all ailments",
+            "sprite": "Potion",
+            "cost": 10,
+            "quality": 1
+        }, {
+            "name": "Sleep Potion",
+            "effect": "Sleep",
+            "description": "Induces a deep sleep",
+            "sprite": "Potion",
+            "cost": 10,
+            "quality": 1
+        }, {
+            "name": "Love Potion",
+            "effect": "Love",
+            "description": "The drinker will instantly fall in love",
+            "sprite": "Potion",
+            "cost": 10,
+            "quality": 3
+        }
+    ]
+}

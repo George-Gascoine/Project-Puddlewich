@@ -18,10 +18,10 @@ public class PotionDisplay : MonoBehaviour
     void Start()
     {
         origPos = transform.position;
-        pName = potion.potionName;
-        pEffect = potion.potionEffect;
-        pDescription = potion.potionDescription;
-        pSprite = potion.potionSprite;
+        pName = potion.name;
+        pEffect = potion.effect;
+        pDescription = potion.description;
+        pSprite = Resources.Load<Sprite>("Sprites/Potion Craft/" + potion.sprite);
         cost = potion.cost;
         quality = potion.quality;
 

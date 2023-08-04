@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Recipe
 {
-    public string recipeName;
+    public string name;
     public List<string> steps = new();
     public List<bool> completedSteps = new();
 

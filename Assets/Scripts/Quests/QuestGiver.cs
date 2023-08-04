@@ -22,10 +22,6 @@ public class QuestGiver : MonoBehaviour
     public void OpenQuestWindow()
     {
         questWindow.SetActive(true);
-        titleText.text = quest.title;
-        descriptionText.text = quest.description;
-        expText.text = quest.prerequisites;
-        penniesText.text = quest.pennieReward.ToString();
     }
 
     public void OnMouseDown()
@@ -36,8 +32,6 @@ public class QuestGiver : MonoBehaviour
     public void AcceptQuest()
     {
         questWindow.SetActive(false);
-        quest.isActive = true;
-        quest.player = player;
         log.questLog.Add(quest);
     }
 }
