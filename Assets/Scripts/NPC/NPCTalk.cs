@@ -16,7 +16,7 @@ public class NPCTalk : MonoBehaviour
     public string[] friendshipDialogue;
     public List<Collectable> likedItems;
     public List<Collectable> dislikedItems;
-    private int index;
+    public int index;
     public bool greeted = false; 
     public bool typing = false;
 

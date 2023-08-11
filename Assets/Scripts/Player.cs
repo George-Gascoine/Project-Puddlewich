@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public Inventory inventory;
     public Collectable equippedItem;
     public GameManager manager;
+    public QuestManager questManager;
     public int selectedSlot;
     public bool slotChanged = false;
     //public List<GameObject> myListObjects = new();
@@ -22,6 +23,7 @@ public class Player : MonoBehaviour
         inventory = new Inventory(18);
         rb = GetComponent<Rigidbody2D>();
         manager = FindObjectOfType<GameManager>();
+        questManager = FindObjectOfType<QuestManager>();
     }
     // Start is called before the first frame update
     void Start()

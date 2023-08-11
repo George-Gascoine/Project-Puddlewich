@@ -123,37 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &275793543
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+--- !u!61 &275793545 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 1759800795620538783, guid: 886be3bacef173e4b88af7f23a078d6d, type: 3}
+  m_PrefabInstance: {fileID: 1759800795346845462}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 275793544}
-  m_Layer: 0
-  m_Name: Checkout
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &275793544
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 275793543}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.07, y: 7.75, z: 29.471418}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &735692458
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -355,51 +329,131 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 4043610610009710305, guid: 92b8585b821bc7641bd78976879c02cc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4043610610009710307, guid: 92b8585b821bc7641bd78976879c02cc, type: 3}
+      propertyPath: orthographic size
+      value: 1.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92b8585b821bc7641bd78976879c02cc, type: 3}
---- !u!1 &2097671031
-GameObject:
+--- !u!1001 &1759800795346845462
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2097671033}
-  - component: {fileID: 2097671032}
-  m_Layer: 0
-  m_Name: Cauldron Shop Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2097671032
-MonoBehaviour:
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1759800795620538769, guid: 886be3bacef173e4b88af7f23a078d6d, type: 3}
+      propertyPath: m_Name
+      value: Checkout
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759800795620538782, guid: 886be3bacef173e4b88af7f23a078d6d, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759800795620538782, guid: 886be3bacef173e4b88af7f23a078d6d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759800795620538782, guid: 886be3bacef173e4b88af7f23a078d6d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759800795620538782, guid: 886be3bacef173e4b88af7f23a078d6d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 29.471418
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759800795620538782, guid: 886be3bacef173e4b88af7f23a078d6d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759800795620538782, guid: 886be3bacef173e4b88af7f23a078d6d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759800795620538782, guid: 886be3bacef173e4b88af7f23a078d6d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759800795620538782, guid: 886be3bacef173e4b88af7f23a078d6d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759800795620538782, guid: 886be3bacef173e4b88af7f23a078d6d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759800795620538782, guid: 886be3bacef173e4b88af7f23a078d6d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759800795620538782, guid: 886be3bacef173e4b88af7f23a078d6d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 886be3bacef173e4b88af7f23a078d6d, type: 3}
+--- !u!1001 &7745685064853936365
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2097671031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9350180ee3778e14facfa24bbd5984a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  npc: {fileID: 1563632170673992725, guid: a3d276635ecc26e41a239081074a03da, type: 3}
-  spawned: 0
---- !u!4 &2097671033
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2097671031}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.6253643, y: 2.7864037, z: 29.471418}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 735057536343143437, guid: 580fa5481c8ca83499599f4b3cc84dab, type: 3}
+      propertyPath: colliders.Array.data[0]
+      value: 
+      objectReference: {fileID: 275793545}
+    - target: {fileID: 928778182501977441, guid: 580fa5481c8ca83499599f4b3cc84dab, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 928778182501977441, guid: 580fa5481c8ca83499599f4b3cc84dab, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.6253643
+      objectReference: {fileID: 0}
+    - target: {fileID: 928778182501977441, guid: 580fa5481c8ca83499599f4b3cc84dab, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.7864037
+      objectReference: {fileID: 0}
+    - target: {fileID: 928778182501977441, guid: 580fa5481c8ca83499599f4b3cc84dab, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 29.471418
+      objectReference: {fileID: 0}
+    - target: {fileID: 928778182501977441, guid: 580fa5481c8ca83499599f4b3cc84dab, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 928778182501977441, guid: 580fa5481c8ca83499599f4b3cc84dab, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 928778182501977441, guid: 580fa5481c8ca83499599f4b3cc84dab, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 928778182501977441, guid: 580fa5481c8ca83499599f4b3cc84dab, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 928778182501977441, guid: 580fa5481c8ca83499599f4b3cc84dab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 928778182501977441, guid: 580fa5481c8ca83499599f4b3cc84dab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 928778182501977441, guid: 580fa5481c8ca83499599f4b3cc84dab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5041306981990913691, guid: 580fa5481c8ca83499599f4b3cc84dab, type: 3}
+      propertyPath: m_Name
+      value: Cauldron Shop Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 580fa5481c8ca83499599f4b3cc84dab, type: 3}

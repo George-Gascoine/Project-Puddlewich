@@ -18,7 +18,7 @@ public class WorldManager : MonoBehaviour
             Range range= time.Key;
             if(DayNightCycle.gameTimer < time.Key.End.Value) 
             {
-                Instantiate(npc, new Vector3(-2.34f, 4.19f, 0), Quaternion.identity);
+                //Instantiate(npc, new Vector3(-2.34f, 4.19f, 0), Quaternion.identity);
                 morning = true;
             }
         }

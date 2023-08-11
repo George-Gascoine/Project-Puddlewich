@@ -108,7 +108,7 @@ public class PathFinding : MonoBehaviour
         List<Vector3> points = new();
         for (int i = 0; i < path.Count; i++)
         {
-            points.Add(new Vector3(path[i].transform.position.x + 0.5f, path[i].transform.position.y, 1));
+            points.Add(new Vector3(path[i].posX + 0.5f, path[i].posY, 1));
             if (i == 0)
             {
                 pathLength += Vector2.Distance(transform.position, points[0]);
@@ -119,7 +119,7 @@ public class PathFinding : MonoBehaviour
             }
         }
         //nodeTime = pathLength / path.Count;
-        gameObject.GetComponent<NPCRoutine>().maxWaitTime = pathLength/2;
+        //gameObject.GetComponent<NPCRoutine>().maxWaitTime = pathLength/2;
         return points.ToArray();
     }
 
@@ -153,6 +153,7 @@ public class PathFinding : MonoBehaviour
                 currentPoint = (Vector2)finalPath[targetIndex];
             }
             transform.position = Vector2.MoveTowards((Vector2)transform.position, (Vector2)currentPoint, speed * Time.deltaTime);
+            Debug.Log(currentPoint);
             pathTime = finalPath.Length / pathLength;
             yield return null;
         }

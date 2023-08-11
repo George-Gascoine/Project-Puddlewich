@@ -46,19 +46,19 @@ public class SnapToGrid : MonoBehaviour
 
     public void FindTiles()
     {
-        // xChange is 0.5 and yChange is 0.25
-        browseTile1 = grid.GetTileAtPosition(new Vector2(transform.localPosition.x - 1f, transform.localPosition.y - 0.5f));
-        browseTile2 = grid.GetTileAtPosition(new Vector2(transform.localPosition.x - 1f, transform.localPosition.y));
-        browseTile3 = grid.GetTileAtPosition(new Vector2(transform.localPosition.x, transform.localPosition.y - 0.5f));
-        browseTile4 = grid.GetTileAtPosition(new Vector2(transform.localPosition.x, transform.localPosition.y));
-        browseTile1.highlight.SetActive(true);
-        browseTile2.highlight.SetActive(true);
-        browseTile3.highlight.SetActive(true);
-        browseTile4.highlight.SetActive(true);
+        //// xChange is 0.5 and yChange is 0.25
+        //browseTile1 = grid.GetTileAtPosition(new Vector2(transform.localPosition.x - 1f, transform.localPosition.y - 0.5f));
+        //browseTile2 = grid.GetTileAtPosition(new Vector2(transform.localPosition.x - 1f, transform.localPosition.y));
+        //browseTile3 = grid.GetTileAtPosition(new Vector2(transform.localPosition.x, transform.localPosition.y - 0.5f));
+        //browseTile4 = grid.GetTileAtPosition(new Vector2(transform.localPosition.x, transform.localPosition.y));
+        //browseTile1.highlight.SetActive(true);
+        //browseTile2.highlight.SetActive(true);
+        //browseTile3.highlight.SetActive(true);
+        //browseTile4.highlight.SetActive(true);
 
-        shopperSpawner.browsePoints.Add(browseTile1);
-        shopperSpawner.browsePoints.Add(browseTile2);
-        shopperSpawner.browsePoints.Add(browseTile3);
-        shopperSpawner.browsePoints.Add(browseTile4);
+        //shopperSpawner.browsePoints.Add(browseTile1);
+        //shopperSpawner.browsePoints.Add(browseTile2);
+        //shopperSpawner.browsePoints.Add(browseTile3);
+        //shopperSpawner.browsePoints.Add(browseTile4);
     }
 }

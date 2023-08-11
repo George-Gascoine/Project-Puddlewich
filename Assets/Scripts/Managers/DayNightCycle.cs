@@ -12,14 +12,14 @@ public class DayNightCycle : MonoBehaviour
 {
     public Farming farm;
     public Gradient _gradient;
-    public Light2D _light;
+    //public Light2D _light;
 
 
     public static float gameTimer;
     public float hour;
     public float minute = 10f; 
     public string day;
-    public string season;
+    public static string season = "winter"; 
     public enum Day
     {
         Sunday,
@@ -56,10 +56,10 @@ public class DayNightCycle : MonoBehaviour
         if (minute > 0)
         {
             minute = minute - Time.deltaTime;
-            if (SceneManager.GetActiveScene().name == "World")
-            {
-                _light.color = _gradient.Evaluate(minute / 10);
-            }
+            //if (SceneManager.GetActiveScene().name == "World")
+            //{
+            //    _light.color = _gradient.Evaluate(minute / 10);
+            //}
         }
         else
         {

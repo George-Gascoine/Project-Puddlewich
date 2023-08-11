@@ -25,7 +25,7 @@ public class Grid2D : MonoBehaviour
         {
             foreach (Tile n in path)
             {
-                n.highlight.SetActive(true);
+                //n.highlight.SetActive(true);
             }
         }
     }
@@ -37,14 +37,16 @@ public class Grid2D : MonoBehaviour
         {
             for (int y = 0; y < gridHeight; y++)
             {
-                var groundTile = tileArray[0];
-                var newTile = Instantiate(groundTile, transform);
-
+                
+                //var newTile = Instantiate(groundTile, transform);
+                Tile newTile = new();
                 float posX = (x * tileSize - y * tileSize) / 2f;
                 float posY = (x * tileSize + y * tileSize) / 4f;
 
-                newTile.transform.position = new Vector2(posX, posY);
-                newTile.name = x + " , " + y;
+                //newTile.transform.position = new Vector2(posX, posY);
+                //newTile.name = x + " , " + y;
+                newTile.posX = posX;
+                newTile.posY = posY;
                 newTile.gridX = x;
                 newTile.gridY = y;
                 newTile.isWalkable = true;

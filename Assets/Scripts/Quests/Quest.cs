@@ -14,4 +14,9 @@ public class Quest
     public bool complete;
     public int reward;
     public string nextquest;
+    public Player player;
+    public void Complete()
+    {
+        player.pennies += reward;
+    }
 }

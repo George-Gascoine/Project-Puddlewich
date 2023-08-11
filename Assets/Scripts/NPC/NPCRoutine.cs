@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 [Serializable]
 public class NPCRoutine : MonoBehaviour
@@ -59,7 +58,8 @@ public class NPCRoutine : MonoBehaviour
                 {
                     pathFinding.speed = speed;
                     pathFinding.destroy = true;
-                    pathFinding.FindPath(grid.GetTileAtPosition(grid.TilePosition(this.transform.position)), grid.GetTileAtPosition(grid.TilePosition(CauldronShop.transform.position)));
+                    pathFinding.FindPath(grid.GetTileAtPosition(grid.TilePosition(this.transform.position)), grid.tiles[new Vector2(25, 43)]);
+                        //grid.GetTileAtPosition(grid.TilePosition(CauldronShop.transform.position)));
                     pathFinding.StartCoroutine("FollowPath", 0);
                 }
                 else if (DayNightCycle.gameTimer > 37)

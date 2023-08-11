@@ -12,11 +12,11 @@ public class CauldronShopManager : MonoBehaviour
     Grid2D grid;
     private void Start()
     {
-        grid = FindObjectOfType<Grid2D>();
-        Tile checkoutTile = 
-            grid.GetTileAtPosition(grid.TilePosition(new Vector2(GameObject.Find("Checkout").transform.position.x, GameObject.Find("Checkout").transform.position.y)));
-        //checkoutTile.isWalkable = false;
-        checkoutTile.highlight.SetActive(false);
+        //grid = FindObjectOfType<Grid2D>();
+        //Tile checkoutTile = 
+        //    grid.GetTileAtPosition(grid.TilePosition(new Vector2(GameObject.Find("Checkout").transform.position.x, GameObject.Find("Checkout").transform.position.y)));
+        ////checkoutTile.isWalkable = false;
+        //checkoutTile.highlight.SetActive(false);
     }
     private void Update()
     {

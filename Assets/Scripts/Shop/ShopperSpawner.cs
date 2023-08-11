@@ -15,7 +15,7 @@ public class ShopperSpawner : MonoBehaviour
     void Start()
     {
         shopperNo = 1f;
-        StartCoroutine(SpawnShopper(shopperNo));
+        //StartCoroutine(SpawnShopper(shopperNo));
     }
 
     IEnumerator SpawnShopper(float number)

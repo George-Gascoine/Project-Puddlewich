@@ -5,7 +5,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
 
-public class Tile : MonoBehaviour
+[System.Serializable]
+public class Tile
 {
     public GameManager GameManager;
     [SerializeField] public GameObject highlight;
@@ -13,10 +14,11 @@ public class Tile : MonoBehaviour
     public int hCost;
     public int gridX;
     public int gridY;
+    public float posX;
+    public float posY;
     public bool isWalkable;
     public Tile parent;
 
-    Grid2D grid;
 
     //Create Grid of invisible cells
     //Make cells not walkable etc

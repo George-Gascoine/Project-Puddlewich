@@ -9,10 +9,12 @@ public class NPCTrade : MonoBehaviour
     public bool trading;
     public NPCInventoryUI NPCInventoryUI;
     public Inventory_UI InventoryUI;
-    public QuestLog questLog;
+    public Player player;
+
     // Start is called before the first frame update
     void Start()
     {
+        player = FindObjectOfType<Player>();
         trading = false;
         inventory = new Inventory(18);
         inventory.Add(GameManager.instance.itemManager.GetItemByType(Collectable.ItemType.ITEM));
@@ -26,18 +28,15 @@ public class NPCTrade : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (!EventSystem.current.IsPointerOverGameObject())
-        {
             trading = !trading;
-            if (Global.TRADE_QUEST == false && questLog.questLog.FindIndex(j => j.title == "Buy an Item") != -1)
+            if(player.questManager.activeQuests.FindIndex(j => j.title == "Item Gatherer") != -1)
             {
-                Global.TRADE_QUEST = true;
-                int index = questLog.questLog.FindIndex(j => j.title == "Buy an Item");
-                //questLog.questLog[index].Complete();
+                player.questManager.activeQuests[player.questManager.activeQuests.FindIndex(j => j.title == "Item Gatherer")].complete = true;
+                player.questManager.activeQuests[player.questManager.activeQuests.FindIndex(j => j.title == "Item Gatherer")].Complete();
+                Debug.Log("Complete");
             }
-            InventoryUI.inventoryPanel.SetActive(true);
-            NPCInventoryUI.inventoryPanel.SetActive(true);
-            NPCInventoryUI.npcTrade = this;
-        }
+            //InventoryUI.inventoryPanel.SetActive(true);
+            //NPCInventoryUI.inventoryPanel.SetActive(true);
+            //NPCInventoryUI.npcTrade = this;
     }
 }

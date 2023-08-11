@@ -25,6 +25,7 @@ public class QuestLog : MonoBehaviour
     }
     public void DisplayQuestLog()
     {
+        questLog = questManager.activeQuests;
         if (!questLogPanel.activeSelf)
         {
             questLogPanel.SetActive(true);

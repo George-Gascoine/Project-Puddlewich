@@ -1,0 +1,251 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5992887549204389097
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5992887549204389094}
+  - component: {fileID: 5992887549204389093}
+  - component: {fileID: 5992887549204389092}
+  - component: {fileID: 5992887549204389099}
+  - component: {fileID: 5992887549204389098}
+  m_Layer: 0
+  m_Name: George
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5992887549204389094
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5992887549204389097}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.81, y: 1.29, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &5992887549204389093
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5992887549204389097}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 84220a34c34cf2f4bb07fc50195bbb25, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.359375, y: 0.71875}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!61 &5992887549204389092
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5992887549204389097}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.34057957}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 0.359375, y: 0.71875}
+    newSize: {x: 0.359375, y: 0.71875}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.359375, y: 0.7063652}
+  m_EdgeRadius: 0
+--- !u!114 &5992887549204389099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5992887549204389097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d46ca1d3becdf7c4ba0a61e374762107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 6112977482344960598, guid: 2c728d1f17fdd7849ad2da80cdd293f5, type: 3}
+  currentPosition: {x: 0, y: 0}
+  location: {fileID: 211844364720587988, guid: 3be00a33906abf143aa84b0e6a1bab7e, type: 3}
+  destination: {fileID: 211844364720587988, guid: 3be00a33906abf143aa84b0e6a1bab7e, type: 3}
+  pathFinding: {fileID: 5992887549204389098}
+--- !u!114 &5992887549204389098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5992887549204389097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d2042a00bd94dc4aac44f08fa7f44c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 6112977482344960598, guid: 2c728d1f17fdd7849ad2da80cdd293f5, type: 3}
+  npc: {fileID: 5992887549204389099}
+  currentPos: {x: 0, y: 0}
+  finalPath: []
+  pathLength: 0
+  pathTime: 0
+  speed: 0
+  currentLocation: {fileID: 0}
+  destination: {fileID: 0}
+  finalDestination:
+    GameManager: {fileID: 0}
+    highlight: {fileID: 0}
+    gCost: 50
+    hCost: 0
+    gridX: 5
+    gridY: 0
+    posX: 2.5
+    posY: 1.25
+    isWalkable: 1
+  startTile:
+    GameManager: {fileID: 0}
+    highlight: {fileID: 0}
+    gCost: 0
+    hCost: 0
+    gridX: 0
+    gridY: 0
+    posX: 0
+    posY: 0
+    isWalkable: 1
+  targetTile:
+    GameManager: {fileID: 0}
+    highlight: {fileID: 0}
+    gCost: 50
+    hCost: 0
+    gridX: 5
+    gridY: 0
+    posX: 2.5
+    posY: 1.25
+    isWalkable: 1
+  targetTransition:
+    location: {fileID: 0}
+    locationTile: {x: 0, y: 0}
+    destination: {fileID: 0}
+    destinationSpawn: {x: 0, y: 0}
+  arrived: 0
+  grid:
+    tileArray: []
+    gridWidth: 40
+    gridHeight: 40
+    tileSize: 1
+    locationColliders:
+    - {fileID: 6242653867460909016, guid: 13a34af8bac3f774eb33ce51a56ccb8e, type: 3}
+    path:
+    - GameManager: {fileID: 0}
+      highlight: {fileID: 0}
+      gCost: 0
+      hCost: 0
+      gridX: 0
+      gridY: 0
+      posX: 0
+      posY: 0
+      isWalkable: 1
+    - GameManager: {fileID: 0}
+      highlight: {fileID: 0}
+      gCost: 10
+      hCost: 40
+      gridX: 1
+      gridY: 0
+      posX: 0.5
+      posY: 0.25
+      isWalkable: 1
+    - GameManager: {fileID: 0}
+      highlight: {fileID: 0}
+      gCost: 20
+      hCost: 30
+      gridX: 2
+      gridY: 0
+      posX: 1
+      posY: 0.5
+      isWalkable: 1
+    - GameManager: {fileID: 0}
+      highlight: {fileID: 0}
+      gCost: 30
+      hCost: 20
+      gridX: 3
+      gridY: 0
+      posX: 1.5
+      posY: 0.75
+      isWalkable: 1
+    - GameManager: {fileID: 0}
+      highlight: {fileID: 0}
+      gCost: 40
+      hCost: 10
+      gridX: 4
+      gridY: 0
+      posX: 2
+      posY: 1
+      isWalkable: 1
+    - GameManager: {fileID: 0}
+      highlight: {fileID: 0}
+      gCost: 50
+      hCost: 0
+      gridX: 5
+      gridY: 0
+      posX: 2.5
+      posY: 1.25
+      isWalkable: 1
