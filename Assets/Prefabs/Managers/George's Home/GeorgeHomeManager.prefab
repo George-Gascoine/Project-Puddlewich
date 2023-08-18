@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6690788090472938590}
   - component: {fileID: 4990072031961905857}
   m_Layer: 0
-  m_Name: George's Home Manager
+  m_Name: GeorgeHomeManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,8 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30bf804949c1f62408600f6582ae0b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locationName: George's Home
-  transitions: []
+  locationName: GeorgeHome
+  transitions:
+  - {fileID: 7916618838635270552, guid: 3be00a33906abf143aa84b0e6a1bab7e, type: 3}
   connectedLocations:
   - {fileID: 211844364720587988, guid: 3be00a33906abf143aa84b0e6a1bab7e, type: 3}
   colliders:

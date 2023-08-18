@@ -12,6 +12,7 @@ public class DayNightCycle : MonoBehaviour
 {
     public Farming farm;
     public Gradient _gradient;
+    public NPC npc;
     //public Light2D _light;
 
 
@@ -19,7 +20,8 @@ public class DayNightCycle : MonoBehaviour
     public float hour;
     public float minute = 10f; 
     public string day;
-    public static string season = "winter"; 
+    public static string season = "winter";
+    public bool routineStart;
     public enum Day
     {
         Sunday,
@@ -52,6 +54,7 @@ public class DayNightCycle : MonoBehaviour
     void Update()
     {
         gameTimer += Time.deltaTime;
+        //Debug.Log(gameTimer);
         //Debug.Log(gameTimer);
         if (minute > 0)
         {

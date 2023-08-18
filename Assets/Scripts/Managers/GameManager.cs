@@ -19,7 +19,8 @@ public class GameManager : MonoBehaviour
 
     public LoadScene sceneLoader;
     public List<Location> gameLocations;
-    public List<BoxCollider2D> sceneColliders;
+    public List<Collider2D> sceneColliders;
+    public List<Transition> sceneTransitions;
     public Dictionary<string, UpdatedGrid2D> sceneGrids = new();
     public NPC npc;
 
@@ -28,30 +29,13 @@ public class GameManager : MonoBehaviour
         //DontDestroyOnLoad(this.gameObject);
         foreach (Location location in gameLocations)
         {
+            location.warps.Clear();
             sceneLoader.SceneLoader(location.locationName, location);
         }
+
         StartCoroutine(NPCStart());
-        //int sceneCount = SceneManager.sceneCountInBuildSettings;
-        //SceneManager.LoadSceneAsync("Player's Shop", LoadSceneMode.Additive);
-        //Location locationTest = new()
-        //{
-        //    name = "Player's Shop"
-        //};
-        //locations.Add(locationTest);
-        //SceneManager.UnloadSceneAsync("Player's Shop");
-        //for (int i = 0; i < sceneCount; i++)
-        //{
-        //    SceneManager.LoadSceneAsync(i, LoadSceneMode.Additive);
-        //    Location locationTest = new()
-        //    {
-        //        name = SceneManager.GetSceneByBuildIndex(i).name
-        //    };
-        //    locations.Add(locationTest);
-        //    SceneManager.UnloadSceneAsync(i);
-        //}
 
         DayNightCycle.gameTimer = 0;
-        //SceneManager.sceneLoaded += OnSceneLoaded;
         player = Instantiate(player, new Vector3(4, 0, 0), Quaternion.identity);
         player.speed = 60;
         Screen.SetResolution(1920, 1080, true);
@@ -85,7 +69,7 @@ public class GameManager : MonoBehaviour
     }
     public void GenerateGridWithCollisions(Location location)
     {
-        location.transitions.Clear();
+
         //location.locationGrid.locationColliders = sceneColliders;
         //location.locationGrid.GenerateGrid();
         UpdatedGrid2D grid = new()
@@ -93,15 +77,13 @@ public class GameManager : MonoBehaviour
             locationColliders = sceneColliders
         };
         grid.GenerateGrid();
-        Debug.Log(grid);
         sceneGrids.Add(location.locationName, grid);
-        
-        location.GenerateTransitions();
     }
 
     IEnumerator NPCStart()
     {
         yield return new WaitForSeconds(3);
-        npc.StartPath(this);
+        //npc.StartPath(this);
     }
+
 }

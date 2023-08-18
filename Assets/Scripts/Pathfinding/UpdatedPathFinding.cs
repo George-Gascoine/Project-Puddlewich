@@ -25,7 +25,7 @@ public class UpdatedPathFinding : MonoBehaviour
     public Tile finalDestination;
     public Tile startTile;
     public Tile targetTile;
-    public Transition targetTransition;
+    public Transition.Warp targetWarp;
     int targetIndex;
     public bool arrived;
     public UpdatedGrid2D grid;
@@ -56,14 +56,14 @@ public class UpdatedPathFinding : MonoBehaviour
                 if (loc == npc.destination)
                 {
                     startTile = startPos;
-                    foreach (Transition tran in currentLocation.transitions)
+                    foreach (Transition.Warp warp in currentLocation.warps)
                     {
-                        Debug.Log(tran.destination.locationName);
-                        if (tran.destination == npc.destination)
+                        if (warp.destination == npc.destination)
                         {
-                            targetTransition = tran;
-                            destination = tran.destination;
-                            targetTile = gameManager.sceneGrids[npc.location.locationName].tiles[tran.locationTile];
+                            targetWarp = warp;
+                            destination = warp.destination;
+                            targetTile = gameManager.sceneGrids[npc.location.locationName].GetTileAtPosition(gameManager.sceneGrids[npc.location.locationName].TilePosition(warp.locationTile));
+                            targetTile.isWalkable = true;
                             //npc.location.locationGrid.tiles[tran.locationTile];
                             break;
                         }
@@ -72,13 +72,13 @@ public class UpdatedPathFinding : MonoBehaviour
                 else if (loc.locationName == "World")
                 {
                     startTile = startPos;
-                    foreach (Transition tran in currentLocation.transitions)
+                    foreach (Transition.Warp warp in currentLocation.warps)
                     {
-                        if (tran.destination.locationName == "World")
+                        if (warp.destination.locationName == "World")
                         {
-                            targetTransition = tran;
-                            destination = tran.destination;
-                            targetTile = gameManager.sceneGrids[npc.location.locationName].tiles[tran.locationTile];
+                            targetWarp = warp;
+                            destination = warp.destination;
+                            targetTile = gameManager.sceneGrids[npc.location.locationName].tiles[warp.locationTile];
                             break;
                         }
                     }
@@ -103,7 +103,6 @@ public class UpdatedPathFinding : MonoBehaviour
 
             openSet.Remove(currentTile); //Remove the currentTile from openSet
             closedSet.Add(currentTile); //Add currentTile to closedSet
-
             if (currentTile == targetTile)
             {
                 RetracePath(startTile, targetTile);
@@ -184,7 +183,7 @@ public class UpdatedPathFinding : MonoBehaviour
         //    gameObject.transform.position = (Vector2)finalPath[finalPath.Length - 1];
         //    yield break;
         //}
-
+        Debug.Log(finalPath.Length);
         currentPos = (Vector2)finalPath[targetIndex];
 
         Vector2 currentPoint = (Vector2)finalPath[targetIndex];
@@ -203,7 +202,7 @@ public class UpdatedPathFinding : MonoBehaviour
                     currentLocation = destination;
                     grid = gameManager.sceneGrids[destination.locationName];
                     //destination.locationGrid;
-                    currentPos = targetTransition.destinationSpawn;
+                    currentPos = targetWarp.destinationSpawn;
                     FindPath(grid.tiles[currentPos], finalDestination);
                     StartCoroutine("FollowPath", 0);
                     yield break;
@@ -217,7 +216,7 @@ public class UpdatedPathFinding : MonoBehaviour
                 == finalDestination)
             {
                 StopAllCoroutines();
-                Debug.Log("I WIN");
+                npc.onWay = false;
             }
             yield return null;
         }

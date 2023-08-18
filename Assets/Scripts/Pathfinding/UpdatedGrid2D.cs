@@ -8,11 +8,12 @@ using UnityEngine.Tilemaps;
 //Load scenes async to find all box colliders and store unwalkable grid cells
 public class UpdatedGrid2D
 {
+    GameManager gameManager;
     [SerializeField] Tile[] tileArray;
     [SerializeField] public int gridWidth = 40;
     [SerializeField] public int gridHeight = 40;
     [SerializeField] float tileSize = 1f;
-    [SerializeField] public List<BoxCollider2D> locationColliders;
+    [SerializeField] public List<Collider2D> locationColliders;
     Vector2 gridSize = new Vector2(1f, 0.5f);
 
 
@@ -46,12 +47,10 @@ public class UpdatedGrid2D
                 Tile newTile = new();
                 float posX = (x * tileSize - y * tileSize) / 2f;
                 float posY = (x * tileSize + y * tileSize) / 4f;
-                foreach (BoxCollider2D collider in locationColliders)
+                foreach (Collider2D collider in locationColliders)
                 {
-                    //Debug.Log(collider.bounds.extents);
-                    if (collider.bounds.Contains(new Vector2(posX, posY)))
+                    if (collider.bounds.Contains(new Vector3(posX, posY, 0)))
                     {
-                        //Debug.Log(collider.bounds.extents);
                         newTile.isWalkable = false;
                     }
                     else

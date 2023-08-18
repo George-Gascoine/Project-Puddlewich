@@ -179,6 +179,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6112977482344960597, guid: 2c728d1f17fdd7849ad2da80cdd293f5, type: 3}
+      propertyPath: npc
+      value: 
+      objectReference: {fileID: 424824711}
+    - target: {fileID: 6112977482344960597, guid: 2c728d1f17fdd7849ad2da80cdd293f5, type: 3}
       propertyPath: _light
       value: 
       objectReference: {fileID: 0}
@@ -329,7 +333,7 @@ PrefabInstance:
     - target: {fileID: 6112977482344960598, guid: 2c728d1f17fdd7849ad2da80cdd293f5, type: 3}
       propertyPath: gameLocations.Array.data[0]
       value: 
-      objectReference: {fileID: 211844364720587988, guid: 3be00a33906abf143aa84b0e6a1bab7e, type: 3}
+      objectReference: {fileID: 467412614947152160, guid: 3be00a33906abf143aa84b0e6a1bab7e, type: 3}
     - target: {fileID: 6112977482344960598, guid: 2c728d1f17fdd7849ad2da80cdd293f5, type: 3}
       propertyPath: gameLocations.Array.data[1]
       value: 
@@ -369,7 +373,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 349701935}
-  sceneList: []
 --- !u!114 &424824711 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5992887549204389099, guid: 56ddf5ec20974b94890e8ce2f26fa695, type: 3}
@@ -509,5 +512,9 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 349701935}
+    - target: {fileID: 5992887549204389099, guid: 56ddf5ec20974b94890e8ce2f26fa695, type: 3}
+      propertyPath: routineData
+      value: 
+      objectReference: {fileID: 4900000, guid: 20fa52e9cfcc0a74c916382f03a4baed, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56ddf5ec20974b94890e8ce2f26fa695, type: 3}

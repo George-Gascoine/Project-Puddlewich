@@ -7,7 +7,7 @@ using UnityEngine;
 public class Routine
 {
     public int startTime;
-    public string location;
+    public string destination;
     public Vector2 target;
     public int facingDirection;
     public string animation;
@@ -25,7 +25,7 @@ public class Routine
             result.Add(new Routine
             {
                 startTime = int.Parse(parts[0]),
-                location = parts[1],
+                destination = parts[1],
                 target = new Vector2(int.Parse(parts[2]), int.Parse(parts[3])),
                 facingDirection = int.Parse(parts[4]),
                 animation = parts[5]

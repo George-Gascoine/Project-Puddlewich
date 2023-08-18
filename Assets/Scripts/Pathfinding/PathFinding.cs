@@ -153,7 +153,7 @@ public class PathFinding : MonoBehaviour
                 currentPoint = (Vector2)finalPath[targetIndex];
             }
             transform.position = Vector2.MoveTowards((Vector2)transform.position, (Vector2)currentPoint, speed * Time.deltaTime);
-            Debug.Log(currentPoint);
+            //Debug.Log(currentPoint);
             pathTime = finalPath.Length / pathLength;
             yield return null;
         }
