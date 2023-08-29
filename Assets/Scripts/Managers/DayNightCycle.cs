@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using UnityEngine;
+using UnityEngine.Experimental.AI;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
@@ -11,17 +12,14 @@ using static UnityEngine.PlayerLoop.PreLateUpdate;
 public class DayNightCycle : MonoBehaviour
 {
     public Farming farm;
-    public Gradient _gradient;
-    public NPC npc;
     //public Light2D _light;
 
 
-    public static float gameTimer;
+    public int gameTimer;
     public float hour;
-    public float minute = 10f; 
+    public float minute; 
     public string day;
     public static string season = "winter";
-    public bool routineStart;
     public enum Day
     {
         Sunday,
@@ -41,36 +39,50 @@ public class DayNightCycle : MonoBehaviour
     }
     public void Awake()
     {
-        //gameTimer = 0f;
+        gameTimer = 0;
     }
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        gameTimer = 0f;
+        gameTimer = 0;
         day = Day.Sunday.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        gameTimer += Time.deltaTime;
-        //Debug.Log(gameTimer);
-        //Debug.Log(gameTimer);
-        if (minute > 0)
+        //if (active)
+        //{
+        //    gameTimer += Time.deltaTime;
+        //    //Debug.Log(gameTimer);
+        //    //Debug.Log(gameTimer);
+        //    if (minute > 0)
+        //    {
+        //        minute = minute - Time.deltaTime;
+        //        //if (SceneManager.GetActiveScene().name == "World")
+        //        //{
+        //        //    _light.color = _gradient.Evaluate(minute / 10);
+        //        //}
+        //    }
+        //    else
+        //    {
+        //        hour += 1;
+        //        minute = 10f;
+        //        var currentDay = (Day)hour;
+        //        day = currentDay.ToString();
+        //        UpdateCrops();
+        //    }
+        //}
+    }
+
+    public IEnumerator GameTime()
+    {
+        while (true)
         {
-            minute = minute - Time.deltaTime;
-            //if (SceneManager.GetActiveScene().name == "World")
-            //{
-            //    _light.color = _gradient.Evaluate(minute / 10);
-            //}
-        }
-        else
-        {
-            hour += 1;
-            minute = 10f;
-            var currentDay = (Day)hour;
-            day = currentDay.ToString();
-            UpdateCrops();
+            yield return new WaitForSeconds(1);
+            gameTimer++;
+            Debug.Log("Inc");
         }
     }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Build.Content;
@@ -9,6 +10,7 @@ using UnityEngine.SceneManagement;
 public class LoadScene : MonoBehaviour
 {
     public GameManager gameManager;
+    public CrossFade screenFade;
     //[SerializeField] public List<string> sceneList;
     //Log last time the player was in a scene
     //If the player is not in the same room as the NPC then the routine doesnt matter
@@ -18,7 +20,7 @@ public class LoadScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        //screenFade.ScreenFadeOut();
     }
 
     // Update is called once per frame
@@ -55,15 +57,18 @@ public class LoadScene : MonoBehaviour
     }
 
     public void LoadToScene(string scene, Vector2 spawn)
-
     {
-        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
-        SceneManager.LoadScene(scene, LoadSceneMode.Additive);
-        gameManager.player.transform.position = spawn;
-        StartCoroutine(ChangeScene(scene));
+        screenFade.ScreenFadeOut();   
+        StartCoroutine(ChangeScene(scene, 0.5f, spawn));
+        //screenFade.ScreenFadeIn();
     }
-    IEnumerator ChangeScene(string scene)
+    IEnumerator ChangeScene(string scene, float delay, Vector2 spawn)
     {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(scene, LoadSceneMode.Additive);
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+        gameManager.player.transform.position = spawn;
+        screenFade.ScreenFadeIn();
         yield return null;
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene));
     }

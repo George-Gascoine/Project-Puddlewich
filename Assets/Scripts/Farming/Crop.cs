@@ -48,7 +48,7 @@ public class Crop : MonoBehaviour
                     data.Remove(crop); break;
                 }
             }
-            player.inventory.Add(crop);
+            //player.inventory.Add(crop);
             Destroy(this.gameObject);
         }
     }

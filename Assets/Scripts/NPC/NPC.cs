@@ -20,7 +20,7 @@ public class NPC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        //gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         location = gameManager.gameLocations[0];
         pathFinding = gameObject.GetComponent<UpdatedPathFinding>();
         routines = Routine.FromJson(routineData.text, "winter");  
@@ -41,13 +41,13 @@ public class NPC : MonoBehaviour
         {
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
-
+        
         // If the next update is reached
-        if (Time.time >= nextUpdate && onWay == false)
+        if (gameManager.dayNightCycle.gameTimer >= nextUpdate && onWay == false)
         {
-            Debug.Log(Time.time + ">=" + nextUpdate);
+            Debug.Log(gameManager.dayNightCycle.gameTimer + ">=" + nextUpdate);
             // Change the next update (current second+1)
-            nextUpdate = Mathf.FloorToInt(Time.time) + 1;
+            nextUpdate = gameManager.dayNightCycle.gameTimer + 1;
             // Call your fonction
             CheckRoutine(nextUpdate-1);
         }
@@ -87,7 +87,7 @@ public class NPC : MonoBehaviour
         pathFinding.FindPath(start, target);
         pathFinding.StartCoroutine("FollowPath", 0);
         //SceneManager.LoadScene(location.locationName, LoadSceneMode.Additive);
-        StartCoroutine(ActivateScene(location.locationName));
+        //StartCoroutine(ActivateScene(location.locationName));
     }
     IEnumerator ActivateScene(string scene)
     {

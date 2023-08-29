@@ -4,9 +4,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Linq;
+using JetBrains.Annotations;
 
 public class Player : MonoBehaviour
 {
+    public string playerName;
     public float speed = 3.0f;
     public float pennies = 10f;
     public Rigidbody2D rb;
@@ -16,6 +18,8 @@ public class Player : MonoBehaviour
     public QuestManager questManager;
     public int selectedSlot;
     public bool slotChanged = false;
+    public Sprite[] bodyParts;
+    public SpriteRenderer hair, body, top, bottom;
     //public List<GameObject> myListObjects = new();
 
     public void Awake()
@@ -50,7 +54,15 @@ public class Player : MonoBehaviour
             slotChanged = false;
         }
     }
-
+    public void SetPlayer()
+    {
+        playerName = GameManager.instance.playerName;
+        bodyParts = GameManager.instance.bodyParts;
+        hair.sprite = bodyParts[0];
+        body.sprite = bodyParts[1];
+        top.sprite = bodyParts[2];
+        bottom.sprite = bodyParts[3];
+    }
     public void DropItem(Collectable item)
     {
         Vector3 spawnLocation = transform.position;

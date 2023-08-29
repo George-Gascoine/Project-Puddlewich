@@ -43,7 +43,7 @@ public class NPCInventoryUI : MonoBehaviour
 
     public void BuyItem(Slot slot)
     {
-        player.inventory.Add(slot.slotItem);
+        //player.inventory.Add(slot.slotItem);
         player.pennies += GameManager.instance.itemManager.GetPriceByType(slot.slotItem.type);
         npcTrade.inventory.Remove(slot.slotID);
         Refresh();

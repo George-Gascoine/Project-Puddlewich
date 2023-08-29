@@ -20,31 +20,6 @@ public class CauldronShopManager : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(DayNightCycle.gameTimer);
-        if (DayNightCycle.gameTimer >= 17 && DayNightCycle.gameTimer < 30)
-        {
-            if (enterShop == false)
-            {
-                instance = Instantiate(npc, new Vector3(0, 3, 0), Quaternion.identity);
-                enterShop = true;
-            }
-        }
-        else if (DayNightCycle.gameTimer >= 30) 
-        {
-            
-            if (instance != null && leaveShop == false)
-            {
-                leaveShop = true;
-                instance.GetComponent<NPCRoutine>().LeaveShop();
-            }
-            else if (instance == null && leaveShop == false)
-            {
-                Debug.Log(instance);
-                leaveShop = true;
-                instance = Instantiate(npc, new Vector3(0, 3, 0), Quaternion.identity);
-                Debug.Log(instance);
-                //instance.GetComponent<NPCRoutine>().LeaveShop();
-            }
-        }
+
     }
 }

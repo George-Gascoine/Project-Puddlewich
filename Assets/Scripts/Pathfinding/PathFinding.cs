@@ -128,7 +128,7 @@ public class PathFinding : MonoBehaviour
     {
         //yield return new WaitForSeconds(delay);
 
-        targetIndex = (int)((DayNightCycle.gameTimer * 2) - delay);
+        
         Debug.Log(targetIndex + " " + finalPath.Length);
         if (targetIndex >= finalPath.Length)
         {

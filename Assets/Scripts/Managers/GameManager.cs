@@ -10,6 +10,7 @@ using static UnityEngine.Rendering.DebugUI;
 public class GameManager : MonoBehaviour
 {
     public Player player;
+    public DayNightCycle dayNightCycle;
     public static GameManager instance;
     public ItemManager itemManager;
     public FarmManager farmManager;
@@ -23,23 +24,11 @@ public class GameManager : MonoBehaviour
     public List<Transition> sceneTransitions;
     public Dictionary<string, UpdatedGrid2D> sceneGrids = new();
     public NPC npc;
+    public string playerName;
+    public Sprite[] bodyParts;
 
     public void Start()
     {
-        //DontDestroyOnLoad(this.gameObject);
-        foreach (Location location in gameLocations)
-        {
-            location.warps.Clear();
-            sceneLoader.SceneLoader(location.locationName, location);
-        }
-
-        StartCoroutine(NPCStart());
-
-        DayNightCycle.gameTimer = 0;
-        player = Instantiate(player, new Vector3(4, 0, 0), Quaternion.identity);
-        player.speed = 60;
-        Screen.SetResolution(1920, 1080, true);
-        DontDestroyOnLoad(FindObjectOfType<Player>());
     }
     public void Awake()
     {
@@ -57,16 +46,36 @@ public class GameManager : MonoBehaviour
         farmManager = GetComponent<FarmManager>();
     }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
     private void Update()
     {
         
     }
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("OnSceneLoaded: " + scene.name);
-        Debug.Log(mode);
 
     }
+    public void GameStart()
+    {
+        Debug.Log("Start");
+        //DontDestroyOnLoad(this.gameObject);
+        foreach (Location location in gameLocations)
+        {
+            location.warps.Clear();
+            sceneLoader.SceneLoader(location.locationName, location);
+        }
+        StartCoroutine(dayNightCycle.GameTime());
+        sceneLoader.LoadToScene("World", new Vector2(0,5));
+        StartCoroutine(NPCStart());
+
+        player.speed = 60;
+        Screen.SetResolution(1920, 1080, true);
+        DontDestroyOnLoad(player);
+    }
+
     public void GenerateGridWithCollisions(Location location)
     {
 
@@ -82,8 +91,8 @@ public class GameManager : MonoBehaviour
 
     IEnumerator NPCStart()
     {
-        yield return new WaitForSeconds(3);
-        //npc.StartPath(this);
+        yield return new WaitForSeconds(0.5f);
+        player.SetPlayer();
     }
 
 }

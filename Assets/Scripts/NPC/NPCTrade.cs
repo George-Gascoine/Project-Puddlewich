@@ -17,7 +17,7 @@ public class NPCTrade : MonoBehaviour
         player = FindObjectOfType<Player>();
         trading = false;
         inventory = new Inventory(18);
-        inventory.Add(GameManager.instance.itemManager.GetItemByType(Collectable.ItemType.ITEM));
+        //inventory.Add(GameManager.instance.itemManager.GetItemByType(Collectable.ItemType.ITEM));
     }
 
     // Update is called once per frame
