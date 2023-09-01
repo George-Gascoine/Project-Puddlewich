@@ -1,0 +1,31 @@
+{
+    "item": [{
+			"name": "Item",
+			"id": 0,
+            "type": "Basic",
+            "effect": -1,
+            "description": "A basic item",
+            "sprite": "Item",
+            "cost": 10,
+            "quality": 1
+        }, {
+			"name": "Selfheal",
+			"id": 200,
+            "type": "Ingredient",
+			"effect": -1,
+            "description": "A Healing Herb",
+            "sprite": "Ingredient",
+            "cost": 10,
+            "quality": 3
+        }, {
+			"name": "Healing Potion",
+			"id": 300,
+            "type": "Potion",
+            "effect": "+ 10 HP",
+            "description": "Cures all ailments",
+            "sprite": "Potion",
+            "cost": 10,
+            "quality": 1
+        }
+    ]
+}

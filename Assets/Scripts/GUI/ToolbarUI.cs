@@ -24,7 +24,7 @@ public class ToolbarUI : MonoBehaviour
         CheckKeys();
         for (int i = 0; i < toolbarSlots.Count; i++)
         {
-            if (player.inventory.slots[i].type != Collectable.ItemType.NONE)
+            if (player.inventory.slots[i].item != null)
             {
                 toolbarSlots[i].SetItem(player.inventory.slots[i]);
             }
@@ -55,7 +55,7 @@ public class ToolbarUI : MonoBehaviour
             if (is_a_number && number >= 1 && number < 10)
             {
                 SelectSlot(number-1);
-                player.equippedItem = GameManager.instance.itemManager.GetItemByType(player.inventory.slots[number - 1].type);
+                player.equippedItem = player.inventory.slots[number - 1].item;
             }
         }
     }

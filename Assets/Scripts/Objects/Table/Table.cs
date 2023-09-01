@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Inventory;
 
 public class Table : MonoBehaviour
 {
-    public List<Collectable> TableSlots = new();
+    public List<Item.ItemData> TableSlots = new();
     public int numSlots = 4;
     public Player player;
     public Sprite sprite;
@@ -22,7 +23,7 @@ public class Table : MonoBehaviour
     {
         if (TableSlots[0] != null)
         {
-            sprite = TableSlots[0].GetComponent<SpriteRenderer>().sprite;
+            sprite = Resources.Load<Sprite>("Sprites/Items/" + TableSlots[0].sprite);
             spriteRenderer.sprite = sprite;
         }
     }

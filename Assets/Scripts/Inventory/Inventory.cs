@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
+using static Item;
 
 [System.Serializable]
 public class Inventory
@@ -10,14 +11,14 @@ public class Inventory
     [System.Serializable]
     public class Slot
     {
-        public Collectable.ItemType type;
+        public Item.ItemData item;
         public int count;
         public int maxAllowed;
 
         public Sprite icon;
         public Slot()
         {
-            type = Collectable.ItemType.NONE;
+            item = null;
             count = 0;
             maxAllowed = 99;
         }
@@ -31,10 +32,10 @@ public class Inventory
                 return false;
         }
 
-        public void AddItem(Collectable item)
+        public void AddItem(Item.ItemData item)
         {
-            this.type = item.type;
-            this.icon = item.icon;
+            this.item = item;
+            this.icon = Resources.Load<Sprite>("Sprites/Items/" + item.sprite);
             count += 1;
         }
     }
@@ -50,11 +51,11 @@ public class Inventory
         }
     }
 
-    public void Add(Collectable item)
+    public void Add(Item.ItemData item)
     {
         foreach (Slot slot in slots)
         {
-            if (slot.type == item.type && slot.CanAddItem())
+            if (slot.item == item && slot.CanAddItem())
             {
                 slot.AddItem(item);
                 return;
@@ -62,7 +63,7 @@ public class Inventory
         }
         foreach (Slot slot in slots)
         {
-            if (slot.type == Collectable.ItemType.NONE && slot.CanAddItem())
+            if (slot.item == null && slot.CanAddItem())
             {
                 slot.AddItem(item);
                 return;
@@ -76,16 +77,16 @@ public class Inventory
             slots[slotID].count--;
             if (slots[slotID].count == 0)
             {
-                slots[slotID].type = Collectable.ItemType.NONE;
+                slots[slotID].item = null;
             }
         }
     }
 
-    public bool CheckItem(Collectable.ItemType checkType, int checkAmount)
+    public bool CheckItem(Item.ItemData checkType, int checkAmount)
     {
         foreach (Slot slot in slots)
         {
-            if (slot.type == checkType && slot.count == checkAmount)
+            if (slot.item == checkType && slot.count == checkAmount)
             {
                 return true;
             }

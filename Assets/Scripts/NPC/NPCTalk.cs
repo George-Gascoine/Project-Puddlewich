@@ -14,8 +14,8 @@ public class NPCTalk : MonoBehaviour
     public string[] selectedDiaArray;
     public string[] dialogue;
     public string[] friendshipDialogue;
-    public List<Collectable> likedItems;
-    public List<Collectable> dislikedItems;
+    public List<Item.ItemData> likedItems;
+    public List<Item.ItemData> dislikedItems;
     public int index;
     public bool greeted = false; 
     public bool typing = false;
@@ -119,7 +119,7 @@ public class NPCTalk : MonoBehaviour
         textPanel.SetActive(false);
     }
 
-    public void UpgradeFriendship(Collectable gift)
+    public void UpgradeFriendship(Item.ItemData gift)
     {
         selectedDiaArray = friendshipDialogue;
         if (likedItems.IndexOf(gift) != -1)

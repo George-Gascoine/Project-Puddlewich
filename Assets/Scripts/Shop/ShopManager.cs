@@ -8,7 +8,7 @@ public class ShopManager : MonoBehaviour
     public Grid2D grid;
     public Tile checkoutTile;
     public float shopEarnings;
-    public List<Collectable> itemsForSale = new();
+    public List<Item> itemsForSale = new();
     public List<NPCShopper> shopperList = new();
     public List<NPCShopper> checkoutQueue = new();
     public float checkoutIncX = 0.5f;
@@ -42,7 +42,7 @@ public class ShopManager : MonoBehaviour
             int shopperNo = Random.Range(0, shopperList.Count);
             int itemNo = Random.Range(0, itemsForSale.Count);
             NPCShopper selectedShopper = shopperList[shopperNo];
-            Collectable item = itemsForSale[itemNo];
+            Item item = itemsForSale[itemNo];
             selectedShopper.browsing = false;
             selectedShopper.CancelInvoke("Browse");
             selectedShopper.buyer = true;

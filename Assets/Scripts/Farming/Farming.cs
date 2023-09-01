@@ -51,7 +51,7 @@ public class Farming : MonoBehaviour
             Vector3 currentCellCentre = grid.GetCellCenterWorld(currentCell);
 
             // add one in a direction (you'll have to change this to match your directional control)
-            if (Input.GetMouseButtonDown(0) && player.equippedItem == GameManager.instance.itemManager.GetItemByType(Collectable.ItemType.HOE))
+            if (Input.GetMouseButtonDown(0) && player.equippedItem.name == "Hoe")
             {
                 if (farmMap.GetTile(currentCell) == grassTile)
                 {
@@ -59,7 +59,7 @@ public class Farming : MonoBehaviour
                     farmMap.SetTile(currentCell, soilTile);
                 }
             }
-            if (Input.GetMouseButtonDown(0) && player.equippedItem == GameManager.instance.itemManager.GetItemByType(Collectable.ItemType.WATERINGCAN))
+            if (Input.GetMouseButtonDown(0) && player.equippedItem.name == "Watering Can")
             {
                 if (farmMap.GetTile(currentCell) == soilTile)
                 {
@@ -74,14 +74,15 @@ public class Farming : MonoBehaviour
                     }
                 }
             }
-            if (Input.GetMouseButtonDown(0) && player.equippedItem.crop != null)
+            if (Input.GetMouseButtonDown(0) && player.equippedItem.type == "Seed")
             {
                 if (farmMap.GetTile(currentCell) == soilTile || farmMap.GetTile(currentCell) == wateredTile)
                 {
                     bool cellOccupied = cropData.Any(CropData => CropData.cropFarmPos == currentCell);
                     if(!cellOccupied)
                     {
-                        PlantCrop(player.equippedItem.crop, currentCell, currentCellCentre);
+                        //CROP JSON
+                        //PlantCrop(player.equippedItem.effect, currentCell, currentCellCentre);
                     }
                 }
             }

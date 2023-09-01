@@ -9,6 +9,8 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class GameManager : MonoBehaviour
 {
+    public Canvas inventory, quest, questLog;
+
     public Player player;
     public DayNightCycle dayNightCycle;
     public static GameManager instance;
@@ -17,6 +19,7 @@ public class GameManager : MonoBehaviour
     public Grid farmGrid;
     public Dictionary<Vector2, Tile> farmTiles = new();
     public Grid worldGrid;
+    public PlayerCamera cam;
 
     public LoadScene sceneLoader;
     public List<Location> gameLocations;
@@ -69,11 +72,9 @@ public class GameManager : MonoBehaviour
         }
         StartCoroutine(dayNightCycle.GameTime());
         sceneLoader.LoadToScene("World", new Vector2(0,5));
+        
         StartCoroutine(NPCStart());
 
-        player.speed = 60;
-        Screen.SetResolution(1920, 1080, true);
-        DontDestroyOnLoad(player);
     }
 
     public void GenerateGridWithCollisions(Location location)
@@ -92,7 +93,16 @@ public class GameManager : MonoBehaviour
     IEnumerator NPCStart()
     {
         yield return new WaitForSeconds(0.5f);
+        player.gameObject.SetActive(true);
+        npc.gameObject.SetActive(true);
+        inventory.gameObject.SetActive(true);
+        quest.gameObject.SetActive(true);
+        questLog.gameObject.SetActive(true);   
+        player.speed = 60;
+        Screen.SetResolution(1920, 1080, true);
+        DontDestroyOnLoad(player);
         player.SetPlayer();
+        npc.ReadJSON();
     }
 
 }

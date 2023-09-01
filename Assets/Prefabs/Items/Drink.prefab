@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4098525171620087025}
   - component: {fileID: 4098525171620087028}
   - component: {fileID: 4098525171620087027}
-  - component: {fileID: 4098525171620087026}
   - component: {fileID: 7431430391445902432}
+  - component: {fileID: 1939181355630590089}
   m_Layer: 0
   m_Name: Drink
   m_TagString: Untagged
@@ -113,37 +113,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.77351964, y: 0.6163366}
   m_EdgeRadius: 0
---- !u!114 &4098525171620087026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4098525171620087024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3efd7177080d28e47a40d70f91ac537a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  type: 3
-  icon: {fileID: 21300000, guid: 34935aa73d920b340a8fffc1f4f17a7f, type: 3}
-  itemCost: 0
-  buyingTile:
-    GameManager: {fileID: 0}
-    highlight: {fileID: 0}
-    gCost: 0
-    hCost: 0
-    gridX: 0
-    gridY: 0
-    posX: 0
-    posY: 0
-    isWalkable: 0
-  shopManager: {fileID: 0}
-  farmManager: {fileID: 0}
-  crop: {fileID: 0}
-  pickUp: 0
-  clip: {fileID: 8300000, guid: c4eddd708829eff459aed89150591327, type: 3}
 --- !u!82 &7431430391445902432
 AudioSource:
   m_ObjectHideFlags: 0
@@ -240,3 +209,42 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1939181355630590089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4098525171620087024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 319e9ae135408b64abfca927b2ef28f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+    name: 
+    id: 0
+    type: 
+    effect: 
+    description: 
+    sprite: drink
+    cost: 0
+    quality: 0
+  player: {fileID: 0}
+  itemCost: 0
+  buyingTile:
+    GameManager: {fileID: 0}
+    highlight: {fileID: 0}
+    gCost: 0
+    hCost: 0
+    gridX: 0
+    gridY: 0
+    posX: 0
+    posY: 0
+    isWalkable: 0
+  shopManager: {fileID: 0}
+  farmManager: {fileID: 0}
+  pickUp: 0
+  crop: {fileID: 0}
+  popPickUp: {fileID: 7431430391445902432}
+  clip: {fileID: 8300000, guid: c4eddd708829eff459aed89150591327, type: 3}

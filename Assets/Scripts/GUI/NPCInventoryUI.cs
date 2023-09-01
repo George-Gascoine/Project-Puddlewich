@@ -29,7 +29,7 @@ public class NPCInventoryUI : MonoBehaviour
             for (int i = 0; i < slots.Count; i++)
             {
                 slots[i].sellableSlot = true;
-                if (npcTrade.inventory.slots[i].type != Collectable.ItemType.NONE)
+                if (npcTrade.inventory.slots[i].item != null)
                 {
                     slots[i].SetItem(npcTrade.inventory.slots[i]);
                 }
@@ -44,7 +44,7 @@ public class NPCInventoryUI : MonoBehaviour
     public void BuyItem(Slot slot)
     {
         //player.inventory.Add(slot.slotItem);
-        player.pennies += GameManager.instance.itemManager.GetPriceByType(slot.slotItem.type);
+        player.pennies += slot.slotItem.cost;
         npcTrade.inventory.Remove(slot.slotID);
         Refresh();
     }
@@ -55,7 +55,7 @@ public class NPCInventoryUI : MonoBehaviour
         {
             for (int i = 0; i < slots.Count; i++)
             {
-                if (npcTrade.inventory.slots[i].type != Collectable.ItemType.NONE)
+                if (npcTrade.inventory.slots[i].item != null)
                 {
                     slots[i].SetItem(npcTrade.inventory.slots[i]);
                 }

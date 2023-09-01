@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static ItemManager;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
 [System.Serializable]
-public class Potion : MonoBehaviour
+public class Potion : Item
 {
-    public Item.Potion potion;
+    public Item.ItemData potion;
 
     public string pName;
     public string pEffect;

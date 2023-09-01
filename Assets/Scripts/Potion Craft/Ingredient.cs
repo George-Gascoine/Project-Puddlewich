@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static ItemManager;
 
 [System.Serializable]
-public class Ingredient : Collectable
+public class Ingredient : Item
 {
-    public Item.Ingredient ingredient;
+    public Item.ItemData ingredient;
 
     public PotionCraftManager manager;
     public string iName;
@@ -29,14 +30,13 @@ public class Ingredient : Collectable
         iType = ingredient.type;
         iDescription = ingredient.description;
         iSprite = Resources.Load<Sprite>("Sprites/Potion Craft/" + ingredient.sprite);
-        crushedISprite = Resources.Load<Sprite>("Sprites/Potion Craft/" + ingredient.crushedsprite);
+        //crushedISprite = Resources.Load<Sprite>("Sprites/Potion Craft/" + ingredient.crushedsprite);
         iCost = ingredient.cost;
         iQuality = ingredient.quality;
         crushCount = 0;
 
         GetComponent<SpriteRenderer>().sprite = iSprite;
         gameObject.AddComponent<PolygonCollider2D>();
-        icon = GetComponent<SpriteRenderer>().sprite;
     }
 
     private Vector3 screenPoint;

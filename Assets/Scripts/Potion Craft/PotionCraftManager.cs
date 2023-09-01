@@ -9,11 +9,9 @@ using System.IO;
 
 public class PotionCraftManager : MonoBehaviour
 {
-    public TextAsset ingredientData;
-    public TextAsset potionData;
+    public ItemManager.ItemList itemList;
     public TextAsset recipeData;
     public Ingredient baseIngredient;
-    public Potion basePotion;
     public StirringStick stick;
     public int stirNo;
     public float heatTimer;
@@ -24,19 +22,8 @@ public class PotionCraftManager : MonoBehaviour
     private void Start()
     {
         ReadJSON();
+        itemList = GameManager.instance.itemManager.itemList;
         PopulateIngredients();
-    }
-  
-    [System.Serializable]
-    public class IngredientList
-    {
-        public List<Item.Ingredient> ingredient;
-    }
-
-    [System.Serializable]
-    public class PotionList
-    {
-        public List<Item.Potion> potion;
     }
 
     [System.Serializable]
@@ -44,13 +31,10 @@ public class PotionCraftManager : MonoBehaviour
     {
         public List<Item.Recipe> recipe;
     }
-    public IngredientList ingredientList;
-    public PotionList potionList;
+
     public RecipeList recipeList;
     void ReadJSON()
     {
-        ingredientList = JsonUtility.FromJson<IngredientList>(ingredientData.text);
-        potionList = JsonUtility.FromJson<PotionList>(potionData.text);
         recipeList = JsonUtility.FromJson<RecipeList>(recipeData.text);
         foreach (Item.Recipe recipe in recipeList.recipe)
         {
@@ -59,21 +43,24 @@ public class PotionCraftManager : MonoBehaviour
     }
     public void PopulateIngredients()
     {
-        for (int i = 0; i < ingredientList.ingredient.Count; i ++)
+        for (int i = 0; i < itemList.item.Count; i ++)
         {
-            Ingredient ingredient = Instantiate(baseIngredient);
-            ingredient.ingredient = ingredientList.ingredient[i];
-            ingredient.gameObject.transform.position = new Vector3(5+(i*1.5f), 2.5f, 1);
-            ingredient.transform.localScale = new Vector3(10, 10, 1);
+            if (itemList.item[i].type == "Ingredient")
+            {
+                Ingredient ingredient = Instantiate(baseIngredient);
+                ingredient.ingredient = itemList.item[i];
+                ingredient.gameObject.transform.position = new Vector3(5 + (i * 1.5f), 2.5f, 1);
+                ingredient.transform.localScale = new Vector3(10, 10, 1);
+            }
         }
     }
     public void CreatePotion()
     {
-            Potion finishedPotion = Instantiate(basePotion);
-            finishedPotion.potion = potionList.potion[0];
-            finishedPotion.transform.position = new Vector2(-6, -3);
-            finishedPotion.transform.localScale = new Vector3(10, 10, 1);
-            stirNo = 0;
-            stick.stirCounter = 0;
+            //Potion finishedPotion = Instantiate(basePotion);
+            //finishedPotion.potion = potionList.potion[0];
+            //finishedPotion.transform.position = new Vector2(-6, -3);
+            //finishedPotion.transform.localScale = new Vector3(10, 10, 1);
+            //stirNo = 0;
+            //stick.stirCounter = 0;
     }
 }

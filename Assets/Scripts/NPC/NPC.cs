@@ -1,14 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.U2D;
 using System.Linq;
+using Newtonsoft.Json.Linq;
+using static UnityEngine.Rendering.DebugUI;
+using static DayNightCycle;
 
 public class NPC : MonoBehaviour
 {
+    public TextAsset NPCData;
+    public string npcName;
+    public string age;
+    public string manners;
+    public string gender;
+    public bool datable;
+    public List<int> likes;
+    public List<int> dislikes;
+    public Birthday birthday;
+    public Position defPosition;
+
     public GameManager gameManager;
     public Vector2 currentPosition;
     public TextAsset routineData;
@@ -21,9 +32,9 @@ public class NPC : MonoBehaviour
     void Start()
     {
         //gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        location = gameManager.gameLocations[0];
-        pathFinding = gameObject.GetComponent<UpdatedPathFinding>();
-        routines = Routine.FromJson(routineData.text, "winter");  
+        this.location = gameManager.gameLocations[0];
+        this.pathFinding = gameObject.GetComponent<UpdatedPathFinding>();
+        this.routines = Routine.FromJson(routineData.text, "winter");
     }
 
     private int nextUpdate = 1;
@@ -41,17 +52,64 @@ public class NPC : MonoBehaviour
         {
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
-        
+
         // If the next update is reached
         if (gameManager.dayNightCycle.gameTimer >= nextUpdate && onWay == false)
         {
             Debug.Log(gameManager.dayNightCycle.gameTimer + ">=" + nextUpdate);
             // Change the next update (current second+1)
-            nextUpdate = gameManager.dayNightCycle.gameTimer + 1;
+            this.nextUpdate = gameManager.dayNightCycle.gameTimer + 1;
             // Call your fonction
-            CheckRoutine(nextUpdate-1);
+            CheckRoutine(nextUpdate - 1);
         }
 
+    }
+    [System.Serializable]
+    public class Birthday
+    {
+        public string Season;
+        public int Day;
+
+        public Birthday(string season, int day)
+        {
+            this.Season = season;
+            this.Day = day;
+        }
+    }
+    [System.Serializable]
+    public class Position
+    {
+        public string Loc;
+        public Tile Tile;
+
+        public Position(string locName, Vector2 tilePos)
+        {
+            this.Loc = locName;
+            this.Tile = GameManager.instance.sceneGrids[locName].tiles[tilePos];
+        }
+    }
+    public void ReadJSON()
+    {
+        JObject jObject = JObject.Parse(NPCData.text);
+        this.npcName = (string)jObject["npcName"];
+        this.age = (string)jObject["age"];
+        this.manners = (string)jObject["manners"];
+        this.gender = (string)jObject["gender"];
+        this.datable = (bool)jObject["datable"];
+        this.likes = jObject["likes"].ToObject<List<int>>();
+        this.dislikes = jObject["dislikes"].ToObject<List<int>>();
+
+        string jBirthday = (string)jObject["birthday"];
+        string[] bParts = jBirthday.Split(' ');
+        string season = bParts[0];
+        int day = int.Parse(bParts[1]);
+        this.birthday = new Birthday(season, day);
+
+        string dLocation = (string)jObject["defLocation"];
+        string[] lParts = dLocation.Split(' ');
+        string location = lParts[0];
+        Vector2 tilePos = new Vector2(float.Parse(lParts[1]), float.Parse(lParts[2]));
+        this.defPosition = new Position(location, tilePos);
     }
 
     public void CheckRoutine(int time)
@@ -63,8 +121,8 @@ public class NPC : MonoBehaviour
                 {
                     if (time == routine.startTime)
                     {
-                        onWay = true;
-                        destination = gameManager.gameLocations.First(Location => Location.locationName == routine.destination);
+                        this.onWay = true;
+                        this.destination = gameManager.gameLocations.First(Location => Location.locationName == routine.destination);
                         StartPath(gameManager, routine.target);
                     }
                 }
@@ -75,7 +133,7 @@ public class NPC : MonoBehaviour
     public void StartPath(GameManager gameManager, Vector2 targetTile)
     {
         //Debug.Log(gameManager.sceneGrids.Count);
-        pathFinding = gameObject.GetComponent<UpdatedPathFinding>();
+        this.pathFinding = gameObject.GetComponent<UpdatedPathFinding>();
         pathFinding.gameManager = gameManager;
         pathFinding.npc = this;
         Tile start = gameManager.sceneGrids[location.locationName].tiles[currentPosition];

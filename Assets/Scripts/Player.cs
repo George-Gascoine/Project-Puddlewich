@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     public float pennies = 10f;
     public Rigidbody2D rb;
     public Inventory inventory;
-    public Collectable equippedItem;
+    public Item.ItemData equippedItem;
     public GameManager manager;
     public QuestManager questManager;
     public int selectedSlot;
@@ -33,9 +33,9 @@ public class Player : MonoBehaviour
     void Start()
     {
         //inventory.Add(GameManager.instance.itemManager.GetItemByType(Collectable.ItemType.ITEM));
-        if (inventory.slots[0].type != Collectable.ItemType.NONE)
+        if (inventory.slots[0].item != null)
         {
-            equippedItem = GameManager.instance.itemManager.GetItemByType(inventory.slots[0].type);
+            equippedItem = inventory.slots[0].item;
         }
     }
 
@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
         rb.MovePosition(rb.transform.position + tempVect);
         if(slotChanged)
         {
-            equippedItem = GameManager.instance.itemManager.GetItemByType(inventory.slots[selectedSlot].type);
+            equippedItem = inventory.slots[selectedSlot].item;
             slotChanged = false;
         }
     }
@@ -63,10 +63,10 @@ public class Player : MonoBehaviour
         top.sprite = bodyParts[2];
         bottom.sprite = bodyParts[3];
     }
-    public void DropItem(Collectable item)
+    public void DropItem(Item.ItemData item)
     {
         Vector3 spawnLocation = transform.position;
 
-        Collectable droppedItem = Instantiate(item,spawnLocation,Quaternion.identity);
+        //Item droppedItem = Instantiate(item,spawnLocation,Quaternion.identity);
     }
 }

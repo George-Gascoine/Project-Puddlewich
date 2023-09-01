@@ -14,6 +14,7 @@ public class QuestLog : MonoBehaviour
     public TextMeshProUGUI questDesc;
     public Player player;
     public QuestManager questManager;
+    public List<GameObject> questButtons;
 
     public void Update()
     {
@@ -39,10 +40,16 @@ public class QuestLog : MonoBehaviour
                 ty.text = questLog[i].title;
                 int logID = i;
                 newButton.onClick.AddListener(() => { DisplayQuestDesc(logID); });
+                questButtons.Add(newButton.gameObject);
             }
         }
         else
         {
+            for (int i = 0; i < questButtons.Count; i++)
+            {
+                Destroy(questButtons[i]);
+            }
+            questDesc.text = "";
             questLogPanel.SetActive(false);
         }
     }

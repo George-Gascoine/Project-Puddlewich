@@ -125,11 +125,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46ca1d3becdf7c4ba0a61e374762107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NPCData: {fileID: 0}
+  npcName: George
+  age: Adult
+  manners: Polite
+  gender: Male
+  datable: 1
+  likes: 010000000200000003000000
+  dislikes: 040000000500000006000000
+  birthday:
+    Season: World
+    Day: 5
+  defPosition:
+    Loc: World
+    Tile:
+      GameManager: {fileID: 0}
+      highlight: {fileID: 0}
+      gCost: 70
+      hCost: 350
+      gridX: 5
+      gridY: 5
+      posX: 0
+      posY: 2.5
+      isWalkable: 1
   gameManager: {fileID: 6112977482344960598, guid: 2c728d1f17fdd7849ad2da80cdd293f5, type: 3}
   currentPosition: {x: 0, y: 0}
+  routineData: {fileID: 4900000, guid: 20fa52e9cfcc0a74c916382f03a4baed, type: 3}
+  routines: []
   location: {fileID: 211844364720587988, guid: 3be00a33906abf143aa84b0e6a1bab7e, type: 3}
   destination: {fileID: 211844364720587988, guid: 3be00a33906abf143aa84b0e6a1bab7e, type: 3}
   pathFinding: {fileID: 5992887549204389098}
+  onWay: 0
 --- !u!114 &5992887549204389098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,7 +207,7 @@ MonoBehaviour:
     posX: 2.5
     posY: 1.25
     isWalkable: 1
-  targetTransition:
+  targetWarp:
     location: {fileID: 0}
     locationTile: {x: 0, y: 0}
     destination: {fileID: 0}

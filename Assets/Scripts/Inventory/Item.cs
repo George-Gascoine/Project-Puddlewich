@@ -1,33 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Collectable;
+using static Inventory;
 
-public class Item
+[System.Serializable]
+public class Item: MonoBehaviour
 {
     [System.Serializable]
-    public class Potion
+    public class ItemData
     {
-        public int id;
         public string name;
+        public int id;
+        public string type;
         public string effect;
         public string description;
         public string sprite;
-        public float cost;
-        public float quality;
+        public int cost;
+        public int quality;
     }
-    [System.Serializable]
-    public class Ingredient
-    {
-        public int id;
-        public string name;
-        public string type;
-        public string description;
-        public string sprite;
-        public string crushedsprite;
-        public float cost;
-        public float quality;
 
-    }
+    public ItemData data;
+
     [System.Serializable]
     public class Recipe
     {
@@ -60,5 +54,64 @@ public class Item
             return true;
         }
     }
+    public Player player;
+    public int itemCost;
+    public Tile buyingTile;
+    SpriteRenderer spriteRenderer;
+    public ShopManager shopManager;
+    public FarmManager farmManager;
+    public bool pickUp;
+    public Crop crop;
+    public AudioSource popPickUp;
+    public AudioClip clip;
+    private void Update()
+    {
+        //if (popPickUp != null)
+        //{ popPickUp.Play();
+        //}
+        //else
+        //{
+        //    popPickUp.clip = clip;
+        //    popPickUp.Play();
+        //}
+        if (pickUp == true)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, 0.01f);
+            if (transform.position == player.transform.position)
+            {
+                CollectableAdd();
+            }
+        }
+    }
 
+    void Awake()
+    {
+        itemCost = data.cost;
+        player = FindObjectOfType<Player>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = Resources.Load<Sprite>("Sprites/Items/" + data.sprite);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            pickUp = true;
+        }
+    }
+
+    public void CollectableAdd()
+    {
+        player.inventory.Add(this.data);
+        player.slotChanged = true;
+        popPickUp.PlayOneShot(clip);
+        pickUp = false;
+        StartCoroutine(CollectableDestroy());
+    }
+
+    IEnumerator CollectableDestroy()
+    {
+        yield return new WaitWhile(() => popPickUp.isPlaying);
+        Destroy(this.gameObject);
+    }
 }

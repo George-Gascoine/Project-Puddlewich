@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using static Item;
 //Slot Class
 public class Slot : MonoBehaviour
 {
-    public Collectable slotItem;
+    public Item.ItemData slotItem;
     public int slotID;
     public Image itemIcon;
     public TextMeshProUGUI quantityText;
@@ -17,8 +18,8 @@ public class Slot : MonoBehaviour
     {
         if(slot != null)
         {
-            slotItem = GameManager.instance.itemManager.GetItemByType(slot.type);
-            itemIcon.sprite = GameManager.instance.itemManager.GetSpriteByType(slot.type);
+            slotItem = slot.item;
+            itemIcon.sprite = Resources.Load<Sprite>("Sprites/Items/" + slot.item.sprite);
             //itemIcon.sprite = slot.icon;
             itemIcon.color = new Color(1, 1, 1, 1);
             quantityText.text = slot.count.ToString();

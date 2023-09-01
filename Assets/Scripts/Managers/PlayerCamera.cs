@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    Player player;
-    void Start()
-    {
-        player = FindObjectOfType<Player>();
-        var vcam = GetComponent<CinemachineVirtualCamera>();
-        vcam.LookAt = player.transform;
-        vcam.Follow = player.transform;
-    }
+    //public Player player;
+    //public void InitiateCam()
+    //{
+    //    var vcam = GetComponent<CinemachineVirtualCamera>();
+    //    vcam.LookAt = player.transform;
+    //    vcam.Follow = player.transform;
+    //}
 }

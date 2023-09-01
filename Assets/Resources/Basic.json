@@ -1,0 +1,28 @@
+{
+    "basic": [{
+			"id": 0,
+            "name": "Item",
+            "effect": -1,
+            "description": "A basic item",
+            "sprite": "Item",
+            "cost": 10,
+            "quality": 1
+        }, {
+			"id": 1,
+            "name": "Food",
+            "effect": "+ 10 HP",
+            "description": "Some kind of din din",
+            "sprite": "Food",
+            "cost": 8,
+            "quality": 1
+        }, {
+			"id": 2,
+            "name": "Drink",
+            "effect": "+ 5 HP",
+            "description": "A fine beverage",
+            "sprite": "Drink",
+            "cost": 5,
+            "quality": 3
+        }
+    ]
+}

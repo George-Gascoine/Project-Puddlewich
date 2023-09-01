@@ -13,7 +13,7 @@ public class SnapToGrid : MonoBehaviour
     Grid2D grid;
     ShopManager shopManager;
     ShopperSpawner shopperSpawner;
-    public Collectable itemOnTable;
+    public Item.ItemData itemOnTable;
     public Tile browseTile1;
     public Tile browseTile2;
     public Tile browseTile3;

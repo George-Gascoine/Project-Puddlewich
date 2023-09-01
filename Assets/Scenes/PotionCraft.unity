@@ -1169,20 +1169,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17de77a4d9e12a34cb226db107cb2e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ingredientData: {fileID: 4900000, guid: 9a09447a188aa264bad51a47acda596d, type: 3}
-  potionData: {fileID: 4900000, guid: 202b0b73f996d3c4f8a1cba81ce28e5c, type: 3}
+  itemList:
+    item:
+    - name: Item
+      id: 0
+      type: Basic
+      effect: -1
+      description: A basic item
+      sprite: Item
+      cost: 10
+      quality: 1
+    - name: Selfheal
+      id: 200
+      type: Ingredient
+      effect: -1
+      description: A Healing Herb
+      sprite: Ingredient
+      cost: 10
+      quality: 3
+    - name: Healing Potion
+      id: 300
+      type: Potion
+      effect: + 10 HP
+      description: Cures all ailments
+      sprite: Potion
+      cost: 10
+      quality: 1
   recipeData: {fileID: 4900000, guid: c8fdf25c9b2d67840a0a75bd87a4a20b, type: 3}
   baseIngredient: {fileID: 1997847726955645028, guid: dfd5718b12fb1234e9bd73a3ce4e1b2a, type: 3}
-  basePotion: {fileID: -3452815120385166697, guid: dccecc4d2fff0ec4688bbc80d9dfe335, type: 3}
   stick: {fileID: 1750665909}
   stirNo: 0
   heatTimer: 0
   heatIntensity: 0
   ingredientPanel: {fileID: 1247931052}
-  ingredientList:
-    ingredient: []
-  potionList:
-    potion: []
   recipeList:
     recipe: []
 --- !u!1 &1076586431
@@ -1195,7 +1214,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1076586434}
   - component: {fileID: 1076586433}
-  - component: {fileID: 1076586432}
   - component: {fileID: 1076586435}
   m_Layer: 0
   m_Name: Main Camera
@@ -1204,14 +1222,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1076586432
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1076586431}
-  m_Enabled: 1
 --- !u!20 &1076586433
 Camera:
   m_ObjectHideFlags: 0

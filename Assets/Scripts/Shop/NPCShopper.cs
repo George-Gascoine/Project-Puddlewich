@@ -25,7 +25,7 @@ public class NPCShopper : MonoBehaviour
     public bool browsing = false;
     public bool paying = false;
     public bool leaving = false;
-    public Collectable buyItem;
+    public Item buyItem;
     public float payPrice;
 
     private void Start()
