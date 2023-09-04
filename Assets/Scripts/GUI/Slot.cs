@@ -12,6 +12,7 @@ public class Slot : MonoBehaviour
     public Image itemIcon;
     public TextMeshProUGUI quantityText;
     public bool sellableSlot = false;
+    public bool mouseOver = false;
     [SerializeField] private GameObject highlight;
 
     public void SetItem(Inventory.Slot slot)
@@ -35,5 +36,11 @@ public class Slot : MonoBehaviour
     public void SetHighlight(bool isOn)
     {
         highlight.SetActive(isOn);
+    }
+
+    public void OnMouseOver()
+    {
+        mouseOver = true;
+        Debug.Log(mouseOver);
     }
 }

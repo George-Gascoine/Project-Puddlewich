@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Unity.VisualScripting;
 using UnityEngine;
+using static Inventory;
 using static Item;
 
 [System.Serializable]
@@ -14,6 +16,7 @@ public class Inventory
         public Item.ItemData item;
         public int count;
         public int maxAllowed;
+        public bool mouseOver = false;
 
         public Sprite icon;
         public Slot()
@@ -27,6 +30,7 @@ public class Inventory
         {
             if (count < maxAllowed) 
             {
+                Debug.Log(count);
                 return true;
             }
                 return false;
@@ -37,6 +41,11 @@ public class Inventory
             this.item = item;
             this.icon = Resources.Load<Sprite>("Sprites/Items/" + item.sprite);
             count += 1;
+        }
+        public void OnMouseOver()
+        {
+            mouseOver = true;
+            Debug.Log(mouseOver);
         }
     }
 
@@ -55,10 +64,13 @@ public class Inventory
     {
         foreach (Slot slot in slots)
         {
-            if (slot.item == item && slot.CanAddItem())
+            if (slot.item != null)
             {
-                slot.AddItem(item);
-                return;
+                if (slot.item.id == item.id && slot.CanAddItem())
+                {
+                    slot.count += 1;
+                    return;
+                }
             }
         }
         foreach (Slot slot in slots)
@@ -70,6 +82,12 @@ public class Inventory
             }
         }
     }
+
+    public void AddToSlot(Item.ItemData item, int id)
+    {
+        slots[id].AddItem(item);
+    }
+
     public void Remove(int slotID)
     {
         if (slots[slotID].count != 0)
@@ -80,6 +98,11 @@ public class Inventory
                 slots[slotID].item = null;
             }
         }
+    }
+    public void RemoveAll(int slotID)
+    {
+        slots[slotID].count = 0;
+        slots[slotID].item = null;
     }
 
     public bool CheckItem(Item.ItemData checkType, int checkAmount)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static ItemManager;
 using static UnityEngine.Rendering.DebugUI;
 
 public class SetItemPrice : MonoBehaviour
@@ -19,6 +20,7 @@ public class SetItemPrice : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameManager.instance.player;
         itemPrice = 0;
     }
     void Update()
@@ -44,7 +46,6 @@ public class SetItemPrice : MonoBehaviour
     {
         pricePanel.SetActive(false);
         PlaceItem(player.equippedItem);
-        player.inventory.Remove(toolbar.selectedSlot.slotID);
         itemPrice = 0;
     }
     public void PlaceItem(Item.ItemData sale)
@@ -54,13 +55,13 @@ public class SetItemPrice : MonoBehaviour
             var itemX = tableID.transform.position.x;
             var itemY = tableID.transform.position.y - 0.08f;
             var itemZ = 1f;
-            var item = Instantiate(new Item(), new Vector3(itemX, itemY, itemZ), Quaternion.identity);
-            item.data = sale;
-            item.itemCost = itemPrice;
+            var item = Instantiate(GameManager.instance.baseItem, new Vector3(itemX, itemY, itemZ), Quaternion.identity);
+            item.GetComponent<Item>().data = sale;
+            item.GetComponent<Item>().itemCost = itemPrice;
             var choices = new float[] { -1.5f, .5f };
-            item.buyingTile = grid.GetTileAtPosition(grid.TilePosition(new Vector2(itemX + choices[Random.Range(1, 1)], itemY)));
-            tableID.itemOnTable = item.data;
-            shopManager.itemsForSale.Add(item);
+            item.GetComponent<Item>().buyingTile = grid.GetTileAtPosition(grid.TilePosition(new Vector2(itemX + choices[Random.Range(1, 1)], itemY)));
+            tableID.itemOnTable = item.GetComponent<Item>();
+            shopManager.itemsForSale.Add(item.GetComponent<Item>());
         }
     }
 }

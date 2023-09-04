@@ -222,18 +222,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data:
-    name: 
-    id: 0
-    type: 
-    effect: 
-    description: 
+    name: Drink
+    id: 1
+    type: Sip
+    effect: Nice
+    description: Very delicious
     sprite: drink
     cost: 0
     quality: 0
   player: {fileID: 0}
   itemCost: 0
   buyingTile:
-    GameManager: {fileID: 0}
+    gameManager: {fileID: 0}
     highlight: {fileID: 0}
     gCost: 0
     hCost: 0
@@ -248,3 +248,4 @@ MonoBehaviour:
   crop: {fileID: 0}
   popPickUp: {fileID: 7431430391445902432}
   clip: {fileID: 8300000, guid: c4eddd708829eff459aed89150591327, type: 3}
+  stack: 0

@@ -64,6 +64,7 @@ public class Item: MonoBehaviour
     public Crop crop;
     public AudioSource popPickUp;
     public AudioClip clip;
+    public int stack;
     private void Update()
     {
         //if (popPickUp != null)
@@ -83,13 +84,17 @@ public class Item: MonoBehaviour
             }
         }
     }
-
-    void Awake()
+    public void Start()
     {
         itemCost = data.cost;
         player = FindObjectOfType<Player>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = Resources.Load<Sprite>("Sprites/Items/" + data.sprite);
+        Debug.Log(data.name);
+    }
+    void Awake()
+    {
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

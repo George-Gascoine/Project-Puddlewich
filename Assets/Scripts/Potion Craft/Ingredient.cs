@@ -22,7 +22,7 @@ public class Ingredient : Item
     public bool overCauldron = false;
     public bool inCauldron = false;
     public int crushCount;
-    void Start()
+    new void Start()
     {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<PotionCraftManager>();
         origPos = transform.position;

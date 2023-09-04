@@ -42,26 +42,26 @@ public class NPCShopper : MonoBehaviour
     }
     private void Update()
     {
-        //if (transform.position.x == target.posX + 0.5f && transform.position.y == target.posY)
-        //{
+        if (transform.position.x == target.posX + 0.5f && transform.position.y == target.posY)
+        {
 
-        //    if (leaving)
-        //    {
-        //        Destroy(this.gameObject);
-        //    }
-        //    if (buyer)
-        //    {
-        //        StopCoroutine("FollowPath");
-        //        payPrice = buyItem.itemCost;
-        //        Destroy(buyItem.gameObject);
-        //        start = grid.GetTileAtPosition(grid.TilePosition(new Vector2(transform.localPosition.x - 0.5f, transform.localPosition.y)));
-        //        target = grid.tiles[new Vector2(shopManager.checkoutTile.gridX, shopManager.checkoutTile.gridY - shopManager.checkoutQueue.Count)];
-        //        buyer = false;
-        //        paying = true;
-        //        FindPath(start, target);
-        //        StartCoroutine("FollowPath", 2);
-        //    }
-        //}
+            if (leaving)
+            {
+                Destroy(this.gameObject);
+            }
+            if (buyer)
+            {
+                StopCoroutine("FollowPath");
+                payPrice = buyItem.itemCost;
+                Destroy(buyItem.gameObject);
+                start = grid.GetTileAtPosition(grid.TilePosition(new Vector2(transform.localPosition.x - 0.5f, transform.localPosition.y)));
+                target = grid.tiles[new Vector2(shopManager.checkoutTile.gridX, shopManager.checkoutTile.gridY - shopManager.checkoutQueue.Count)];
+                buyer = false;
+                paying = true;
+                FindPath(start, target);
+                StartCoroutine("FollowPath", 2);
+            }
+        }
     }
 
     public void FindPath(Tile startPos, Tile targetPos)
@@ -228,5 +228,6 @@ public class NPCShopper : MonoBehaviour
         paying = false;
         leaving = true;
         shopManager.shopEarnings += payPrice;
+        Player.instance.pennies += payPrice;
     }
 }

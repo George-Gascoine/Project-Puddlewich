@@ -1958,6 +1958,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1939181355630590089, guid: ff1227e73d5c18248a795542705d7491, type: 3}
+      propertyPath: itemCost
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939181355630590089, guid: ff1227e73d5c18248a795542705d7491, type: 3}
+      propertyPath: data.cost
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939181355630590089, guid: ff1227e73d5c18248a795542705d7491, type: 3}
+      propertyPath: data.name
+      value: Drink
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939181355630590089, guid: ff1227e73d5c18248a795542705d7491, type: 3}
+      propertyPath: data.type
+      value: Beverage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939181355630590089, guid: ff1227e73d5c18248a795542705d7491, type: 3}
+      propertyPath: data.effect
+      value: Health
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939181355630590089, guid: ff1227e73d5c18248a795542705d7491, type: 3}
+      propertyPath: data.quality
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939181355630590089, guid: ff1227e73d5c18248a795542705d7491, type: 3}
+      propertyPath: data.description
+      value: A drink
+      objectReference: {fileID: 0}
     - target: {fileID: 4098525171620087024, guid: ff1227e73d5c18248a795542705d7491, type: 3}
       propertyPath: m_Name
       value: Drink

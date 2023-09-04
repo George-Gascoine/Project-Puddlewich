@@ -13,7 +13,7 @@ public class SnapToGrid : MonoBehaviour
     Grid2D grid;
     ShopManager shopManager;
     ShopperSpawner shopperSpawner;
-    public Item.ItemData itemOnTable;
+    public Item itemOnTable;
     public Tile browseTile1;
     public Tile browseTile2;
     public Tile browseTile3;
@@ -22,7 +22,8 @@ public class SnapToGrid : MonoBehaviour
     public SetItemPrice setItemPrice;
     void Start()
     {
-        player = FindObjectOfType<Player>();
+        gameManager = GameManager.instance;
+        player = gameManager.player;
         grid = FindObjectOfType<Grid2D>();
         Tile tableTile = grid.GetTileAtPosition(new Vector2(transform.localPosition.x - 0.5f, transform.localPosition.y - 0.25f)); // Returns the current tile
         Debug.Log(transform.localPosition.x - 0.5f);
@@ -47,18 +48,14 @@ public class SnapToGrid : MonoBehaviour
     public void FindTiles()
     {
         //// xChange is 0.5 and yChange is 0.25
-        //browseTile1 = grid.GetTileAtPosition(new Vector2(transform.localPosition.x - 1f, transform.localPosition.y - 0.5f));
-        //browseTile2 = grid.GetTileAtPosition(new Vector2(transform.localPosition.x - 1f, transform.localPosition.y));
-        //browseTile3 = grid.GetTileAtPosition(new Vector2(transform.localPosition.x, transform.localPosition.y - 0.5f));
-        //browseTile4 = grid.GetTileAtPosition(new Vector2(transform.localPosition.x, transform.localPosition.y));
-        //browseTile1.highlight.SetActive(true);
-        //browseTile2.highlight.SetActive(true);
-        //browseTile3.highlight.SetActive(true);
-        //browseTile4.highlight.SetActive(true);
+        browseTile1 = grid.GetTileAtPosition(new Vector2(transform.localPosition.x - 1f, transform.localPosition.y - 0.5f));
+        browseTile2 = grid.GetTileAtPosition(new Vector2(transform.localPosition.x - 1f, transform.localPosition.y));
+        browseTile3 = grid.GetTileAtPosition(new Vector2(transform.localPosition.x, transform.localPosition.y - 0.5f));
+        browseTile4 = grid.GetTileAtPosition(new Vector2(transform.localPosition.x, transform.localPosition.y));
 
-        //shopperSpawner.browsePoints.Add(browseTile1);
-        //shopperSpawner.browsePoints.Add(browseTile2);
-        //shopperSpawner.browsePoints.Add(browseTile3);
-        //shopperSpawner.browsePoints.Add(browseTile4);
+        shopperSpawner.browsePoints.Add(browseTile1);
+        shopperSpawner.browsePoints.Add(browseTile2);
+        shopperSpawner.browsePoints.Add(browseTile3);
+        shopperSpawner.browsePoints.Add(browseTile4);
     }
 }

@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public Dictionary<Vector2, Tile> farmTiles = new();
     public Grid worldGrid;
     public PlayerCamera cam;
+    public GameObject baseItem;
 
     public LoadScene sceneLoader;
     public List<Location> gameLocations;

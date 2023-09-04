@@ -8,6 +8,8 @@ using JetBrains.Annotations;
 
 public class Player : MonoBehaviour
 {
+    public static Player instance { get; private set; }
+
     public string playerName;
     public float speed = 3.0f;
     public float pennies = 10f;
@@ -24,6 +26,14 @@ public class Player : MonoBehaviour
 
     public void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
         inventory = new Inventory(18);
         rb = GetComponent<Rigidbody2D>();
         manager = FindObjectOfType<GameManager>();
@@ -65,8 +75,9 @@ public class Player : MonoBehaviour
     }
     public void DropItem(Item.ItemData item)
     {
-        Vector3 spawnLocation = transform.position;
+        Vector3 spawnLocation = new Vector3(transform.position.x,transform.position.y - 1, transform.position.z);
 
-        //Item droppedItem = Instantiate(item,spawnLocation,Quaternion.identity);
+        GameObject droppedItem = Instantiate(GameManager.instance.baseItem,spawnLocation,Quaternion.identity);
+        droppedItem.GetComponent<Item>().data = item;
     }
 }

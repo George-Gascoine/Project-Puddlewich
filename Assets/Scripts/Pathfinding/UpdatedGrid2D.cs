@@ -64,6 +64,7 @@ public class UpdatedGrid2D
                 newTile.posY = posY;
                 newTile.gridX = x;
                 newTile.gridY = y;
+                newTile.gameManager = GameManager.instance;
                 //newTile.isWalkable = true;
                 //Debug.Log(posX + " " + posY);
                 tiles[new Vector2(x, y)] = newTile;

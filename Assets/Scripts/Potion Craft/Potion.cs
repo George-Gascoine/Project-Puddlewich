@@ -16,7 +16,8 @@ public class Potion : Item
     public float cost;
     public float quality;
     public Vector2 origPos;
-    void Start()
+
+    new void Start()
     {
         origPos = transform.position;
         pName = potion.name;

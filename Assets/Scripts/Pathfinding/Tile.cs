@@ -8,7 +8,7 @@ using UnityEngine.Tilemaps;
 [System.Serializable]
 public class Tile
 {
-    public GameManager GameManager;
+    public GameManager gameManager;
     [SerializeField] public GameObject highlight;
     public int gCost;
     public int hCost;
