@@ -89,28 +89,28 @@ public class DayNightCycle : MonoBehaviour
     void UpdateCrops()
     {
         DrySoil();
-        foreach(Crop crop in farm.plantedCrops)
+        foreach(Crop.CropData crop in farm.plantedCrops)
         {
-            Destroy(crop.gameObject);
+ 
         }
         farm.plantedCrops.Clear();
-        foreach (CropData crop in farm.cropData)
-        { 
-            Crop plantThis = Instantiate(crop.cropType, crop.cropCellCentre, Quaternion.identity);
-            farm.plantedCrops.Add(plantThis);
-            if (crop.cropIsWatered && crop.cropCurrentGrowthStage < crop.cropType.cropMaxGrowthStage)
-            {
-                crop.cropIsWatered = false;
-                crop.cropCurrentGrowthStage++;
-                plantThis.cropCurrentGrowthStage = crop.cropCurrentGrowthStage;
-                plantThis.CheckSprite();
-            }
-            else
-            {
-                plantThis.cropCurrentGrowthStage = crop.cropCurrentGrowthStage;
-                plantThis.CheckSprite();
-            }
-        }
+        //foreach (CropData crop in farm.cropData)
+        //{ 
+        //    Crop plantThis = Instantiate(crop.cropType, crop.cropCellCentre, Quaternion.identity);
+        //    farm.plantedCrops.Add(plantThis);
+        //    if (crop.cropIsWatered && crop.cropCurrentGrowthStage < crop.cropType.cropMaxGrowthStage)
+        //    {
+        //        crop.cropIsWatered = false;
+        //        crop.cropCurrentGrowthStage++;
+        //        plantThis.cropCurrentGrowthStage = crop.cropCurrentGrowthStage;
+        //        plantThis.CheckSprite();
+        //    }
+        //    else
+        //    {
+        //        plantThis.cropCurrentGrowthStage = crop.cropCurrentGrowthStage;
+        //        plantThis.CheckSprite();
+        //    }
+        //}
     }
 
 

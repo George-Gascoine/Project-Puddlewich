@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3175229937186294687}
   - component: {fileID: 3175229937186294684}
   - component: {fileID: 3175229937186294685}
-  - component: {fileID: 3175229937186294686}
+  - component: {fileID: -2365861887878991786}
   m_Layer: 0
   m_Name: Hoe
   m_TagString: Untagged
@@ -112,7 +112,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.15900768, y: 0.15900803}
   m_EdgeRadius: 0
---- !u!114 &3175229937186294686
+--- !u!114 &-2365861887878991786
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,11 +121,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 3175229937186294626}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3efd7177080d28e47a40d70f91ac537a, type: 3}
+  m_Script: {fileID: 11500000, guid: 319e9ae135408b64abfca927b2ef28f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data:
+    name: 
+    id: 0
+    type: 
+    effect: 
+    description: 
+    sprite: 
+    cost: 0
+    quality: 0
   player: {fileID: 0}
-  type: 4
-  icon: {fileID: 21300000, guid: b7715f0179eafbf46ab04a6d745befc9, type: 3}
   itemCost: 0
-  buyingTile: {fileID: 0}
+  buyingTile:
+    gameManager: {fileID: 0}
+    highlight: {fileID: 0}
+    gCost: 0
+    hCost: 0
+    gridX: 0
+    gridY: 0
+    posX: 0
+    posY: 0
+    isWalkable: 0
+  shopManager: {fileID: 0}
+  farmManager: {fileID: 0}
+  pickUp: 0
+  crop: {fileID: 0}
+  popPickUp: {fileID: 0}
+  clip: {fileID: 0}
+  stack: 0

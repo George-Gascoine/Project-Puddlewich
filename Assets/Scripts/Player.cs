@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Linq;
 using JetBrains.Annotations;
+using static Crop;
 
 public class Player : MonoBehaviour
 {
@@ -47,18 +48,74 @@ public class Player : MonoBehaviour
         {
             equippedItem = inventory.slots[0].item;
         }
+        DropItem(GameManager.instance.itemManager.itemList.item.Single(s => s.id == 1));
+        DropItem(GameManager.instance.itemManager.itemList.item.Single(s => s.id == 2));
+        DropItem(GameManager.instance.itemManager.itemList.item.Single(s => s.id == 4));
     }
 
     // Update is called once per frame
     void Update()
     {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        float inputX = Input.GetAxis("Horizontal");
+        float inputY = Input.GetAxis("Vertical");
 
-        Vector3 tempVect = new Vector3(h, v, -1.0f);
-        tempVect = tempVect.normalized * speed * Time.deltaTime;
-        rb.MovePosition(rb.transform.position + tempVect);
-        if(slotChanged)
+        Vector2 movement = new Vector2(inputX, inputY);
+        movement.Normalize();
+        Vector2 isoMovement = new Vector2();
+        //Up
+        if (Input.GetKey(KeyCode.W))
+        {
+            isoMovement = new Vector2(0, 1);
+            if (Input.GetKey(KeyCode.A))
+            {
+                isoMovement = new Vector2(-1, 0.5f);
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                isoMovement = new Vector2(1, 0.5f);
+            }
+        }
+        //Down
+        if (Input.GetKey(KeyCode.S))
+        {
+            isoMovement = new Vector2(0, -1);
+            if (Input.GetKey(KeyCode.A))
+            {
+                isoMovement = new Vector2(-1, -0.5f);
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                isoMovement = new Vector2(1, -0.5f);
+            }
+        }
+        //Left
+        if (Input.GetKey(KeyCode.A))
+        {
+            isoMovement = new Vector2(-1, 0);
+            if (Input.GetKey(KeyCode.S))
+            {
+                isoMovement = new Vector2(-1, -0.5f);
+            }
+            if (Input.GetKey(KeyCode.W))
+            {
+                isoMovement = new Vector2(-1, 0.5f);
+            }
+        }
+        //Right
+        if (Input.GetKey(KeyCode.D))
+        {
+            isoMovement = new Vector2(1, 0);
+            if (Input.GetKey(KeyCode.S))
+            {
+                isoMovement = new Vector2(1, -0.5f);
+            }
+            if (Input.GetKey(KeyCode.W))
+            {
+                isoMovement = new Vector2(1, 0.5f);
+            }
+        }
+        transform.Translate(isoMovement * Time.deltaTime * speed);
+        if (slotChanged)
         {
             equippedItem = inventory.slots[selectedSlot].item;
             slotChanged = false;

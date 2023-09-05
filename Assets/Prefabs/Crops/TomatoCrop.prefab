@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1762292813254488843}
   - component: {fileID: 8045794637423635894}
   m_Layer: 0
-  m_Name: ChilliCrop
+  m_Name: TomatoCrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -32,6 +32,7 @@ public class NPCShopper : MonoBehaviour
     {
         //Get the tile by coordinate e.g. new Vector2(2,4)
         //Find the starting Tile
+        Physics2D.IgnoreCollision(gameObject.GetComponent<BoxCollider2D>(), Player.instance.GetComponent<BoxCollider2D>());
         grid = FindObjectOfType<Grid2D>();
         shopManager = FindObjectOfType<ShopManager>();
         shopperSpawner = FindAnyObjectByType<ShopperSpawner>();

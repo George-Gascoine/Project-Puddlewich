@@ -56,6 +56,7 @@ public class SetItemPrice : MonoBehaviour
             var itemY = tableID.transform.position.y - 0.08f;
             var itemZ = 1f;
             var item = Instantiate(GameManager.instance.baseItem, new Vector3(itemX, itemY, itemZ), Quaternion.identity);
+            item.GetComponent<Item>().onGround = false;
             item.GetComponent<Item>().data = sale;
             item.GetComponent<Item>().itemCost = itemPrice;
             var choices = new float[] { -1.5f, .5f };

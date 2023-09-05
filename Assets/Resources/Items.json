@@ -1,7 +1,7 @@
 {
     "item": [{
-			"name": "Item",
-			"id": 0,
+            "name": "Item",
+            "id": 0,
             "type": "Basic",
             "effect": -1,
             "description": "A basic item",
@@ -9,17 +9,53 @@
             "cost": 10,
             "quality": 1
         }, {
-			"name": "Selfheal",
-			"id": 200,
+            "name": "Hoe",
+            "id": 1,
+            "type": "Basic",
+            "effect": -1,
+            "description": "A piece of equipment for tilling soil",
+            "sprite": "Hoe",
+            "cost": 10,
+            "quality": 1
+        }, {
+            "name": "Seed",
+            "id": 2,
+            "type": "Seed",
+            "effect": -1,
+            "description": "A seed to be planted",
+            "sprite": "Seed",
+            "cost": 10,
+            "quality": 1
+        }, {
+            "name": "Tomato",
+            "id": 3,
+            "type": "Basic",
+            "effect": -1,
+            "description": "A delicious fruit",
+            "sprite": "Tomato",
+            "cost": 10,
+            "quality": 1
+        },{
+            "name": "Watering Can",
+            "id": 4,
+            "type": "Basic",
+            "effect": -1,
+            "description": "A can used to water crop",
+            "sprite": "WateringCan",
+            "cost": 10,
+            "quality": 1
+        },{
+            "name": "Selfheal",
+            "id": 200,
             "type": "Ingredient",
-			"effect": -1,
+            "effect": -1,
             "description": "A Healing Herb",
             "sprite": "Ingredient",
             "cost": 10,
             "quality": 3
         }, {
-			"name": "Healing Potion",
-			"id": 300,
+            "name": "Healing Potion",
+            "id": 300,
             "type": "Potion",
             "effect": "+ 10 HP",
             "description": "Cures all ailments",

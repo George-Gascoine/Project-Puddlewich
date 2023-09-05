@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
         inventory.gameObject.SetActive(true);
         quest.gameObject.SetActive(true);
         questLog.gameObject.SetActive(true);   
-        player.speed = 60;
+        player.speed = 6;
         Screen.SetResolution(1920, 1080, true);
         DontDestroyOnLoad(player);
         player.SetPlayer();

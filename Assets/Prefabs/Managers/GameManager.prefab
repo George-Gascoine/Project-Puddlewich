@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2365220841580319208}
   - component: {fileID: 4279570404273907434}
   - component: {fileID: 6183869174007640507}
+  - component: {fileID: -6487602283683974630}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -61,12 +62,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6656095b3f5c844fb431564a158b6b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
+  quest: {fileID: 0}
+  questLog: {fileID: 0}
   player: {fileID: 2600663679757353395, guid: a1d7d9b3a06190e4b9efd4c32fa462fb, type: 3}
   dayNightCycle: {fileID: 0}
   itemManager: {fileID: 0}
-  farmManager: {fileID: 0}
+  farmManager: {fileID: -6487602283683974630}
   farmGrid: {fileID: 0}
   worldGrid: {fileID: 0}
+  cam: {fileID: 0}
+  baseItem: {fileID: 0}
   sceneLoader: {fileID: 5061908254044323772}
   gameLocations:
   - {fileID: 467412614947152160, guid: 3be00a33906abf143aa84b0e6a1bab7e, type: 3}
@@ -110,9 +116,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ba941a839de2f4da914a601d3dc4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectableItems:
-  - {fileID: 4098525171620087026, guid: ff1227e73d5c18248a795542705d7491, type: 3}
-  collectableSprites:
-  - {fileID: 21300000, guid: 34935aa73d920b340a8fffc1f4f17a7f, type: 3}
-  collectablePrices:
-  - 5
+  itemData: {fileID: 0}
+  itemList:
+    item: []
+--- !u!114 &-6487602283683974630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5061908254044323746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbcfab787b6a5a64bb1b7605cbae32b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cropData: {fileID: 0}
+  cropList:
+    crop: []

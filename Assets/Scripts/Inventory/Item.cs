@@ -55,6 +55,7 @@ public class Item: MonoBehaviour
         }
     }
     public Player player;
+    public bool onGround { get; set; } = true;
     public int itemCost;
     public Tile buyingTile;
     SpriteRenderer spriteRenderer;
@@ -87,10 +88,9 @@ public class Item: MonoBehaviour
     public void Start()
     {
         itemCost = data.cost;
-        player = FindObjectOfType<Player>();
+        player = Player.instance;
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = Resources.Load<Sprite>("Sprites/Items/" + data.sprite);
-        Debug.Log(data.name);
     }
     void Awake()
     {
@@ -99,7 +99,7 @@ public class Item: MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && onGround)
         {
             pickUp = true;
         }
@@ -110,6 +110,7 @@ public class Item: MonoBehaviour
         player.inventory.Add(this.data);
         player.slotChanged = true;
         popPickUp.PlayOneShot(clip);
+        spriteRenderer.sprite = null;
         pickUp = false;
         StartCoroutine(CollectableDestroy());
     }

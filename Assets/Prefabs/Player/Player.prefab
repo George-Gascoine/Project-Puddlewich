@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 3
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -156,7 +156,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 3
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 2600663679757353389}
   - component: {fileID: 2600663679757353394}
   - component: {fileID: 2600663679757353395}
+  - component: {fileID: 8470195721948050819}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -266,12 +267,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: 
-  speed: 60
+  speed: 3
   pennies: 10
   rb: {fileID: 2600663679757353394}
   inventory:
     slots: []
-  equippedItem: {fileID: 0}
+  equippedItem:
+    name: 
+    id: 0
+    type: 
+    effect: 
+    description: 
+    sprite: 
+    cost: 0
+    quality: 0
   manager: {fileID: 0}
   questManager: {fileID: 0}
   selectedSlot: 0
@@ -285,6 +294,28 @@ MonoBehaviour:
   body: {fileID: 537940539499785967}
   top: {fileID: 7695035108432053268}
   bottom: {fileID: 546669981815814333}
+--- !u!114 &8470195721948050819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2600663679757353393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe29234f6888dda49ab0ce093c888693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  baseCrop: {fileID: 5030727097522949460, guid: d0a7f91b0662dfe40a98638943a75007, type: 3}
+  grassTile: {fileID: 11400000, guid: b6069b378af7d24448fa2a99c0daaf7a, type: 2}
+  soilTile: {fileID: 11400000, guid: 2a0d2fb109dbadf498346ce6fdc367ec, type: 2}
+  wateredTile: {fileID: 11400000, guid: 040282149bff2864ea28ce6424c5d491, type: 2}
+  farmMap: {fileID: 0}
+  wateredTiles: []
+  soilTiles: []
+  plantedCrops: []
+  grid: {fileID: 0}
 --- !u!1 &5816258640560430585
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,7 +388,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 3
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -441,7 +472,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 3
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
