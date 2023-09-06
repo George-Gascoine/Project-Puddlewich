@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4605807455940622976}
   - component: {fileID: 4855510258055162575}
   - component: {fileID: -5250413823856834291}
+  - component: {fileID: 9187123916220075478}
   m_Layer: 0
   m_Name: BaseCrop
   m_TagString: Untagged
@@ -55,10 +56,10 @@ MonoBehaviour:
     maxGrowthStage: 0
     quality: 0
     sprite: 
+    currentGrowthStage: 0
+    cropIsWatered: 0
+    cropFarmPos: {x: 0, y: 0, z: 0}
   growthStages: []
-  cropCurrentGrowthStage: 0
-  cropQuality: 0
-  cropIsWatered: 0
   cropFarmPos: {x: 0, y: 0, z: 0}
   cropRenderer: {fileID: 0}
   manager: {fileID: 0}
@@ -114,3 +115,29 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &9187123916220075478
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5030727097522949460}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.03616637, y: -0.054249287}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.94042575, y: 1.4105883}
+  m_EdgeRadius: 0

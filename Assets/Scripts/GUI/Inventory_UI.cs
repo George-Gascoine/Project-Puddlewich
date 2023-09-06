@@ -31,7 +31,7 @@ public class Inventory_UI : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             ToggleInventory();
         }
@@ -104,13 +104,16 @@ public class Inventory_UI : MonoBehaviour
         if (draggedIcon == null)
         {
             movingID = slot.slotID;
-            draggedIcon = Instantiate(slot.itemIcon);
-            movingItem = slot.slotItem;
-            movingStack = player.inventory.slots[slot.slotID].count;
-            draggedIcon.raycastTarget = false;
-            draggedIcon.rectTransform.sizeDelta = new Vector2(50f, 50f);
-            draggedIcon.transform.SetParent(canvas.transform);
-            player.inventory.RemoveAll(slot.slotID);
+            if (player.inventory.slots[slot.slotID].item != null)
+            {
+                draggedIcon = Instantiate(slot.itemIcon);
+                movingItem = slot.slotItem;
+                movingStack = player.inventory.slots[slot.slotID].count;
+                draggedIcon.raycastTarget = false;
+                draggedIcon.rectTransform.sizeDelta = new Vector2(50f, 50f);
+                draggedIcon.transform.SetParent(canvas.transform);
+                player.inventory.RemoveAll(slot.slotID);
+            }
         }
         else if(draggedIcon != null && player.inventory.slots[slot.slotID].item == null)
         {

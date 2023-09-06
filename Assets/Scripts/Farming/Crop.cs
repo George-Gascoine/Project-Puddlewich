@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
+
 [System.Serializable]
 public class Crop : MonoBehaviour
 {
     public Player player;
     public Crop.CropData crop;
-    public Sprite[] growthStages;
-    public int cropCurrentGrowthStage;
-    public int cropQuality;
-    public bool cropIsWatered;
-    public Vector3Int cropFarmPos;
+    public List<Sprite> growthStages;
     public SpriteRenderer cropRenderer;
     public GameManager manager;
     [System.Serializable]
@@ -26,49 +24,63 @@ public class Crop : MonoBehaviour
         public int maxGrowthStage;
         public int quality;
         public string sprite;
-        public int cropCurrentGrowthStage;
+        public int currentGrowthStage;
         public bool cropIsWatered;
         public Vector3Int cropFarmPos;
     }
 
-
     public void Awake()
     {
+        Physics2D.IgnoreCollision(gameObject.GetComponent<BoxCollider2D>(), Player.instance.GetComponent<BoxCollider2D>());
         manager = FindObjectOfType<GameManager>();
         player = FindObjectOfType<Player>();
-        cropIsWatered = false;
         cropRenderer = gameObject.GetComponent<SpriteRenderer>();
-        growthStages = Resources.LoadAll<Sprite>("Sprites/Crops/" + crop.sprite);
-        cropRenderer.sprite = growthStages[cropCurrentGrowthStage];
+    }
+    public void Start()
+    {
+        InitializeSprite();
+        cropRenderer.sprite = growthStages[crop.currentGrowthStage];
         cropRenderer.sortingOrder = 3;
+        Vector2 spriteSize = cropRenderer.sprite.bounds.size;
+        gameObject.GetComponent<BoxCollider2D>().size = spriteSize;
     }
     void OnMouseDown()
     {
-        //if(cropCurrentGrowthStage == cropMaxGrowthStage)
-        //{
-        //    List<CropData> data = manager.GetComponent<Farming>().cropData;
-        //    foreach (CropData crop in data) 
-        //    {
-        //        if(crop.cropFarmPos == cropFarmPos)
-        //        {
-        //            manager.GetComponent<Farming>().plantedCrops.Remove(this);
-        //            data.Remove(crop); break;
-        //        }
-        //    }
-        //    //player.inventory.Add(crop);
-        //    Destroy(this.gameObject);
-        //}
+        if (crop.currentGrowthStage == crop.maxGrowthStage)
+        {
+            player.GetComponent<Farming>().RemoveCrop(this.crop.cropFarmPos);
+            player.inventory.Add(GameManager.instance.GetComponent<ItemManager>().itemList.item.Single(s => s.id == crop.cropIndex));
+            Destroy(this.gameObject);
+        }
+    }
+
+    Sprite InitializeSprite()
+    {
+            Sprite[] all = Resources.LoadAll<Sprite>("Sprites/Crops/");
+
+            foreach (var s in all)
+            {
+                if (s.name.Contains(crop.sprite))
+                {
+                    growthStages.Add(s);
+                }
+            }
+            return null;
     }
     public void CheckSprite()
     {
-        if(cropRenderer.sprite != growthStages[cropCurrentGrowthStage])
+        
+        if(cropRenderer.sprite != growthStages[crop.currentGrowthStage])
         {
-            ChangeSprite(growthStages[cropCurrentGrowthStage]);
+            ChangeSprite(growthStages[crop.currentGrowthStage]);
         }
     }
     public void ChangeSprite(Sprite newSprite)
     {
-        cropRenderer.sprite = newSprite;
+        cropRenderer.sprite = newSprite; 
+        Vector2 spriteSize = cropRenderer.sprite.bounds.size;
+        gameObject.GetComponent<BoxCollider2D>().size = spriteSize;
+
     }
 }
 

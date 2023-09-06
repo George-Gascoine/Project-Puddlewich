@@ -18,12 +18,12 @@
             "cost": 10,
             "quality": 1
         }, {
-            "name": "Seed",
+            "name": "Tomato Seed",
             "id": 2,
             "type": "Seed",
             "effect": -1,
             "description": "A seed to be planted",
-            "sprite": "Seed",
+            "sprite": "TomatoSeed",
             "cost": 10,
             "quality": 1
         }, {
@@ -36,8 +36,26 @@
             "cost": 10,
             "quality": 1
         },{
-            "name": "Watering Can",
+            "name": "Cucumber Seed",
             "id": 4,
+            "type": "Seed",
+            "effect": -1,
+            "description": "A delicious vegetable",
+            "sprite": "CucumberSeed",
+            "cost": 10,
+            "quality": 1
+        },{
+            "name": "Cucumber",
+            "id": 5,
+            "type": "Basic",
+            "effect": -1,
+            "description": "A delicious vegetable",
+            "sprite": "Cucumber",
+            "cost": 10,
+            "quality": 1
+        },{
+            "name": "Watering Can",
+            "id": 6,
             "type": "Basic",
             "effect": -1,
             "description": "A can used to water crop",

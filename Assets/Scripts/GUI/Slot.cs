@@ -13,6 +13,7 @@ public class Slot : MonoBehaviour
     public TextMeshProUGUI quantityText;
     public bool sellableSlot = false;
     public bool mouseOver = false;
+    public GameObject tooltip;
     [SerializeField] private GameObject highlight;
 
     public void SetItem(Inventory.Slot slot)
@@ -38,9 +39,20 @@ public class Slot : MonoBehaviour
         highlight.SetActive(isOn);
     }
 
-    public void OnMouseOver()
+    public void ActivateTooltip()
     {
-        mouseOver = true;
-        Debug.Log(mouseOver);
+        if (tooltip.activeSelf == false)
+        {
+            tooltip.GetComponent<Tooltip>().item = this.slotItem;
+            tooltip.GetComponent<Tooltip>().tooltip.enabled = true;
+        }
+    }
+    public void DeActivateTooltip()
+    {
+        //if (tooltip.activeSelf == true)
+        //{
+        //    tooltip.GetComponent<Tooltip>().item = null;
+        //    tooltip.GetComponent<Tooltip>().tooltip.enabled = false;
+        //}
     }
 }

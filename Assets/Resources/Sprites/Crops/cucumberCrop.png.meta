@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e4de932ff69fc9341aa9c7499cda3195
+guid: d3d571878786a7d4d9e6f7294e6969ca
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -67,7 +67,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tomatoCrop_0
+      name: cucumberCrop_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd58dbff4498d1a479ca4d34622902b2
-      internalID: -553738582
+      spriteID: d29f24c5a1c42334ca4c4906acc661d6
+      internalID: 1284686229
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tomatoCrop_1
+      name: cucumberCrop_1
       rect:
         serializedVersion: 2
         x: 16
@@ -140,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 835108178d43ba8469b07a5a7a96c4b1
-      internalID: 1901501753
+      spriteID: ba6f39098920be143b3be135937b6162
+      internalID: 408218145
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tomatoCrop_2
+      name: cucumberCrop_2
       rect:
         serializedVersion: 2
         x: 32
@@ -161,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e198d8d3605b2f4ea23953619cc8493
-      internalID: 1448688266
+      spriteID: c94af2c8ac0941d41a9f46ff62d478f1
+      internalID: -1343616603
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tomatoCrop_3
+      name: cucumberCrop_3
       rect:
         serializedVersion: 2
         x: 48
@@ -182,14 +182,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a72641a496d5914ab6345bb3880ed7f
-      internalID: -1726906682
+      spriteID: 74e0e605d3b2f5844aaf4c22bc3a0a30
+      internalID: -1571590647
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tomatoCrop_4
+      name: cucumberCrop_4
       rect:
         serializedVersion: 2
         x: 64
@@ -203,14 +203,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 86367b11e6240e345a2ecd7a6bc7d2b5
-      internalID: 1325770489
+      spriteID: 6d3b7cbb41d3099488dbcc3a629edeff
+      internalID: -1083547804
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tomatoCrop_5
+      name: cucumberCrop_5
       rect:
         serializedVersion: 2
         x: 80
@@ -224,8 +224,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 110ddd4cea5cdc844b8ee6bdcae426c2
-      internalID: -2079211989
+      spriteID: bcdd0905f9d95e84db4d2b003eccda24
+      internalID: 223532714
       vertices: []
       indices: 
       edges: []
@@ -241,12 +241,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      tomatoCrop_0: -553738582
-      tomatoCrop_1: 1901501753
-      tomatoCrop_2: 1448688266
-      tomatoCrop_3: -1726906682
-      tomatoCrop_4: 1325770489
-      tomatoCrop_5: -2079211989
+      cucumberCrop_0: 1284686229
+      cucumberCrop_1: 408218145
+      cucumberCrop_2: -1343616603
+      cucumberCrop_3: -1571590647
+      cucumberCrop_4: -1083547804
+      cucumberCrop_5: 223532714
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

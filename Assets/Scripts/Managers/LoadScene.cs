@@ -71,5 +71,9 @@ public class LoadScene : MonoBehaviour
         screenFade.ScreenFadeIn();
         yield return null;
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene));
+        if (scene == "World")
+        {
+            GameManager.instance.player.GetComponent<Farming>().ResetFarm();
+        }
     }
 }

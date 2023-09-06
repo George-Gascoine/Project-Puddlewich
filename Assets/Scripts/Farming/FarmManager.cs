@@ -7,6 +7,7 @@ using static ItemManager;
 
 public class FarmManager : MonoBehaviour
 {
+    public static FarmManager instance { get; private set; }
     public TextAsset cropData;
     [System.Serializable]
     public class CropList

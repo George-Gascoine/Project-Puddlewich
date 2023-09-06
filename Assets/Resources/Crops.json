@@ -8,6 +8,15 @@
             "maxGrowthStage": 5,
             "quality": 10,
             "sprite": "tomatoCrop"
+        },{
+            "name": "CucumberCrop",
+            "seedIndex": 4,
+            "cropIndex": 5,
+            "growthSeason": "Spring",
+            "growthStageDays": [1,1,1,1,1],
+            "maxGrowthStage": 5,
+            "quality": 10,
+            "sprite": "cucumberCrop"
         }
     ]
 }

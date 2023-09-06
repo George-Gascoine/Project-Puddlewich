@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
         DropItem(GameManager.instance.itemManager.itemList.item.Single(s => s.id == 1));
         DropItem(GameManager.instance.itemManager.itemList.item.Single(s => s.id == 2));
         DropItem(GameManager.instance.itemManager.itemList.item.Single(s => s.id == 4));
+        DropItem(GameManager.instance.itemManager.itemList.item.Single(s => s.id == 6));
     }
 
     // Update is called once per frame

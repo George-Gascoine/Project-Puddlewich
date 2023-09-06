@@ -11,7 +11,6 @@ using static UnityEngine.PlayerLoop.PreLateUpdate;
 
 public class DayNightCycle : MonoBehaviour
 {
-    public Farming farm;
     //public Light2D _light;
 
 
@@ -46,6 +45,7 @@ public class DayNightCycle : MonoBehaviour
     private void Start()
     {
         gameTimer = 0;
+        StartCoroutine(GameTime());
         day = Day.Sunday.ToString();
     }
 
@@ -82,18 +82,32 @@ public class DayNightCycle : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
             gameTimer++;
-            Debug.Log("Inc");
+            Debug.Log(gameTimer);
+            if(gameTimer % 6 == 0)
+            {
+                UpdateCrops();
+            }
         }
     }
 
     void UpdateCrops()
     {
-        DrySoil();
-        foreach(Crop.CropData crop in farm.plantedCrops)
+        GameManager.instance.player.GetComponent<Farming>().wateredTiles.Clear();
+        foreach (Crop.CropData crop in GameManager.instance.player.GetComponent<Farming>().plantedCrops)
         {
- 
+            if (crop.currentGrowthStage < crop.maxGrowthStage && crop.cropIsWatered)
+            {
+                crop.currentGrowthStage++;
+                crop.cropIsWatered = false;
+            }
         }
-        farm.plantedCrops.Clear();
+        if(SceneManager.GetActiveScene().name == "World")
+        {
+            GameManager.instance.player.GetComponent<Farming>().DrySoil();
+            GameManager.instance.player.GetComponent<Farming>().ResetFarm();
+        }
+        
+        //Player.instance.GetComponent<Farming>().plantedObjects.Clear();
         //foreach (CropData crop in farm.cropData)
         //{ 
         //    Crop plantThis = Instantiate(crop.cropType, crop.cropCellCentre, Quaternion.identity);
@@ -114,12 +128,5 @@ public class DayNightCycle : MonoBehaviour
     }
 
 
-    void DrySoil()
-    {
-        foreach (Vector3Int soil in farm.wateredTiles)
-        {
-            farm.farmMap.SetTile(soil, farm.soilTile);
-        }
-        farm.wateredTiles.Clear();
-    }
+
 }

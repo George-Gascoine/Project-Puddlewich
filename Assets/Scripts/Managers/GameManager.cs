@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
     public NPC npc;
     public string playerName;
     public Sprite[] bodyParts;
+    private UnityEngine.SceneManagement.Scene scene;
 
     public void Start()
     {
@@ -48,20 +50,11 @@ public class GameManager : MonoBehaviour
         //DontDestroyOnLoad(this.gameObject);
         itemManager = GetComponent<ItemManager>();
         farmManager = GetComponent<FarmManager>();
+
+        // Store the creating scene as the scene to trigger start
+        scene = SceneManager.GetActiveScene();
     }
 
-    private void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-    private void Update()
-    {
-        
-    }
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-
-    }
     public void GameStart()
     {
         Debug.Log("Start");
