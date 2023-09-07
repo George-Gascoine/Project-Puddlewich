@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4279570404273907434}
   - component: {fileID: 6183869174007640507}
   - component: {fileID: -6487602283683974630}
+  - component: {fileID: -1651031559262343833}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -99,7 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc0410572c521e840b4cd2db7c069912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  farm: {fileID: 0}
   gameTimer: 0
   hour: 0
   minute: 0
@@ -134,3 +134,15 @@ MonoBehaviour:
   cropData: {fileID: 0}
   cropList:
     crop: []
+--- !u!114 &-1651031559262343833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5061908254044323746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4406c35e0715d2745ab218c92605ed0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

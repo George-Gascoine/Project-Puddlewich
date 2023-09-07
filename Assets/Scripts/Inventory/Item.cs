@@ -88,7 +88,7 @@ public class Item: MonoBehaviour
     public void Start()
     {
         itemCost = data.cost;
-        player = Player.instance;
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = Resources.Load<Sprite>("Sprites/Items/" + data.sprite);
     }

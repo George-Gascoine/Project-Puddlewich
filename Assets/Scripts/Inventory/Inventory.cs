@@ -21,8 +21,6 @@ public class Inventory
         public Sprite icon;
         public Slot()
         {
-            item = null;
-            count = 0;
             maxAllowed = 99;
         }
 
@@ -42,17 +40,14 @@ public class Inventory
             this.icon = Resources.Load<Sprite>("Sprites/Items/" + item.sprite);
             count += 1;
         }
-        public void OnMouseOver()
-        {
-            mouseOver = true;
-            Debug.Log(mouseOver);
-        }
     }
 
     public List<Slot> slots = new List<Slot>();
 
     public Inventory(int numSlots)
     {
+        Debug.Log("here");
+        slots.Clear();
         for(int i = 0; i < numSlots; i++)
         {
             Slot slot = new Slot();

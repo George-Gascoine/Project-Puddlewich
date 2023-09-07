@@ -1,10 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.FilePathAttribute;
-using static UnityEngine.GraphicsBuffer;
 
 //Check if npc has arrived at destination tile
 //If they have stop coroutine

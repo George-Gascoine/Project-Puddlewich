@@ -9,8 +9,6 @@ using static Crop;
 
 public class Player : MonoBehaviour
 {
-    public static Player instance { get; private set; }
-
     public string playerName;
     public float speed = 3.0f;
     public float pennies = 10f;
@@ -27,14 +25,7 @@ public class Player : MonoBehaviour
 
     public void Awake()
     {
-        if (instance != null && instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            instance = this;
-        }
+        
         inventory = new Inventory(18);
         rb = GetComponent<Rigidbody2D>();
         manager = FindObjectOfType<GameManager>();

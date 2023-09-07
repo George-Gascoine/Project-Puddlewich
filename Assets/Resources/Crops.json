@@ -4,7 +4,7 @@
             "seedIndex": 2,
             "cropIndex": 3,
             "growthSeason": "Spring",
-            "growthStageDays": [1,1,1,1,1],
+            "growthStageDays": [2,1,1,1,1],
             "maxGrowthStage": 5,
             "quality": 10,
             "sprite": "tomatoCrop"

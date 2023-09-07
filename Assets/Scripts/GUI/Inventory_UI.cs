@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ public class Inventory_UI : MonoBehaviour
 {
     public GameObject inventoryPanel;
     public GameObject removePanel;
+    public GameObject tooltip;
     public Item.ItemData movingItem;
     public int movingStack;
     public int movingID;
@@ -19,16 +21,6 @@ public class Inventory_UI : MonoBehaviour
     private Slot draggedSlot;
     private Image draggedIcon;
     // Start is called before the first frame update
-
-    private void Awake()
-    {
-        canvas = FindObjectOfType<Canvas>();
-        player = FindObjectOfType<Player>();   
-    }
-    void Start()
-    {
-        player = FindObjectOfType<Player>();
-    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -36,7 +28,7 @@ public class Inventory_UI : MonoBehaviour
             ToggleInventory();
         }
 
-        if (slots.Count == player.inventory.slots.Count)
+        if (slots.Count == player.inventory.slots.Count && inventoryPanel.activeSelf)
         {
             for (int i = 0; i < slots.Count; i++)
             {
@@ -52,6 +44,7 @@ public class Inventory_UI : MonoBehaviour
         }
         if(draggedIcon != null)
         {
+            tooltip.SetActive(false);
             Vector2 position;
 
             RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, Input.mousePosition, null, out position);
@@ -63,6 +56,7 @@ public class Inventory_UI : MonoBehaviour
     {
         if (!inventoryPanel.activeSelf)
         {
+            Global.uiOpen = true;
             removePanel.SetActive(true);
             inventoryPanel.SetActive(true);
             Refresh();
@@ -75,6 +69,8 @@ public class Inventory_UI : MonoBehaviour
             }
             else 
             {
+                Global.uiOpen = false;
+                tooltip.SetActive(false);
                 removePanel.SetActive(false);
                 inventoryPanel.SetActive(false);
             }
@@ -101,44 +97,46 @@ public class Inventory_UI : MonoBehaviour
 
     public void MouseCheck(Slot slot)
     {
-        if (draggedIcon == null)
-        {
-            movingID = slot.slotID;
-            if (player.inventory.slots[slot.slotID].item != null)
+            if (draggedIcon == null)
             {
+                movingID = slot.slotID;
+                if (player.inventory.slots[slot.slotID].item != null)
+                {
+                    draggedIcon = Instantiate(slot.itemIcon);
+                    movingItem = slot.slotItem;
+                    movingStack = player.inventory.slots[slot.slotID].count;
+                    draggedIcon.raycastTarget = false;
+                    draggedIcon.rectTransform.sizeDelta = new Vector2(50f, 50f);
+                    draggedIcon.transform.SetParent(canvas.transform);
+                    player.inventory.RemoveAll(slot.slotID);
+                }
+            }
+            else if (draggedIcon != null && player.inventory.slots[slot.slotID].item == null)
+            {
+                movingID = slot.slotID;
+                player.inventory.slots[slot.slotID].AddItem(movingItem);
+                player.inventory.slots[slot.slotID].count = movingStack;
+                Destroy(draggedIcon);
+                draggedIcon = null;
+                movingItem = null;
+                movingStack = 0;
+                StartCoroutine(TooltipUpdate(slot));
+            }
+            else if (draggedIcon != null && player.inventory.slots[slot.slotID].item != null)
+            {
+                Item.ItemData temp = slot.slotItem;
+                int tempStack = player.inventory.slots[slot.slotID].count;
+                movingID = slot.slotID;
+                Destroy(draggedIcon);
                 draggedIcon = Instantiate(slot.itemIcon);
-                movingItem = slot.slotItem;
-                movingStack = player.inventory.slots[slot.slotID].count;
                 draggedIcon.raycastTarget = false;
                 draggedIcon.rectTransform.sizeDelta = new Vector2(50f, 50f);
                 draggedIcon.transform.SetParent(canvas.transform);
-                player.inventory.RemoveAll(slot.slotID);
+                player.inventory.slots[slot.slotID].AddItem(movingItem);
+                player.inventory.slots[slot.slotID].count = movingStack;
+                movingItem = temp;
+                movingStack = tempStack;
             }
-        }
-        else if(draggedIcon != null && player.inventory.slots[slot.slotID].item == null)
-        {
-            movingID = slot.slotID;
-            player.inventory.slots[slot.slotID].AddItem(movingItem);
-            player.inventory.slots[slot.slotID].count = movingStack;
-            Destroy(draggedIcon);
-            movingItem = null;
-            movingStack = 0;
-        }
-        else if (draggedIcon != null && player.inventory.slots[slot.slotID].item != null)
-        {
-            Item.ItemData temp = slot.slotItem;
-            int tempStack = player.inventory.slots[slot.slotID].count;
-            movingID = slot.slotID;
-            Destroy(draggedIcon);
-            draggedIcon = Instantiate(slot.itemIcon);
-            draggedIcon.raycastTarget = false;
-            draggedIcon.rectTransform.sizeDelta = new Vector2(50f, 50f);
-            draggedIcon.transform.SetParent(canvas.transform);
-            player.inventory.slots[slot.slotID].AddItem(movingItem);
-            player.inventory.slots[slot.slotID].count = movingStack;
-            movingItem = temp;
-            movingStack = tempStack;
-        }
     }
 
     public void DropItem()
@@ -161,5 +159,10 @@ public class Inventory_UI : MonoBehaviour
 
             toMove.transform.position = canvas.transform.TransformPoint(position);
         }
+    }
+    IEnumerator TooltipUpdate(Slot slot)
+    {
+        yield return null;
+        slot.ActivateTooltip();
     }
 }

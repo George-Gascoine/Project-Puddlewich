@@ -24,21 +24,21 @@ public class NPCInventoryUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (slots.Count == npcTrade.inventory.slots.Count)
-        {
-            for (int i = 0; i < slots.Count; i++)
-            {
-                slots[i].sellableSlot = true;
-                if (npcTrade.inventory.slots[i].item != null)
-                {
-                    slots[i].SetItem(npcTrade.inventory.slots[i]);
-                }
-                else
-                {
-                    slots[i].SetEmpty();
-                }
-            }
-        }
+        //if (slots.Count == npcTrade.inventory.slots.Count)
+        //{
+        //    for (int i = 0; i < slots.Count; i++)
+        //    {
+        //        slots[i].sellableSlot = true;
+        //        if (npcTrade.inventory.slots[i].item != null)
+        //        {
+        //            slots[i].SetItem(npcTrade.inventory.slots[i]);
+        //        }
+        //        //else
+        //        //{
+        //        //    slots[i].SetEmpty();
+        //        //}
+        //    }
+        //}
     }
 
     public void BuyItem(Slot slot)
@@ -55,14 +55,14 @@ public class NPCInventoryUI : MonoBehaviour
         {
             for (int i = 0; i < slots.Count; i++)
             {
-                if (npcTrade.inventory.slots[i].item != null)
-                {
-                    slots[i].SetItem(npcTrade.inventory.slots[i]);
-                }
-                else
-                {
-                    slots[i].SetEmpty();
-                }
+                //if (npcTrade.inventory.slots[i].item != null)
+                //{
+                //    slots[i].SetItem(npcTrade.inventory.slots[i]);
+                //}
+                //else
+                //{
+                //    slots[i].SetEmpty();
+                //}
             }
         }
     }

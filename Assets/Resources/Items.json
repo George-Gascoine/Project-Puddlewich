@@ -40,7 +40,7 @@
             "id": 4,
             "type": "Seed",
             "effect": -1,
-            "description": "A delicious vegetable",
+            "description": "A seed for cucumbers",
             "sprite": "CucumberSeed",
             "cost": 10,
             "quality": 1

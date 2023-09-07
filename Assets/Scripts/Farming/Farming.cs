@@ -10,6 +10,7 @@ using Unity.Burst.Intrinsics;
 using UnityEngine.Rendering.Universal;
 using static Crop;
 using System.Runtime.CompilerServices;
+using UnityEngine.EventSystems;
 
 public class Farming : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class Farming : MonoBehaviour
     public List<Vector3Int> wateredTiles = new();
     public List<Vector3Int> soilTiles = new();
     public List<Crop.CropData> plantedCrops = new();
+    public List<int> plantedDays = new();
     public List<GameObject> plantedObjects = new();
     public Grid grid;
 
@@ -44,73 +46,77 @@ public class Farming : MonoBehaviour
     // do late so that the player has a chance to move in update if necessary
     private void LateUpdate()
     {  
-        Scene currentScene = SceneManager.GetActiveScene();
-        string sceneName = currentScene.name;
-
-        if (sceneName == "World" && player.equippedItem != null)
+        if(Global.uiOpen == false)
         {
-            grid = FindObjectOfType<Grid>();
-            farmMap = grid.transform.Find("Tilemap").GetComponent<Tilemap>();
-            float mouseX = Input.mousePosition.x;
-            float mouseY = Input.mousePosition.y;
-            // get current grid location
-            farmMap.CompressBounds();
-            Vector3Int currentCell = grid.WorldToCell(Camera.main.ScreenToWorldPoint(new Vector3(mouseX, mouseY, 10f)));
-            Vector3 currentCellCentre = grid.GetCellCenterWorld(currentCell);
+            Scene currentScene = SceneManager.GetActiveScene();
+            string sceneName = currentScene.name;
 
-            // add one in a direction (you'll have to change this to match your directional control)
-            if (Input.GetMouseButtonDown(0) && player.equippedItem.name == "Hoe")
+            if (sceneName == "World" && player.equippedItem != null)
             {
-                if (farmMap.GetTile(currentCell) == grassTile)
+                grid = FindObjectOfType<Grid>();
+                farmMap = grid.transform.Find("Tilemap").GetComponent<Tilemap>();
+                float mouseX = Input.mousePosition.x;
+                float mouseY = Input.mousePosition.y;
+                // get current grid location
+                farmMap.CompressBounds();
+                Vector3Int currentCell = grid.WorldToCell(Camera.main.ScreenToWorldPoint(new Vector3(mouseX, mouseY, 10f)));
+                Vector3 currentCellCentre = grid.GetCellCenterWorld(currentCell);
+                // add one in a direction (you'll have to change this to match your directional control)
+                if (Input.GetMouseButtonDown(0) && player.equippedItem.name == "Hoe")
                 {
-                    soilTiles.Add(currentCell);
-                    farmMap.SetTile(currentCell, soilTile);
-                }
-            }
-            if (Input.GetMouseButtonDown(0) && player.equippedItem.name == "Watering Can")
-            {
-                if (farmMap.GetTile(currentCell) == soilTile)
-                {
-                    wateredTiles.Add(currentCell);
-                    farmMap.SetTile(currentCell, wateredTile);
-                    for (int i = 0; i < plantedCrops.Count; i++)
+                    if (farmMap.GetTile(currentCell) == grassTile)
                     {
-                        if (currentCell == plantedCrops[i].cropFarmPos)
+                        soilTiles.Add(currentCell);
+                        farmMap.SetTile(currentCell, soilTile);
+                    }
+                }
+                if (Input.GetMouseButtonDown(0) && player.equippedItem.name == "Watering Can")
+                {
+                    if (farmMap.GetTile(currentCell) == soilTile)
+                    {
+                        wateredTiles.Add(currentCell);
+                        farmMap.SetTile(currentCell, wateredTile);
+                        for (int i = 0; i < plantedCrops.Count; i++)
                         {
-                            plantedCrops[i].cropIsWatered = true;
+                            if (currentCell == plantedCrops[i].cropFarmPos)
+                            {
+                                plantedCrops[i].cropIsWatered = true;
+                            }
+                        }
+                    }
+                }
+                if (Input.GetMouseButtonDown(0) && player.equippedItem.type == "Seed")
+                {
+                    if (farmMap.GetTile(currentCell) == soilTile || farmMap.GetTile(currentCell) == wateredTile)
+                    {
+                        bool cellOccupied = plantedCrops.Any(CropData => CropData.cropFarmPos == currentCell);
+                        if (!cellOccupied)
+                        {
+                            //CROP JSON
+                            int seedIndex = player.equippedItem.id;
+                            Crop.CropData cropData = GameManager.instance.farmManager.cropList.crop.Single(s => s.seedIndex == seedIndex);
+                            Crop.CropData newCropData = new Crop.CropData
+                            {
+                                name = cropData.name,
+                                seedIndex = cropData.seedIndex,
+                                cropIndex = cropData.cropIndex,
+                                growthSeason = cropData.growthSeason,
+                                growthStageDays = cropData.growthStageDays,
+                                maxGrowthStage = cropData.maxGrowthStage,
+                                quality = cropData.quality,
+                                sprite = cropData.sprite,
+                                currentGrowthStage = cropData.currentGrowthStage,
+                                growthStageDay = 1,
+                                cropIsWatered = cropData.cropIsWatered,
+                                cropFarmPos = currentCell,
+                            };
+                            PlantCrop(newCropData, currentCell, currentCellCentre);
                         }
                     }
                 }
             }
-            if (Input.GetMouseButtonDown(0) && player.equippedItem.type == "Seed")
-            {
-                if (farmMap.GetTile(currentCell) == soilTile || farmMap.GetTile(currentCell) == wateredTile)
-                {
-                    bool cellOccupied = plantedCrops.Any(CropData => CropData.cropFarmPos == currentCell);
-                    if(!cellOccupied)
-                    {
-                        //CROP JSON
-                        int seedIndex = player.equippedItem.id;
-                        Crop.CropData cropData = GameManager.instance.farmManager.cropList.crop.Single(s => s.seedIndex == seedIndex);
-                        Crop.CropData newCropData = new Crop.CropData
-                        {
-                            name = cropData.name,
-                            seedIndex = cropData.seedIndex,
-                            cropIndex = cropData.cropIndex,
-                            growthSeason = cropData.growthSeason,
-                            growthStageDays = cropData.growthStageDays,
-                            maxGrowthStage = cropData.maxGrowthStage,
-                            quality = cropData.quality,
-                            sprite  = cropData.sprite,
-                            currentGrowthStage = cropData.currentGrowthStage,
-                            cropIsWatered = cropData.cropIsWatered,
-                            cropFarmPos = currentCell,
-                        };
-                        PlantCrop(newCropData, currentCell, currentCellCentre);
-                    }
-                }
-            }
         }
+
     }
     void PlantCrop(Crop.CropData crop, Vector3Int cell, Vector3 cellCentre)
     {

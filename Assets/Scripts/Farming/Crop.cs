@@ -25,13 +25,14 @@ public class Crop : MonoBehaviour
         public int quality;
         public string sprite;
         public int currentGrowthStage;
+        public int growthStageDay;
         public bool cropIsWatered;
         public Vector3Int cropFarmPos;
     }
 
     public void Awake()
     {
-        Physics2D.IgnoreCollision(gameObject.GetComponent<BoxCollider2D>(), Player.instance.GetComponent<BoxCollider2D>());
+        Physics2D.IgnoreCollision(gameObject.GetComponent<BoxCollider2D>(), GameObject.FindWithTag("Player").GetComponent<Player>().GetComponent<BoxCollider2D>());
         manager = FindObjectOfType<GameManager>();
         player = FindObjectOfType<Player>();
         cropRenderer = gameObject.GetComponent<SpriteRenderer>();

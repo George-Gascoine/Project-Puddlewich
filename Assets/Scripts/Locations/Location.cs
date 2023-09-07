@@ -1,9 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Animations;
 using UnityEngine;
-using static UnityEditor.FilePathAttribute;
 
 public class Location : MonoBehaviour
 {

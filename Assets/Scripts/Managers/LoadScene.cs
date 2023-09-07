@@ -1,10 +1,5 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Build.Content;
-using UnityEditor.SearchService;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering;
 using UnityEngine.SceneManagement;
 
 public class LoadScene : MonoBehaviour
@@ -73,7 +68,7 @@ public class LoadScene : MonoBehaviour
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene));
         if (scene == "World")
         {
-            GameManager.instance.player.GetComponent<Farming>().ResetFarm();
+            GameObject.FindWithTag("Player").GetComponent<Farming>().ResetFarm();
         }
     }
 }

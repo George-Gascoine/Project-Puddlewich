@@ -82,6 +82,11 @@ public class DayNightCycle : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
             gameTimer++;
+            if(gameTimer == 6)
+            {
+                gameTimer = 0;
+                GameManager.instance.GetComponent<SaveGame>().SavePlayer();
+            }
             Debug.Log(gameTimer);
             if(gameTimer % 6 == 0)
             {
@@ -92,19 +97,28 @@ public class DayNightCycle : MonoBehaviour
 
     void UpdateCrops()
     {
-        GameManager.instance.player.GetComponent<Farming>().wateredTiles.Clear();
-        foreach (Crop.CropData crop in GameManager.instance.player.GetComponent<Farming>().plantedCrops)
+        GameObject.FindWithTag("Player").GetComponent<Farming>().wateredTiles.Clear();
+        foreach (Crop.CropData crop in GameObject.FindWithTag("Player").GetComponent<Farming>().plantedCrops)
         {
             if (crop.currentGrowthStage < crop.maxGrowthStage && crop.cropIsWatered)
             {
-                crop.currentGrowthStage++;
-                crop.cropIsWatered = false;
+                if (crop.growthStageDay == crop.growthStageDays[crop.currentGrowthStage])
+                {
+                    crop.currentGrowthStage++;
+                    crop.growthStageDay = 1;
+                    crop.cropIsWatered = false;
+                }
+                else
+                {
+                    crop.growthStageDay++;
+                    crop.cropIsWatered = false;
+                }
             }
         }
         if(SceneManager.GetActiveScene().name == "World")
         {
-            GameManager.instance.player.GetComponent<Farming>().DrySoil();
-            GameManager.instance.player.GetComponent<Farming>().ResetFarm();
+            GameObject.FindWithTag("Player").GetComponent<Farming>().DrySoil();
+            GameObject.FindWithTag("Player").GetComponent<Farming>().ResetFarm();
         }
         
         //Player.instance.GetComponent<Farming>().plantedObjects.Clear();

@@ -4,21 +4,36 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using static Item;
+using UnityEngine.EventSystems;
+using System;
 //Slot Class
 public class Slot : MonoBehaviour
 {
-    public Item.ItemData slotItem;
+    public Item.ItemData slotItem
+    {
+        get { return slotItem; }
+        set
+        {
+            if (slotitem != null)
+            {
+                Debug.Log(slotitem.name);
+                throw new Exception();
+            }
+        }
+    }
+    private Item.ItemData slotitem;
     public int slotID;
     public Image itemIcon;
     public TextMeshProUGUI quantityText;
     public bool sellableSlot = false;
     public bool mouseOver = false;
     public GameObject tooltip;
+    public bool toolbarSlot;
     [SerializeField] private GameObject highlight;
 
     public void SetItem(Inventory.Slot slot)
     {
-        if(slot != null)
+        if (slot.item != null)
         {
             slotItem = slot.item;
             itemIcon.sprite = Resources.Load<Sprite>("Sprites/Items/" + slot.item.sprite);
@@ -29,8 +44,9 @@ public class Slot : MonoBehaviour
     }
     public void SetEmpty()
     {
+        slotItem = null;
         itemIcon.sprite = null;
-        itemIcon.color = new Color(1, 1, 1, 0);
+        itemIcon.color = new Color(1, 1, 1, 1);
         quantityText.text = "";
     }
 
@@ -41,18 +57,17 @@ public class Slot : MonoBehaviour
 
     public void ActivateTooltip()
     {
-        if (tooltip.activeSelf == false)
+        if (slotItem != null)
         {
-            tooltip.GetComponent<Tooltip>().item = this.slotItem;
-            tooltip.GetComponent<Tooltip>().tooltip.enabled = true;
+            tooltip.gameObject.SetActive(true);
+            tooltip.GetComponent<Tooltip>().slot = this;
+            tooltip.GetComponent<Tooltip>().SetTooltip();
         }
+
     }
+
     public void DeActivateTooltip()
     {
-        //if (tooltip.activeSelf == true)
-        //{
-        //    tooltip.GetComponent<Tooltip>().item = null;
-        //    tooltip.GetComponent<Tooltip>().tooltip.enabled = false;
-        //}
+        tooltip.gameObject.SetActive(false);
     }
 }

@@ -20,7 +20,7 @@ public class SetItemPrice : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameManager.instance.player;
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
         itemPrice = 0;
     }
     void Update()
