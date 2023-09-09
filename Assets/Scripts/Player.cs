@@ -25,8 +25,7 @@ public class Player : MonoBehaviour
 
     public void Awake()
     {
-        
-        inventory = new Inventory(18);
+        inventory.CreateInventory(18);
         rb = GetComponent<Rigidbody2D>();
         manager = FindObjectOfType<GameManager>();
         questManager = FindObjectOfType<QuestManager>();

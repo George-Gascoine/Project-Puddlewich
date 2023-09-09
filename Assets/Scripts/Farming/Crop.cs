@@ -50,7 +50,7 @@ public class Crop : MonoBehaviour
         if (crop.currentGrowthStage == crop.maxGrowthStage)
         {
             player.GetComponent<Farming>().RemoveCrop(this.crop.cropFarmPos);
-            player.inventory.Add(GameManager.instance.GetComponent<ItemManager>().itemList.item.Single(s => s.id == crop.cropIndex));
+            player.inventory.AddItem(GameManager.instance.GetComponent<ItemManager>().itemList.item.Single(s => s.id == crop.cropIndex));
             Destroy(this.gameObject);
         }
     }

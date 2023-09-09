@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -303,6 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 976fde2550c890345ab7756564c41836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInputEnabled: 1
   slotItem:
     name: 
     id: 0
@@ -312,7 +313,7 @@ MonoBehaviour:
     sprite: 
     cost: 0
     quality: 0
-  slotID: 0
+  slotID: 2
   itemIcon: {fileID: 2785140900734208652}
   quantityText: {fileID: 4058070169029195897}
   sellableSlot: 0

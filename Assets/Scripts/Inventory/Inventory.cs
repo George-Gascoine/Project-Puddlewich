@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEngine;
+using static Crop;
 using static Inventory;
 using static Item;
 
@@ -11,104 +12,64 @@ using static Item;
 public class Inventory
 {
     [System.Serializable]
-    public class Slot
+    public class Slot 
     {
+        public int slotID;
         public Item.ItemData item;
         public int count;
-        public int maxAllowed;
-        public bool mouseOver = false;
-
-        public Sprite icon;
-        public Slot()
-        {
-            maxAllowed = 99;
-        }
-
-        public bool CanAddItem()
-        {
-            if (count < maxAllowed) 
-            {
-                Debug.Log(count);
-                return true;
-            }
-                return false;
-        }
-
-        public void AddItem(Item.ItemData item)
-        {
-            this.item = item;
-            this.icon = Resources.Load<Sprite>("Sprites/Items/" + item.sprite);
-            count += 1;
-        }
     }
 
     public List<Slot> slots = new List<Slot>();
 
-    public Inventory(int numSlots)
-    {
-        Debug.Log("here");
-        slots.Clear();
-        for(int i = 0; i < numSlots; i++)
+    public void CreateInventory(int size) 
+    { 
+      for (int i = 0; i < size; i++)
         {
             Slot slot = new Slot();
+            slot.slotID = i;
+            slot.item = new Item.ItemData();
+            slot.count = 0;
             slots.Add(slot);
         }
     }
 
-    public void Add(Item.ItemData item)
+    public void AddItem(Item.ItemData item)
     {
         foreach (Slot slot in slots)
         {
-            if (slot.item != null)
+            if (slot.item == item)
             {
-                if (slot.item.id == item.id && slot.CanAddItem())
-                {
-                    slot.count += 1;
-                    return;
-                }
+                slot.count++;
+                return;
             }
-        }
-        foreach (Slot slot in slots)
-        {
-            if (slot.item == null && slot.CanAddItem())
+            else if (slot.item.id == 0)
             {
-                slot.AddItem(item);
+                slot.item.name = item.name;
+                slot.item.id = item.id;
+                slot.item.type = item.type;
+                slot.item.effect = item.effect;
+                slot.item.description = item.description;
+                slot.item.sprite = item.sprite;
+                slot.item.cost = item.cost;
+                slot.item.quality = item.quality;
+                slot.count = 1;
                 return;
             }
         }
     }
 
-    public void AddToSlot(Item.ItemData item, int id)
+    public void AddToSlot(int id, ItemData data, int quantity)
     {
-        slots[id].AddItem(item);
+        slots[id].item = data;
+        slots[id].count = quantity;
     }
-
-    public void Remove(int slotID)
+    public void RemoveItem(int id)
     {
-        if (slots[slotID].count != 0)
-        {
-            slots[slotID].count--;
-            if (slots[slotID].count == 0)
-            {
-                slots[slotID].item = null;
-            }
-        }
+        slots[id].item = null;
     }
-    public void RemoveAll(int slotID)
+    public void RemoveAll(int id)
     {
-        slots[slotID].count = 0;
-        slots[slotID].item = null;
-    }
-
-    public bool CheckItem(Item.ItemData checkType, int checkAmount)
-    {
-        foreach (Slot slot in slots)
-        {
-            if (slot.item == checkType && slot.count == checkAmount)
-            {
-                return true;
-            }
-        }
-        return false;
+        slots[id].count = 0;
+        slots[id].item = new Item.ItemData();
     }
 }

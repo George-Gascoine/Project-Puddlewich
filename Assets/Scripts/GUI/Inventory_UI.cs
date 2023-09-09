@@ -21,8 +21,13 @@ public class Inventory_UI : MonoBehaviour
     private Slot draggedSlot;
     private Image draggedIcon;
     // Start is called before the first frame update
+    private void Start()
+    {
+        //draggedIcon = gameObject.AddComponent<Image>();
+    }
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             ToggleInventory();
@@ -97,52 +102,54 @@ public class Inventory_UI : MonoBehaviour
 
     public void MouseCheck(Slot slot)
     {
-            if (draggedIcon == null)
+        Debug.Log(draggedIcon);
+        if (draggedIcon == null)
+        {
+            movingID = slot.slotID;
+            if (player.inventory.slots[slot.slotID].item.id != 0)
             {
-                movingID = slot.slotID;
-                if (player.inventory.slots[slot.slotID].item != null)
-                {
-                    draggedIcon = Instantiate(slot.itemIcon);
-                    movingItem = slot.slotItem;
-                    movingStack = player.inventory.slots[slot.slotID].count;
-                    draggedIcon.raycastTarget = false;
-                    draggedIcon.rectTransform.sizeDelta = new Vector2(50f, 50f);
-                    draggedIcon.transform.SetParent(canvas.transform);
-                    player.inventory.RemoveAll(slot.slotID);
-                }
-            }
-            else if (draggedIcon != null && player.inventory.slots[slot.slotID].item == null)
-            {
-                movingID = slot.slotID;
-                player.inventory.slots[slot.slotID].AddItem(movingItem);
-                player.inventory.slots[slot.slotID].count = movingStack;
-                Destroy(draggedIcon);
-                draggedIcon = null;
-                movingItem = null;
-                movingStack = 0;
-                StartCoroutine(TooltipUpdate(slot));
-            }
-            else if (draggedIcon != null && player.inventory.slots[slot.slotID].item != null)
-            {
-                Item.ItemData temp = slot.slotItem;
-                int tempStack = player.inventory.slots[slot.slotID].count;
-                movingID = slot.slotID;
-                Destroy(draggedIcon);
                 draggedIcon = Instantiate(slot.itemIcon);
+                movingItem = slot.slotItem;
+                movingStack = player.inventory.slots[slot.slotID].count;
                 draggedIcon.raycastTarget = false;
                 draggedIcon.rectTransform.sizeDelta = new Vector2(50f, 50f);
                 draggedIcon.transform.SetParent(canvas.transform);
-                player.inventory.slots[slot.slotID].AddItem(movingItem);
-                player.inventory.slots[slot.slotID].count = movingStack;
-                movingItem = temp;
-                movingStack = tempStack;
+                player.inventory.RemoveAll(slot.slotID);
+                slot.SetItem(player.inventory.slots[slot.slotID]);
             }
+        }
+        else if (draggedIcon != null && player.inventory.slots[slot.slotID].item.id == 0)
+        {
+            Destroy(draggedIcon.gameObject);
+            draggedIcon = null;
+            movingID = slot.slotID;
+            player.inventory.AddToSlot(movingID, movingItem,movingStack);
+            movingItem = null;
+            movingStack = 0;
+            StartCoroutine(TooltipUpdate(slot));
+        }
+        else if (draggedIcon != null && player.inventory.slots[slot.slotID].item.id != 0)
+        {
+            Item.ItemData temp = slot.slotItem;
+            int tempStack = player.inventory.slots[slot.slotID].count;
+            movingID = slot.slotID;
+            Destroy(draggedIcon);
+            draggedIcon = Instantiate(slot.itemIcon);
+            draggedIcon.raycastTarget = false;
+            draggedIcon.rectTransform.sizeDelta = new Vector2(50f, 50f);
+            draggedIcon.transform.SetParent(canvas.transform);
+            player.inventory.AddToSlot(movingID, movingItem, movingStack);
+            movingItem = temp;
+            movingStack = tempStack;
+            Refresh();
+        }
     }
 
     public void DropItem()
     {
         if (draggedIcon != null)
         {
+            player.inventory.RemoveItem(movingID);
             player.DropItem(movingItem);
             Destroy(draggedIcon);
             movingItem = null;

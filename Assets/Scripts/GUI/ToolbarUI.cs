@@ -61,10 +61,11 @@ public class ToolbarUI : MonoBehaviour
             if (player.inventory.slots[i].item != null)
             {
                 toolbarSlots[i].SetItem(player.inventory.slots[i]);
+                toolbarSlots[i].quantityText.text = player.inventory.slots[i].count.ToString();
             }
             else
             {
-                toolbarSlots[i].SetEmpty();
+
             }
         }
     }

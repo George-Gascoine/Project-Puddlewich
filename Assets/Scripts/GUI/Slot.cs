@@ -6,23 +6,36 @@ using TMPro;
 using static Item;
 using UnityEngine.EventSystems;
 using System;
+using static SaveGame;
 //Slot Class
-public class Slot : MonoBehaviour
+public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public Item.ItemData slotItem
+    public bool isInputEnabled = false;
+
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        get { return slotItem; }
-        set
+        isInputEnabled = true;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        isInputEnabled = false;
+    }
+
+    void Update()
+    {
+        if (isInputEnabled)
         {
-            if (slotitem != null)
+            if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log(slotitem.name);
-                throw new Exception();
+                Debug.Log(slotID);
             }
         }
     }
-    private Item.ItemData slotitem;
+
+    public Item.ItemData slotItem;
     public int slotID;
+    public int quantity;
     public Image itemIcon;
     public TextMeshProUGUI quantityText;
     public bool sellableSlot = false;
@@ -33,21 +46,25 @@ public class Slot : MonoBehaviour
 
     public void SetItem(Inventory.Slot slot)
     {
-        if (slot.item != null)
+        Item.ItemData displayItem = new Item.ItemData
         {
-            slotItem = slot.item;
-            itemIcon.sprite = Resources.Load<Sprite>("Sprites/Items/" + slot.item.sprite);
-            //itemIcon.sprite = slot.icon;
-            itemIcon.color = new Color(1, 1, 1, 1);
-            quantityText.text = slot.count.ToString();
-        }
+            name = slot.item.name,
+            id = slot.item.id,
+            type = slot.item.type,
+            effect = slot.item.effect,
+            description = slot.item.description,
+            sprite = slot.item.sprite,
+            cost = slot.item.cost,
+            quality = slot.item.quality
+        };
+        slotItem = displayItem;
+        quantity = slot.count;
+        quantityText.text = quantity.ToString();
+        itemIcon.sprite = Resources.Load<Sprite>("Sprites/Items/" + slotItem.sprite);
     }
     public void SetEmpty()
     {
-        slotItem = null;
-        itemIcon.sprite = null;
-        itemIcon.color = new Color(1, 1, 1, 1);
-        quantityText.text = "";
+
     }
 
     public void SetHighlight(bool isOn)

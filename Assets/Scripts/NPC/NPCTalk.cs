@@ -124,7 +124,7 @@ public class NPCTalk : MonoBehaviour
         selectedDiaArray = friendshipDialogue;
         if (likedItems.IndexOf(gift) != -1)
         {
-            player.inventory.Remove(player.selectedSlot);
+            player.inventory.RemoveItem(player.selectedSlot);
             player.slotChanged = true;
             friendshipLevel += 0.5f;
             index = 0;
@@ -133,7 +133,7 @@ public class NPCTalk : MonoBehaviour
         }
         else if (dislikedItems.IndexOf(gift) != -1)
         {
-            player.inventory.Remove(player.selectedSlot);
+            player.inventory.RemoveItem(player.selectedSlot);
             player.slotChanged = true;
             friendshipLevel -= 0.5f;
             index = 1;
@@ -142,7 +142,7 @@ public class NPCTalk : MonoBehaviour
         }
         else
         {
-            player.inventory.Remove(player.selectedSlot);
+            player.inventory.RemoveItem(player.selectedSlot);
             player.slotChanged = true;
             index = 2;
             textPanel.SetActive(true);

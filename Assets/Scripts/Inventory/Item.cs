@@ -107,7 +107,7 @@ public class Item: MonoBehaviour
 
     public void CollectableAdd()
     {
-        player.inventory.Add(this.data);
+        player.inventory.AddItem(this.data);
         player.slotChanged = true;
         popPickUp.PlayOneShot(clip);
         spriteRenderer.sprite = null;

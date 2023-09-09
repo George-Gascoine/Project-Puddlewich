@@ -45,7 +45,7 @@ public class NPCInventoryUI : MonoBehaviour
     {
         //player.inventory.Add(slot.slotItem);
         player.pennies += slot.slotItem.cost;
-        npcTrade.inventory.Remove(slot.slotID);
+        //npcTrade.inventory.Remove(slot.slotID);
         Refresh();
     }
 

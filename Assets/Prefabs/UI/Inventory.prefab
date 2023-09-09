@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 976fde2550c890345ab7756564c41836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInputEnabled: 0
   slotItem:
     name: 
     id: 0
@@ -383,6 +384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 976fde2550c890345ab7756564c41836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInputEnabled: 0
   slotItem:
     name: 
     id: 0
@@ -624,6 +626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 976fde2550c890345ab7756564c41836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInputEnabled: 0
   slotItem:
     name: 
     id: 0
@@ -1353,6 +1356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 976fde2550c890345ab7756564c41836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInputEnabled: 0
   slotItem:
     name: 
     id: 0
@@ -1508,6 +1512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 976fde2550c890345ab7756564c41836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInputEnabled: 0
   slotItem:
     name: 
     id: 0
@@ -2144,6 +2149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 976fde2550c890345ab7756564c41836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInputEnabled: 0
   slotItem:
     name: 
     id: 0
@@ -2299,6 +2305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 976fde2550c890345ab7756564c41836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInputEnabled: 0
   slotItem:
     name: 
     id: 0
@@ -2665,6 +2672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 976fde2550c890345ab7756564c41836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInputEnabled: 0
   slotItem:
     name: 
     id: 0
@@ -4727,6 +4735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 976fde2550c890345ab7756564c41836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInputEnabled: 0
   slotItem:
     name: 
     id: 0
@@ -5355,6 +5364,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 4169435684119456821}
+    - target: {fileID: 3110290015904233000, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
+      propertyPath: isInputEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5086173132970742005, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5480,6 +5493,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 4169435684119456821}
+    - target: {fileID: 3110290015904233000, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
+      propertyPath: isInputEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5086173132970742005, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5598,9 +5615,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 4412112831215891793}
     m_Modifications:
     - target: {fileID: 3110290015904233000, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
+      propertyPath: slotID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3110290015904233000, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 4169435684119456821}
+    - target: {fileID: 3110290015904233000, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
+      propertyPath: isInputEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5086173132970742005, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5726,6 +5751,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 4169435684119456821}
+    - target: {fileID: 3110290015904233000, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
+      propertyPath: isInputEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5086173132970742005, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5851,6 +5880,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 4169435684119456821}
+    - target: {fileID: 3110290015904233000, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
+      propertyPath: isInputEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5086173132970742005, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5969,13 +6002,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 4412112831215891793}
     m_Modifications:
     - target: {fileID: 3110290015904233000, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
-      propertyPath: slotID
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3110290015904233000, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 4169435684119456821}
+    - target: {fileID: 3110290015904233000, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
+      propertyPath: isInputEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5086173132970742005, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6101,6 +6134,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 4169435684119456821}
+    - target: {fileID: 3110290015904233000, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
+      propertyPath: isInputEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5086173132970742005, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6226,6 +6263,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 4169435684119456821}
+    - target: {fileID: 3110290015904233000, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
+      propertyPath: isInputEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5086173132970742005, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6351,6 +6392,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 4169435684119456821}
+    - target: {fileID: 3110290015904233000, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
+      propertyPath: isInputEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5086173132970742005, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6476,6 +6521,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 4169435684119456821}
+    - target: {fileID: 3110290015904233000, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
+      propertyPath: isInputEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5086173132970742005, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6601,6 +6650,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 4169435684119456821}
+    - target: {fileID: 3110290015904233000, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
+      propertyPath: isInputEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5086173132970742005, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6726,6 +6779,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 4169435684119456821}
+    - target: {fileID: 3110290015904233000, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
+      propertyPath: isInputEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5086173132970742005, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6851,6 +6908,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 4169435684119456821}
+    - target: {fileID: 3110290015904233000, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
+      propertyPath: isInputEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5086173132970742005, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6976,6 +7037,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 4169435684119456821}
+    - target: {fileID: 3110290015904233000, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
+      propertyPath: isInputEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5086173132970742005, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7101,6 +7166,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 4169435684119456821}
+    - target: {fileID: 3110290015904233000, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
+      propertyPath: isInputEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5086173132970742005, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7226,6 +7295,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 4169435684119456821}
+    - target: {fileID: 3110290015904233000, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
+      propertyPath: isInputEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5086173132970742005, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7351,6 +7424,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 4169435684119456821}
+    - target: {fileID: 3110290015904233000, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
+      propertyPath: isInputEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5086173132970742005, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7476,6 +7553,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 4169435684119456821}
+    - target: {fileID: 3110290015904233000, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
+      propertyPath: isInputEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5086173132970742005, guid: d1e505c540331764a8e72de4d3dffb32, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
