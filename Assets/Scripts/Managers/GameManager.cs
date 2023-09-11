@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public List<Transition> sceneTransitions;
     public Dictionary<string, UpdatedGrid2D> sceneGrids = new();
     public NPC npc;
+    public List <NPC> npcs = new();
     public string playerName;
     public Sprite[] bodyParts;
     private UnityEngine.SceneManagement.Scene scene;
@@ -54,6 +55,7 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         Debug.Log("Start");
+        StartCoroutine(dayNightCycle.GameTime());
         //DontDestroyOnLoad(this.gameObject);
         foreach (Location location in gameLocations)
         {
@@ -84,7 +86,6 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         player.gameObject.SetActive(true);
-        npc.gameObject.SetActive(true);
         inventory.gameObject.SetActive(true);
         quest.gameObject.SetActive(true);
         questLog.gameObject.SetActive(true);   
@@ -92,7 +93,11 @@ public class GameManager : MonoBehaviour
         Screen.SetResolution(1920, 1080, true);
         DontDestroyOnLoad(player);
         player.SetPlayer();
-        npc.ReadJSON();
+        foreach (NPC npc in npcs)
+        {
+            npc.gameObject.SetActive(true);
+            npc.ReadJSON();
+        }
     }
 
 }

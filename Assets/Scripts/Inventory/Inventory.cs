@@ -37,7 +37,7 @@ public class Inventory
     {
         foreach (Slot slot in slots)
         {
-            if (slot.item == item)
+            if (slot.item.id == item.id)
             {
                 slot.count++;
                 return;
@@ -65,7 +65,7 @@ public class Inventory
     }
     public void RemoveItem(int id)
     {
-        slots[id].item = null;
+        slots[id].item = new Item.ItemData();
     }
     public void RemoveAll(int id)
     {

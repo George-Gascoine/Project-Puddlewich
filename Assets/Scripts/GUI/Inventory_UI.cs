@@ -32,29 +32,31 @@ public class Inventory_UI : MonoBehaviour
         {
             ToggleInventory();
         }
-
-        if (slots.Count == player.inventory.slots.Count && inventoryPanel.activeSelf)
+        if (inventoryPanel.activeSelf)
         {
-            for (int i = 0; i < slots.Count; i++)
+            if (slots.Count == player.inventory.slots.Count && inventoryPanel.activeSelf)
             {
-                if (player.inventory.slots[i].item != null)
+                for (int i = 0; i < slots.Count; i++)
                 {
-                    slots[i].SetItem(player.inventory.slots[i]);
-                }
-                else
-                {
-                    slots[i].SetEmpty();
+                    if (player.inventory.slots[i].item != null)
+                    {
+                        slots[i].SetItem(player.inventory.slots[i]);
+                    }
+                    else
+                    {
+                        slots[i].SetEmpty();
+                    }
                 }
             }
-        }
-        if(draggedIcon != null)
-        {
-            tooltip.SetActive(false);
-            Vector2 position;
+            if (draggedIcon != null)
+            {
+                tooltip.SetActive(false);
+                Vector2 position;
 
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, Input.mousePosition, null, out position);
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, Input.mousePosition, null, out position);
 
-            draggedIcon.gameObject.transform.position = canvas.transform.TransformPoint(position);
+                draggedIcon.gameObject.transform.position = canvas.transform.TransformPoint(position);
+            }
         }
     }
     public void ToggleInventory()
@@ -133,7 +135,7 @@ public class Inventory_UI : MonoBehaviour
             Item.ItemData temp = slot.slotItem;
             int tempStack = player.inventory.slots[slot.slotID].count;
             movingID = slot.slotID;
-            Destroy(draggedIcon);
+            Destroy(draggedIcon.gameObject);
             draggedIcon = Instantiate(slot.itemIcon);
             draggedIcon.raycastTarget = false;
             draggedIcon.rectTransform.sizeDelta = new Vector2(50f, 50f);
@@ -171,5 +173,6 @@ public class Inventory_UI : MonoBehaviour
     {
         yield return null;
         slot.ActivateTooltip();
+        slot.tooltip.transform.position = new Vector3(Input.mousePosition.x + 120, Input.mousePosition.y - 120, Input.mousePosition.z);
     }
 }

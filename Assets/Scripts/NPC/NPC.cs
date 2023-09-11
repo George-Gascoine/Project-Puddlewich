@@ -28,10 +28,12 @@ public class NPC : MonoBehaviour
     public Location destination;
     public UpdatedPathFinding pathFinding;
     public bool onWay;
+    public Animator animator;
+    public string anim;
     // Start is called before the first frame update
     void Start()
     {
-        //gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        animator.enabled = false;
         this.location = gameManager.gameLocations[0];
         this.pathFinding = gameObject.GetComponent<UpdatedPathFinding>();
         this.routines = Routine.FromJson(routineData.text, "winter");
@@ -45,7 +47,7 @@ public class NPC : MonoBehaviour
         //Debug.Log(currentPosition.y);
         if (SceneManager.GetActiveScene().name == location.locationName)
         {
-            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
             transform.position = currentPosition;
         }
         else
@@ -114,6 +116,7 @@ public class NPC : MonoBehaviour
 
     public void CheckRoutine(int time)
     {
+        Debug.Log(time);
         switch (DayNightCycle.season)
         {
             case "winter":
@@ -124,6 +127,7 @@ public class NPC : MonoBehaviour
                         this.onWay = true;
                         this.destination = gameManager.gameLocations.First(Location => Location.locationName == routine.destination);
                         StartPath(gameManager, routine.target);
+                        anim = routine.animation;
                     }
                 }
                 break;

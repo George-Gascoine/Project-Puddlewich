@@ -64,7 +64,6 @@ public class NPCTalk : MonoBehaviour
                 else if (typing == true)
                 {
                     Debug.Log(index);
-                    StopCoroutine("Typing");
                     typing = false;
                     NPCText.text = selectedDiaArray[index];
                 }

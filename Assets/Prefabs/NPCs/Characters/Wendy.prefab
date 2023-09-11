@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 5992887549204389092}
   - component: {fileID: 5992887549204389099}
   - component: {fileID: 5992887549204389098}
+  - component: {fileID: -7664541669152847144}
   m_Layer: 0
-  m_Name: George
+  m_Name: Wendy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,37 +126,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46ca1d3becdf7c4ba0a61e374762107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NPCData: {fileID: 0}
-  npcName: George
-  age: Adult
-  manners: Polite
-  gender: Male
-  datable: 1
-  likes: 010000000200000003000000
-  dislikes: 040000000500000006000000
+  NPCData: {fileID: 4900000, guid: a47653aec26020f4ab849725885c953e, type: 3}
+  npcName: 
+  age: 
+  manners: 
+  gender: 
+  datable: 0
+  likes: 
+  dislikes: 
   birthday:
-    Season: World
-    Day: 5
+    Season: 
+    Day: 0
   defPosition:
-    Loc: World
+    Loc: 
     Tile:
-      GameManager: {fileID: 0}
+      gameManager: {fileID: 0}
       highlight: {fileID: 0}
-      gCost: 70
-      hCost: 350
-      gridX: 5
-      gridY: 5
+      gCost: 0
+      hCost: 0
+      gridX: 0
+      gridY: 0
       posX: 0
-      posY: 2.5
-      isWalkable: 1
+      posY: 0
+      isWalkable: 0
   gameManager: {fileID: 6112977482344960598, guid: 2c728d1f17fdd7849ad2da80cdd293f5, type: 3}
   currentPosition: {x: 0, y: 0}
-  routineData: {fileID: 4900000, guid: 20fa52e9cfcc0a74c916382f03a4baed, type: 3}
+  routineData: {fileID: 4900000, guid: ff10549b0e973b143a6846190dd0a6de, type: 3}
   routines: []
   location: {fileID: 211844364720587988, guid: 3be00a33906abf143aa84b0e6a1bab7e, type: 3}
   destination: {fileID: 211844364720587988, guid: 3be00a33906abf143aa84b0e6a1bab7e, type: 3}
   pathFinding: {fileID: 5992887549204389098}
   onWay: 0
+  animator: {fileID: 0}
 --- !u!114 &5992887549204389098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,7 +180,7 @@ MonoBehaviour:
   currentLocation: {fileID: 0}
   destination: {fileID: 0}
   finalDestination:
-    GameManager: {fileID: 0}
+    gameManager: {fileID: 0}
     highlight: {fileID: 0}
     gCost: 50
     hCost: 0
@@ -188,7 +190,7 @@ MonoBehaviour:
     posY: 1.25
     isWalkable: 1
   startTile:
-    GameManager: {fileID: 0}
+    gameManager: {fileID: 0}
     highlight: {fileID: 0}
     gCost: 0
     hCost: 0
@@ -198,7 +200,7 @@ MonoBehaviour:
     posY: 0
     isWalkable: 1
   targetTile:
-    GameManager: {fileID: 0}
+    gameManager: {fileID: 0}
     highlight: {fileID: 0}
     gCost: 50
     hCost: 0
@@ -221,7 +223,7 @@ MonoBehaviour:
     locationColliders:
     - {fileID: 6242653867460909016, guid: 13a34af8bac3f774eb33ce51a56ccb8e, type: 3}
     path:
-    - GameManager: {fileID: 0}
+    - gameManager: {fileID: 0}
       highlight: {fileID: 0}
       gCost: 0
       hCost: 0
@@ -230,7 +232,7 @@ MonoBehaviour:
       posX: 0
       posY: 0
       isWalkable: 1
-    - GameManager: {fileID: 0}
+    - gameManager: {fileID: 0}
       highlight: {fileID: 0}
       gCost: 10
       hCost: 40
@@ -239,7 +241,7 @@ MonoBehaviour:
       posX: 0.5
       posY: 0.25
       isWalkable: 1
-    - GameManager: {fileID: 0}
+    - gameManager: {fileID: 0}
       highlight: {fileID: 0}
       gCost: 20
       hCost: 30
@@ -248,7 +250,7 @@ MonoBehaviour:
       posX: 1
       posY: 0.5
       isWalkable: 1
-    - GameManager: {fileID: 0}
+    - gameManager: {fileID: 0}
       highlight: {fileID: 0}
       gCost: 30
       hCost: 20
@@ -257,7 +259,7 @@ MonoBehaviour:
       posX: 1.5
       posY: 0.75
       isWalkable: 1
-    - GameManager: {fileID: 0}
+    - gameManager: {fileID: 0}
       highlight: {fileID: 0}
       gCost: 40
       hCost: 10
@@ -266,7 +268,7 @@ MonoBehaviour:
       posX: 2
       posY: 1
       isWalkable: 1
-    - GameManager: {fileID: 0}
+    - gameManager: {fileID: 0}
       highlight: {fileID: 0}
       gCost: 50
       hCost: 0
@@ -275,3 +277,24 @@ MonoBehaviour:
       posX: 2.5
       posY: 1.25
       isWalkable: 1
+--- !u!95 &-7664541669152847144
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5992887549204389097}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 012174c2d8e0139498f2fa01c699b5bc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

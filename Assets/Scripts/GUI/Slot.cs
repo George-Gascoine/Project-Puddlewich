@@ -74,7 +74,7 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void ActivateTooltip()
     {
-        if (slotItem != null)
+        if (slotItem.id != 0)
         {
             tooltip.gameObject.SetActive(true);
             tooltip.GetComponent<Tooltip>().slot = this;

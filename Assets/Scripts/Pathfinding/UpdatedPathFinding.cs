@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 //Check if npc has arrived at destination tile
@@ -213,6 +214,8 @@ public class UpdatedPathFinding : MonoBehaviour
             {
                 StopAllCoroutines();
                 npc.onWay = false;
+                npc.animator.enabled = true;
+                npc.animator.Play(npc.anim);
             }
             yield return null;
         }

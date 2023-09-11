@@ -95,7 +95,7 @@ public class Farming : MonoBehaviour
                             //CROP JSON
                             int seedIndex = player.equippedItem.id;
                             Crop.CropData cropData = GameManager.instance.farmManager.cropList.crop.Single(s => s.seedIndex == seedIndex);
-                            Crop.CropData newCropData = new Crop.CropData
+                            Crop.CropData newCropData = new()
                             {
                                 name = cropData.name,
                                 seedIndex = cropData.seedIndex,
@@ -110,6 +110,10 @@ public class Farming : MonoBehaviour
                                 cropIsWatered = cropData.cropIsWatered,
                                 cropFarmPos = currentCell,
                             };
+                            if(farmMap.GetTile(currentCell) == wateredTile)
+                            {
+                                newCropData.cropIsWatered = true;
+                            }
                             PlantCrop(newCropData, currentCell, currentCellCentre);
                         }
                     }

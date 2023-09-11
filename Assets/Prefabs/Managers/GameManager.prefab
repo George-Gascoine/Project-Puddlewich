@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4279570404273907434}
   - component: {fileID: 6183869174007640507}
   - component: {fileID: -6487602283683974630}
-  - component: {fileID: -1651031559262343833}
+  - component: {fileID: 3975085956193455527}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -82,6 +82,7 @@ MonoBehaviour:
   sceneColliders: []
   sceneTransitions: []
   npc: {fileID: 5992887549204389099, guid: 56ddf5ec20974b94890e8ce2f26fa695, type: 3}
+  npcs: []
   playerName: 
   bodyParts:
   - {fileID: 0}
@@ -134,7 +135,7 @@ MonoBehaviour:
   cropData: {fileID: 0}
   cropList:
     crop: []
---- !u!114 &-1651031559262343833
+--- !u!114 &3975085956193455527
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,3 +147,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4406c35e0715d2745ab218c92605ed0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player:
+    playerName: 
+    pennies: 0
+    inventory:
+      slots: []
+    bodyParts: []
+    position: {x: 0, y: 0, z: 0}
+    saveTime: 
+  saveJSON: 
+  pausePanel: {fileID: 0}
+  loadButton: {fileID: 0}
+  loadedGames: []

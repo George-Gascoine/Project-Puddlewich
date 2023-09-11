@@ -82,13 +82,13 @@ public class DayNightCycle : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
             gameTimer++;
-            if(gameTimer == 6)
+            if (gameTimer == 8)
             {
                 gameTimer = 0;
-                GameManager.instance.GetComponent<SaveGame>().SavePlayer();
+                GameManager.instance.GetComponent<SaveGame>().Save();
             }
             Debug.Log(gameTimer);
-            if(gameTimer % 6 == 0)
+            if(gameTimer % 8 == 0)
             {
                 UpdateCrops();
             }

@@ -1,6 +1,6 @@
 {
     "routine": [{
-            "winter": "7 World 30 30 0 george_read//1300 World 0 0 0 george_read//1800 World 25 43 0 george_read",
+            "winter": "7 World 30 30 0 IdleTest//1300 World 0 0 0 george_read//1800 World 25 43 0 george_read",
         }
     ]
 }
