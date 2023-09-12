@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7606a777e4f60e4db25b7de94885d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: 
+  playerName: George
   speed: 3
   pennies: 10
   rb: {fileID: 2600663679757353394}

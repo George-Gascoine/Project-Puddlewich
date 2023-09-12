@@ -1,12 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public Canvas inventory, quest, questLog;
-
+    public List<GameObject> menus;
+    public int seed;
     public Player player;
     public DayNightCycle dayNightCycle;
     public static GameManager instance;
@@ -17,6 +19,7 @@ public class GameManager : MonoBehaviour
     public Grid worldGrid;
     public PlayerCamera cam;
     public GameObject baseItem;
+    public bool load;
 
     public LoadScene sceneLoader;
     public List<Location> gameLocations;
@@ -54,8 +57,8 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
-        Debug.Log("Start");
-        StartCoroutine(dayNightCycle.GameTime());
+        var rand = new System.Random((int)DateTime.Now.Ticks);
+        seed = rand.Next(100000, 1000000);
         //DontDestroyOnLoad(this.gameObject);
         foreach (Location location in gameLocations)
         {
@@ -65,7 +68,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(dayNightCycle.GameTime());
         sceneLoader.LoadToScene("World", new Vector2(0,5));
         
-        StartCoroutine(NPCStart());
+        StartCoroutine(NPCStart(load));
 
     }
 
@@ -82,16 +85,20 @@ public class GameManager : MonoBehaviour
         sceneGrids.Add(location.locationName, grid);
     }
 
-    IEnumerator NPCStart()
+    IEnumerator NPCStart(bool load)
     {
         yield return new WaitForSeconds(0.5f);
         player.gameObject.SetActive(true);
-        inventory.gameObject.SetActive(true);
-        quest.gameObject.SetActive(true);
-        questLog.gameObject.SetActive(true);   
+        if(load == false)
+        {
+            player.inventory.CreateInventory(18);
+        }
+        foreach (GameObject menu in menus)
+        {
+            menu.SetActive(true);
+        } 
         player.speed = 6;
         Screen.SetResolution(1920, 1080, true);
-        DontDestroyOnLoad(player);
         player.SetPlayer();
         foreach (NPC npc in npcs)
         {

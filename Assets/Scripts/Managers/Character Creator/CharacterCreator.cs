@@ -146,6 +146,7 @@ public class CharacterCreator : MonoBehaviour
         GameManager.instance.bodyParts[2] = topI.sprite;
         GameManager.instance.bodyParts[3] = bottomI.sprite;
         GameManager.instance.playerName = playerName.text;
+        GameManager.instance.load = false;
         GameManager.instance.GameStart();
         SceneManager.UnloadSceneAsync(4);
     }

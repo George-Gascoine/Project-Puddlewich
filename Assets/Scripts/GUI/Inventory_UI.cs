@@ -38,7 +38,7 @@ public class Inventory_UI : MonoBehaviour
             {
                 for (int i = 0; i < slots.Count; i++)
                 {
-                    if (player.inventory.slots[i].item != null)
+                    if (player.inventory.slots[i].item.id != 0)
                     {
                         slots[i].SetItem(player.inventory.slots[i]);
                     }
@@ -90,7 +90,7 @@ public class Inventory_UI : MonoBehaviour
         {
             for (int i = 0; i < slots.Count; i++)
             {
-                if (player.inventory.slots[i].item != null)
+                if (player.inventory.slots[i].item.id != 0)
                 {
                     slots[i].SetItem(player.inventory.slots[i]);
                 }

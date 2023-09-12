@@ -123,6 +123,16 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &92816283 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1442031757118757142, guid: 1ccff32f9ed5cf743a3912ce3191c7ee, type: 3}
+  m_PrefabInstance: {fileID: 129174093}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &116886696 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7397073545058253564, guid: f7a8c63af89b1874881a8fca7ce04f1b, type: 3}
+  m_PrefabInstance: {fileID: 232293923}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &129174093
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -137,6 +147,14 @@ PrefabInstance:
     - target: {fileID: 1442031756444873032, guid: 1ccff32f9ed5cf743a3912ce3191c7ee, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442031756894557082, guid: 1ccff32f9ed5cf743a3912ce3191c7ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442031757118757142, guid: 1ccff32f9ed5cf743a3912ce3191c7ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1442031757393597617, guid: 1ccff32f9ed5cf743a3912ce3191c7ee, type: 3}
       propertyPath: m_Pivot.x
@@ -242,6 +260,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5917470256248269466, guid: 1ccff32f9ed5cf743a3912ce3191c7ee, type: 3}
+      propertyPath: loadButton
+      value: 
+      objectReference: {fileID: 2476597081431046972, guid: 540f150e4dd7a624384a4070082eb7dd, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ccff32f9ed5cf743a3912ce3191c7ee, type: 3}
 --- !u!1001 &232293923
@@ -756,6 +778,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d27dee1708cd749a952605fddc7f3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1093578782 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9172354102111245073, guid: 62f037e3d816609408ba4924c67a4e2e, type: 3}
+  m_PrefabInstance: {fileID: 402385789}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1105237417 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2600663679757353395, guid: a1d7d9b3a06190e4b9efd4c32fa462fb, type: 3}
@@ -787,7 +814,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1133678949
 Transform:
   m_ObjectHideFlags: 0
@@ -870,7 +897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2600663679757353393, guid: a1d7d9b3a06190e4b9efd4c32fa462fb, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2600663679757353395, guid: a1d7d9b3a06190e4b9efd4c32fa462fb, type: 3}
       propertyPath: manager
@@ -960,6 +987,11 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+--- !u!1 &1510292627 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7145961401900997464, guid: 595675f26ec08d846bd291634fe42ac5, type: 3}
+  m_PrefabInstance: {fileID: 1733571348}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1631250376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1052,6 +1084,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2365220841580319208, guid: b67193fb3f466d448b21f886e3a923da, type: 3}
+      propertyPath: menus.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2365220841580319208, guid: b67193fb3f466d448b21f886e3a923da, type: 3}
       propertyPath: npcs.Array.data[0]
       value: 
       objectReference: {fileID: 552190744}
@@ -1059,6 +1095,30 @@ PrefabInstance:
       propertyPath: npcs.Array.data[1]
       value: 
       objectReference: {fileID: 1824808603}
+    - target: {fileID: 2365220841580319208, guid: b67193fb3f466d448b21f886e3a923da, type: 3}
+      propertyPath: menus.Array.data[0]
+      value: 
+      objectReference: {fileID: 1093578782}
+    - target: {fileID: 2365220841580319208, guid: b67193fb3f466d448b21f886e3a923da, type: 3}
+      propertyPath: menus.Array.data[1]
+      value: 
+      objectReference: {fileID: 116886696}
+    - target: {fileID: 2365220841580319208, guid: b67193fb3f466d448b21f886e3a923da, type: 3}
+      propertyPath: menus.Array.data[2]
+      value: 
+      objectReference: {fileID: 1510292627}
+    - target: {fileID: 2365220841580319208, guid: b67193fb3f466d448b21f886e3a923da, type: 3}
+      propertyPath: menus.Array.data[3]
+      value: 
+      objectReference: {fileID: 1877774250}
+    - target: {fileID: 3975085956193455527, guid: b67193fb3f466d448b21f886e3a923da, type: 3}
+      propertyPath: loadButton
+      value: 
+      objectReference: {fileID: 2476597081431046972, guid: 540f150e4dd7a624384a4070082eb7dd, type: 3}
+    - target: {fileID: 3975085956193455527, guid: b67193fb3f466d448b21f886e3a923da, type: 3}
+      propertyPath: pausePanel
+      value: 
+      objectReference: {fileID: 92816283}
     - target: {fileID: 5061908254044323746, guid: b67193fb3f466d448b21f886e3a923da, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -1312,6 +1372,11 @@ Animator:
   m_CorrespondingSourceObject: {fileID: -7664541669152847144, guid: 583c92af5ec6ad542ac37c48d915fd1b, type: 3}
   m_PrefabInstance: {fileID: 1824808600}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1877774250 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1442031757393597770, guid: 1ccff32f9ed5cf743a3912ce3191c7ee, type: 3}
+  m_PrefabInstance: {fileID: 129174093}
+  m_PrefabAsset: {fileID: 0}
 --- !u!223 &2091411056 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 7397073545058253567, guid: f7a8c63af89b1874881a8fca7ce04f1b, type: 3}
@@ -1515,7 +1580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2928602199851204912, guid: 4a4b0eb76bcd8484d9bd5055e106c376, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2928602199851204916, guid: 4a4b0eb76bcd8484d9bd5055e106c376, type: 3}
       propertyPath: m_UiScaleMode

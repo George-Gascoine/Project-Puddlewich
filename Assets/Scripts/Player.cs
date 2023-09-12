@@ -25,7 +25,6 @@ public class Player : MonoBehaviour
 
     public void Awake()
     {
-        inventory.CreateInventory(18);
         rb = GetComponent<Rigidbody2D>();
         manager = FindObjectOfType<GameManager>();
         questManager = FindObjectOfType<QuestManager>();
@@ -34,6 +33,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         //inventory.Add(GameManager.instance.itemManager.GetItemByType(Collectable.ItemType.ITEM));
+        
         if (inventory.slots[0].item != null)
         {
             equippedItem = inventory.slots[0].item;

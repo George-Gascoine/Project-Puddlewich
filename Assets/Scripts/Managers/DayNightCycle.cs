@@ -45,7 +45,7 @@ public class DayNightCycle : MonoBehaviour
     private void Start()
     {
         gameTimer = 0;
-        StartCoroutine(GameTime());
+        //StartCoroutine(GameTime());
         day = Day.Sunday.ToString();
     }
 
